@@ -11,7 +11,9 @@ class Message extends Model
     protected $fillable = [
         'content',
         'read_at',
-        'send_at'
+        'send_at',
+        'author_id',
+        'receiver_id'
     ];
 
     use HasFactory;

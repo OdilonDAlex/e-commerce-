@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
             $table->foreignIdFor(User::class, 'author_id');
-            $table->foreignIdFor(User::class, 'recipient_id');
+            $table->foreignIdFor(User::class, 'receiver_id');
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
             $table->dropForeignIdFor(User::class, 'author_id');
-            $table->dropForeignIdFor(User::class, 'recipient_id');
+            $table->dropForeignIdFor(User::class, 'receiver_id');
         });
     }
 };

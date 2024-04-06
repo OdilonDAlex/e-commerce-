@@ -21,10 +21,10 @@ send_message_button.addEventListener('click', (event_) => {
     event_.preventDefault();
 
     let data = {
-        content: textarea.value,
+        message_content: textarea.value,
         receiver_id: receiver_id,
     }
-    
+
     axios.post('/chat/create', data)
         .then(broadcastMessage)
         .catch( (error) => { console.error(error); })

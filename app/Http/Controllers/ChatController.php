@@ -18,6 +18,15 @@ class ChatController extends Controller
     }
 
     public function create(Request $request) {
+
+        $message_data = $request->validate([
+            'message_content' => ['required', 'string', ],
+            'receiver_id' => ['required', 'integer'],
+        ]);
+
+        // Auth::user()->messages()->create([
+        //     'message_content' => $message_data['message_content']
+        // ])
         return json_encode(['status' => 403]);
     }
 }
