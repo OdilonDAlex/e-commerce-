@@ -36,9 +36,9 @@ class MessageSent implements ShouldBroadcast
     public function broadcastOn(): PrivateChannel
     {
         $authUserId = Auth::user()->id;
-        $id_1 = $authUserId > $this->receiver_id ?  $authUserId : $this->receiver_id;
+        $id_1 = $authUserId < $this->receiver_id ?  $authUserId : $this->receiver_id;
         $id_2 = $id_1 == $authUserId ? $this->receiver_id : $authUserId;
 
-        return new PrivateChannel('chat-' . $id_1 . '-' . $id_2);
+        return new PrivateChannel('chat-'. $id_1 . '-' . $id_2);
     }
 }

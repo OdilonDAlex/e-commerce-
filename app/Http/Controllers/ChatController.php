@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Http\Requests\MessageFormRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Exception;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Validation\ValidationException;
 
 class ChatController extends Controller
 {
@@ -18,15 +21,33 @@ class ChatController extends Controller
     }
 
     public function create(Request $request) {
-
+        
         $message_data = $request->validate([
             'message_content' => ['required', 'string', ],
             'receiver_id' => ['required', 'integer'],
         ]);
 
-        // Auth::user()->messages()->create([
-        //     'message_content' => $message_data['message_content']
-        // ])
-        return json_encode(['status' => 403]);
+
+        $receiver = null;
+        $message = null;
+        
+        try {
+            $receiver = User::findOrFail($message_data['receiver_id']);
+            $message = Auth::user()->messages()->create([
+                'content' => $message_data['message_content'],
+                'send_at' => Carbon::now(),
+                'receiver_id' => $message_data['receiver_id'],
+            ]);
+        }
+
+        catch(Exception $e) {
+            throw ValidationException::withMessages([
+                'receiver_id' => 'Receiver_id error',
+            ]);
+        }
+
+        event(new MessageSent($message, $receiver->id));
+        return json_encode(['status' => 200]);
     }
+
 }

@@ -6,7 +6,7 @@
 @section('content')
 
 
-<div class="conversationContainer" style="height: calc(100vh - 200px);">
+<div class="conversation_container" style="height: calc(100vh - 200px);">
 
 </div>
 
