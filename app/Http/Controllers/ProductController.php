@@ -49,7 +49,7 @@ class ProductController extends Controller
             $data['image'] = $image->store('product', 'public');
         }
 
-        $unprocessed_slug = Str::lower($data['name']) . ' ' .  Str::lower($data['description']) . ' ' . time();
+        $unprocessed_slug = Str::transliterate(Str::lower($data['name']) . ' ' .  Str::lower($data['description']) . ' ' . time());
         $slug = preg_replace('/[^a-z0-9_-]/', '-', preg_replace('/ /', '_', $unprocessed_slug));
         
         $data['slug'] = $slug;
