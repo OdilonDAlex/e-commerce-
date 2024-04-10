@@ -13,6 +13,22 @@
 <form  enctype="multipart/form-data" action="{{ $creation ? route('product.store') : route('product.update', ['product_id' => $product->id]) }}" method="POST">
     @csrf
 
+    <!-- Category -->
+    @php 
+        $product_categories_id = $product->categories()->pluck('name', 'id');
+    @endphp
+    <div>
+        <label for="categories_id">Categories: </label><br>
+        <select name="categories_id[]" id="categories_id" multiple>
+            @foreach($categories as $id => $value)
+                
+                <option value="{{ $id }}"
+                    @selected($product_categories_id->contains($value))
+                >
+                {{ $value }}</option>
+            @endforeach
+        </select>
+    </div>
     <!-- name -->
     <div>
         <label for="name">Nom du produit</label><br>

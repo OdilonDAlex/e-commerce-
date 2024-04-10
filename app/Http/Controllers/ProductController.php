@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProductFormRequest;
 use App\Models\Product;
+use App\Models\Product\Category;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -35,13 +36,15 @@ class ProductController extends Controller
     public function create(Request $request) {
         return view('product.create', [
             'product' => null,
+            'categories' => Category::pluck('name', 'id'),
         ]);
     }
 
     public function store(CreateProductFormRequest $request) {
         
         $data = $request->validated();
-        
+        $categories_id = array_shift($data);
+
         /** @var UploadedFile $image */
         $image = $request->validated('image');
 
@@ -54,8 +57,13 @@ class ProductController extends Controller
         
         $data['slug'] = $slug;
         
-        Product::create($data);
+        $product = Product::create($data);
 
+        if ( isset($categories_id) && !empty($categories_id)) {
+            $product->categories()->sync($categories_id);
+            $product->save(); 
+        }
+        
         return redirect()->route('home')
             ->with('product_created', 'Produit crée avec succès');
     }
@@ -65,6 +73,7 @@ class ProductController extends Controller
         try {
             return view('product.create', [
                 'product' => Product::findOrFail($product_id),
+                'categories' => Category::pluck('name', 'id'),
             ]);
         }
         catch(Exception $e) {
@@ -75,12 +84,14 @@ class ProductController extends Controller
     public function update(CreateProductFormRequest $request, int $product_id) {
 
         $data = $request->validated();
-        
+        $categories_id = array_shift($data);
+
+
         try {
             $product = Product::findOrFail($product_id);
         }
         catch(Exception $e){
-            return to_route('homd');
+            return to_route('home');
         }
 
         /** @var UploadedFile $image */
@@ -99,7 +110,11 @@ class ProductController extends Controller
             $product->update($data);
         }
 
-        $product->save();
+        if ( isset($categories_id) && !empty($categories_id)) {
+            $product->categories()->sync($categories_id);
+            $product->save(); 
+        }
+        
         return redirect()->route('home')
             ->with('product_updated', 'Produit modifié avec succès');
     }
