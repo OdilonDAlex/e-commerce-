@@ -70,7 +70,7 @@ class ProductController extends Controller
             $product->save(); 
         }
         
-        return redirect()->route('home')
+        return redirect()->route('admin.product.index')
             ->with('product_created', 'Produit crée avec succès');
     }
 
@@ -121,7 +121,7 @@ class ProductController extends Controller
             $product->save(); 
         }
         
-        return redirect()->route('home')
+        return redirect()->route('admin.product.index')
             ->with('product_updated', 'Produit modifié avec succès');
     }
 }
