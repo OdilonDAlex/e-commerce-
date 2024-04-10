@@ -21,23 +21,8 @@ Route::middleware('auth')
         ->name('create');
 });
 
-Route::middleware('auth')
-->prefix('product/')->name('product.')->group( function (): void {
 
-    Route::get('create/', [ProductController::class, 'create'])
-        ->name('create');
 
-    Route::post('store/', [ProductController::class, 'store'])
-        ->name('store');
-        
-    Route::get('show/{slug}', [ProductController::class, 'show'])
-        ->name('show');
-
-    Route::get('edit/{product_id}', [ProductController::class, 'edit'])
-        ->name('edit');
-
-    Route::post('update/{product_id}', [ProductController::class, 'update'])
-        ->name('update');
-});
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';

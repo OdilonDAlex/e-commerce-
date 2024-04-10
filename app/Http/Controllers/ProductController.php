@@ -16,6 +16,12 @@ use function Pest\Laravel\call;
 class ProductController extends Controller
 {
     
+    
+    public function index() {
+        return view('admin.product.index', [
+            'products' => Product::paginate(25),
+        ]);
+    }
 
     public function show(String $slug, Request $request) {
 
@@ -34,7 +40,7 @@ class ProductController extends Controller
     }
 
     public function create(Request $request) {
-        return view('product.create', [
+        return view('admin.product.create', [
             'product' => null,
             'categories' => Category::pluck('name', 'id'),
         ]);
@@ -71,7 +77,7 @@ class ProductController extends Controller
     public function edit(int $product_id) {
 
         try {
-            return view('product.create', [
+            return view('admin.product.create', [
                 'product' => Product::findOrFail($product_id),
                 'categories' => Category::pluck('name', 'id'),
             ]);

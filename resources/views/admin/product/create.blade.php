@@ -10,21 +10,25 @@
 @section('content')
 <h1>{{ $title }}</h1>
 
-<form  enctype="multipart/form-data" action="{{ $creation ? route('product.store') : route('product.update', ['product_id' => $product->id]) }}" method="POST">
+<form  enctype="multipart/form-data" action="{{ $creation ? route('admin.product.store') : route('admin.product.update', ['product_id' => $product->id]) }}" method="POST">
     @csrf
 
     <!-- Category -->
-    @php 
-        $product_categories_id = $product->categories()->pluck('name', 'id');
-    @endphp
+    @if(! $creation)
+        @php 
+            $product_categories_id = $product->categories()->pluck('name', 'id');
+        @endphp
+    @endif
     <div>
         <label for="categories_id">Categories: </label><br>
         <select name="categories_id[]" id="categories_id" multiple>
             @foreach($categories as $id => $value)
                 
                 <option value="{{ $id }}"
-                    @selected($product_categories_id->contains($value))
-                >
+                    @if(! $creation)
+                        @selected($product_categories_id->contains($value))
+                    @endif
+                        >
                 {{ $value }}</option>
             @endforeach
         </select>
