@@ -11,10 +11,4 @@
 @endif
 
 
-<form action="{{ route('logout') }}" method="POST">
-    @method('delete')
-    @csrf
-
-    <input type="submit" value="Se déconnecter">
-</form>
 @endsection

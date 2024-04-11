@@ -1,0 +1,4 @@
+*, ::before, ::after {
+    color: red!important;
+    padding: 0px;
+}
