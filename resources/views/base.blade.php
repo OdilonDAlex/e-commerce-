@@ -10,7 +10,7 @@
     <!-- Bar de navigation -->
     <header class="navbar-container">
         <div class="brand-logo">
-            <img src="../../storage/app/public/logo.png" alt="Logo">
+            <img src="{{ Storage::disk('public')->url('logo.png') }}" alt="Logo">
         </div>
         <navbar>
             <ul class="nav">
@@ -21,7 +21,54 @@
                     <li class="nav-item"><a href="" class="nav-link">Profil</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
                     @auth
-                        <li class="nav-item"><a href="" class="nav-link">Admin</a></li>
+                        <li class="nav-item nav-dropdown">
+                            <a href="" class="nav-link">Admin</a>
+                            <div class="big-menu">
+                                <div class="admin-product-manager">
+                                    <h1>Produits</h1>
+                                    <ul class="big-menu-nav">
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.product.create') }}" class="nav-link">Créer un produit</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.product.index') }}" class="nav-link">Listes des produits</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a   href="" class="nav-link">Statistiques</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="admin-user-manager">
+                                    <h1>Utilisateurs</h1>
+                                    <ul class="big-menu-nav">
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.product.create') }}" class="nav-link">Listes des utlisateurs</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.product.index') }}" class="nav-link">Activités</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a   href="" class="nav-link">Visiteurs</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="admin-app-manager">
+                                    <h1>Produits</h1>
+                                    <ul class="big-menu-nav">
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.product.create') }}" class="nav-link">Créer un produit</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('admin.product.index') }}" class="nav-link">Listes des produits</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a   href="" class="nav-link">Statistiques</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </li>
                     @endauth
             </ul>
         </navbar>
