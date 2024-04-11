@@ -49,7 +49,11 @@ class ProductController extends Controller
     public function store(CreateProductFormRequest $request) {
         
         $data = $request->validated();
-        $categories_id = array_shift($data);
+        $categories_id = null;
+
+        if(array_key_exists('categories_id', $data)){
+            $categories_id = array_shift($data);
+        }
 
         /** @var UploadedFile $image */
         $image = $request->validated('image');
@@ -90,7 +94,10 @@ class ProductController extends Controller
     public function update(CreateProductFormRequest $request, int $product_id) {
 
         $data = $request->validated();
-        $categories_id = array_shift($data);
+        $categories_id = null;
+        if(array_key_exists('categories_id', $data)){
+            $categories_id = array_shift($data);
+        }
 
 
         try {

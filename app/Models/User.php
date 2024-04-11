@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function messages(): HasMany {
         return $this->hasMany(Message::class, 'author_id');
     }
+
+    public function carts(): HasMany {
+        return $this->hasMany(Cart::class, 'owner_id');
+    }
 }

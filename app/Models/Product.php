@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Cart\Item;
 use App\Models\Product\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,5 +33,9 @@ class Product extends Model
 
     public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function items(): hasMany {
+        return $this->hasMany(Item::class);
     }
 }
