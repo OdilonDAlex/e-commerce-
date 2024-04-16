@@ -1,0 +1,11 @@
+/* contacter l'administration  */
+section.content div.message-collapse button.collapse-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: .3em;
+    border: 1px solid var(--dark-border);
+    background-color: var(--primary-btn);
+    padding: 5px 10px;
+    cursor: pointer;
+}

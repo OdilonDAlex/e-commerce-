@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
+use Illuminate\View\View;
 
 Route::middleware('auth')->prefix('admin/')->name('admin.')
     ->group( function (): void {
@@ -14,9 +15,6 @@ Route::middleware('auth')->prefix('admin/')->name('admin.')
     
         Route::post('store/', [ProductController::class, 'store'])
             ->name('store');
-            
-        Route::get('show/{slug}', [ProductController::class, 'show'])
-            ->name('show');
     
         Route::get('edit/{product_id}', [ProductController::class, 'edit'])
             ->name('edit');
@@ -26,5 +24,12 @@ Route::middleware('auth')->prefix('admin/')->name('admin.')
 
         Route::get('', [ProductController::class, 'index'])
             ->name('index');
+
+        Route::get('category/create', function(): View {
+            return view('admin.product.category.create');
+        });
+        
+        Route::post('category/create', [ProductController::class, 'create_category'])
+            ->name('category.create');
     });
 });

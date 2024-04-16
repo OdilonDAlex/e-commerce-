@@ -1,4 +1,136 @@
-*, ::before, ::after {
-    color: red!important;
-    padding: 0px;
+/* Barre de navigation */
+.navbar-container {
+    position:sticky;
+    top: 0px;
+    padding: 10px 10px;
+    border: 1px solid var(--dark-border);
+    background-color: var(--navbar-bg);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    z-index: 5;
+}
+
+.navbar-container .brand-logo, .navbar-container .session-info{
+    position: relative;
+    width: max-content;
+}
+
+
+.navbar-container ul.nav li.nav-item {
+    display: inline;
+    padding: 10px;
+}
+
+li.active {
+    background-color: var(--dark-border);
+    border-bottom: 3px solid var(--primary-btn);
+}
+
+.navbar-container ul.nav li.nav-dropdown div.big-menu{
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    background-color: var(--dark-border);
+    padding: 15px;
+    border-radius: 0px 0px .5em .5em;
+    top: 38px;
+    left: 50%;
+    color: var(--secondary-bg);
+    transform: translateX(-50%);
+    width: 70%;
+    border: 1px solid rgb(90, 90, 90);
+}
+
+.navbar-container ul.nav li.nav-dropdown:hover div.big-menu{
+    display: flex;
+    animation: show-big-menu .3s ease 0s 1 alternate;
+}
+
+.navbar-container ul.nav li.nav-item:hover {
+    background-color: var(--dark-border);
+    border-radius: .3em;
+}
+
+.navbar-container ul.nav li.nav-item a.nav-link, div.big-menu {
+    text-decoration: none;
+    color: var(--secondary-bg);
+}
+
+
+
+.navbar-container .brand-logo img{
+    width: 100px;
+}
+
+div.big-menu ul.big-menu-nav li.nav-item {
+    display: block;
+    margin: 0px;
+}
+
+
+.navbar-container ul.nav li.nav-dropdown div.big-menu li.nav-item:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+
+/* se connecter et s'inscrire */
+.navbar-container .session-info form{
+    display: inline;
+}
+
+.navbar-container .session-info {
+    border-radius: .5rem;
+    height: 25px;
+    background-color: var(--secondary-bg);
+    padding-left: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.navbar-container .session-info form .logout-btn {
+    background-color: var(--secondary-btn);
+    padding: 0px 10px;
+    border: none;
+    height: 25px;
+    margin-left: 10px;
+    border-radius: .3em;
+    cursor: pointer;
+}
+
+input#register-btn, input#login-btn {
+    border: none;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+
+input#register-btn {
+    background-color: transparent;
+}
+
+input#login-btn {
+    background-color: var(--primary-btn);
+    height: 25px;
+    border-radius: .3em;
+}
+
+@keyframes show-big-menu {
+    from  {
+        top: 52px;
+        border-radius: .5em;
+
+        filter: blur(3px) grayscale(100);
+    }
+
+    to {
+        top: 40px;
+        border-radius: 0px 0px .5em .5em;
+        filter: blur(0px) grayscale(0);
+    }
 }

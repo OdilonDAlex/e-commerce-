@@ -1,0 +1,28 @@
+h1 {
+    text-align: center;
+    font-size: 28px;
+}
+
+section form {
+    position: relative;
+    display: flex;
+    width: max-content;
+    margin: 10px auto;
+}
+
+
+section form div.product-images, section form div.product-details {
+    width: 48%;
+    max-width: 48%;
+}
+
+section input {
+    width: 100%;
+}
+
+section form input[type='submit'] {
+    border: none;
+    margin: 5px 0px;
+    border-radius: .3em;
+    height: 35px;
+}

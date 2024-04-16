@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite([
+            'resources/css/app.css',
+            'resources/js/app.js',
+            'resources/css/header.css',
+            'resources/css/message.css'
+        ])
 </head>
 <body>
     <!-- Bar de navigation -->
@@ -14,15 +19,15 @@
         </div>
         <navbar>
             <ul class="nav">
-                    <li class="nav-item"><a href="" class="nav-link">Accueil</a></li>
+                    <li class="nav-item {{ request()->routeIs('home') ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">Produit</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Panier</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">Activité</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Historique</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Profil</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
                     @auth
-                        <li class="nav-item nav-dropdown">
-                            <a href="" class="nav-link">Admin</a>
+                        <li class="nav-item nav-dropdown {{ request()->routeIs('admin.*') ? 'active' : '' }}">
+                            <a href="" class="nav-link ">Admin</a>
                             <div class="big-menu">
                                 <div class="admin-product-manager">
                                     <h1>Produits</h1>
@@ -59,6 +64,9 @@
                                             <a href="{{ route('admin.product.create') }}" class="nav-link">Créer un produit</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a href="{{ route('admin.product.category.create') }}" class="nav-link">Créer des catégories</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a href="{{ route('admin.product.index') }}" class="nav-link">Listes des produits</a>
                                         </li>
                                         <li class="nav-item">
@@ -83,12 +91,32 @@
                 </form>
             @endauth
             @guest
-                <button>S'inscrire</button>
-                <button>Se Connecter</button>
+                <!-- inscription -->
+                <form  action="{{ route('register') }}" method="GET">
+
+                    <input id="register-btn" type="submit" value="S'inscrire">
+                </form>
+
+                <!-- Connexion -->
+                <form  action="{{ route('login') }}" method="GET">
+
+                    <input id="login-btn" type="submit" value="Se connecter">
+                </form>
             @endguest
         </div>
     </header>
-    @yield('content')
+    <div class="transition-test">
+        
+    </div>
+    <section class="content">
+        @yield('content')
+
+        @auth
+            <div class="message-collapse">
+                <button class="collapse-btn">Contacter l'administrateurs</button>
+            </div>
+        @endauth
+    </section> 
     <footer></footer>
 </body>
 </html>

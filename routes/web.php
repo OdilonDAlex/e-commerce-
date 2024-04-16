@@ -22,7 +22,15 @@ Route::middleware('auth')
 });
 
 
+Route::get('product/show/{slug}', [ProductController::class, 'show'])
+    ->name('product.show');
 
+
+Route::middleware('auth')->prefix('cart/')->name('cart.')
+->group( function (): void {
+
+    // Route::get('', )
+});
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

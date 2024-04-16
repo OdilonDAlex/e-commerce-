@@ -1,0 +1,43 @@
+section table {
+    margin: 10px;
+    width: calc(100% - 20px);
+    border-collapse: collapse;
+}
+
+section table thead {
+    position: sticky;
+    height: 50px;
+}
+section table thead td{
+    background-color: var(--primary-bg);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid white;
+    font-weight: bold;
+}
+
+section table tbody {
+    background-color: white;
+}
+
+section table tr td {
+    padding: 5px;
+    border: 1px solid var(--dark-border);
+}
+
+section table tr td.action a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 2px 5px;
+    border-radius: .2em;
+    color: white;
+}
+
+section table tr td.action a.edit-btn {
+    background-color: var(--primary-btn);
+}
+
+section table tr td.action a.remove-btn {
+    background-color: var(--secondary-btn);
+}

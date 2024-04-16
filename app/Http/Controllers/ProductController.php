@@ -131,4 +131,14 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index')
             ->with('product_updated', 'Produit modifié avec succès');
     }
+
+    public function create_category(Request $request) {
+        $request = $request->validate([
+            'name' => ['required', 'string', 'regex:/^[a-z]+[a-z0-9 ]/'],
+        ]);
+
+        $categories_name = explode(' ', $request['name']);
+        dd($categories_name);
+        return redirect()->route('admin.product.index')->with('category_created', 'Categorie créer avec succès');
+    }
 }

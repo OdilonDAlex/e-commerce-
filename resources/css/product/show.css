@@ -1,0 +1,110 @@
+section.content {
+    background-color: var(--secondary-bg);
+    color: rgb(95, 93, 93);
+}
+
+div.product-informations {
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div.product-informations div.product-images, div.product-details {
+    position: relative;
+    max-height: calc(100vh - 50px);
+    max-width: 48%;
+}
+
+div.product-informations div.product-details {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+div.product-informations div.product-images img{
+    max-width: 100%;
+    image-rendering:crisp-edges;
+    max-height: 100%;
+    border-radius: .5em;
+    box-shadow: 0px 0px 5px .3px var(--dark-border);
+}
+
+div.product-details h1 {
+    font-size: 40px;
+}
+
+div.stars {
+    margin: 10px 0px;
+    display: inline-block;
+}
+
+div.stars div.star {
+    display: inline-block;
+    width: 12px ;
+    height: 12px;
+    border-radius: 50%;
+    background-color: yellow;
+    border: .3px solid var(--dark-border);
+}
+
+h5.product-price {
+    font-size: 25px;
+}
+
+
+
+input.add-to-cart-button, input.add-to-wishlist-button {
+    height: 35px;
+    cursor: pointer;
+    width: max-content;
+    padding: 5px 10px;
+    border: 1px solid grey;
+    margin: 10px 0px;
+    background-color: var(--primary-btn);
+    border-radius: .3em;
+}
+
+input.add-to-cart-button:hover {
+    background-color: white;
+    color: black;
+}
+
+input.add-to-wishlist-button {
+    background-color: white;
+}
+div.product-quantity {
+    position: relative;
+}
+
+div.product-quantity label {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    padding: 2px 5px;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid var(--dark-border);
+    border-radius: .2em;
+}
+div.product-quantity input{
+    border: 1px solid grey;
+    outline: none;
+    padding: 10px 10px;
+    border-radius: .3em;
+    color: var(--primary-btn);
+    font-size: 16px;
+    width: 180px;
+    font-weight: bold;
+    min-width: max-content;
+    text-align: center;
+}
+
+hr {
+    margin: 20px 0px;
+}
+
+div.share-product a {
+    text-decoration: none;
+    color: var(--primary-bg);
+}

@@ -2,8 +2,14 @@
 
 @section('title', 'Administration - Listes des produits')
 
-@section('content')
+@vite('resources/css/admin/table.css')
 
+@section('content')
+    <p style="margin: 10px;">
+        <span>admin</span> >
+        <span>produits</span> >
+        <a href="">liste des produits</a>
+    </p>
     @if(session('product_created'))
         <p>{{ session('product_created') }}</p>
     @elseif(session('product_updated'))
@@ -26,7 +32,9 @@
             @foreach($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
+                    <td>
+                        <a href="{{ route('product.show', ['slug' => $product->slug, 'product_id' => $product->id ]) }}">{{ $product->name }}</a>
+                    </td>
                     <td>{{ $product->description }}</td>
                     <td>{{ number_format($product->price , 2, '.', ' ') }}Ar</td>
                     <td>{{ $product->stock }}</td>
@@ -36,9 +44,9 @@
                             Voir
                         </a>
                     </td>
-                    <td>
-                        <a href="{{ route('admin.product.edit', ['product_id' => $product->id ]) }}">Modifier</a>
-                        <a href="">Supprimer</a>
+                    <td class="action">
+                        <a class="edit-btn" href="{{ route('admin.product.edit', ['product_id' => $product->id ]) }}">Modifier</a>
+                        <a class="remove-btn" href="">Supprimer</a>
                     </td>
                 </tr>
             @endforeach
