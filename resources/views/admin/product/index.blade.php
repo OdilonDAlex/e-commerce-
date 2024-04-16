@@ -21,7 +21,7 @@
             <td>Id</td>
             <td>Nom du produit</td>
             <td>Description</td>
-            <td>Prix ( sans promo )</td>
+            <td class="price">Prix</td>
             <td>Stock</td>
             <td>Promotion</td>
             <td>Image</td>
@@ -36,7 +36,7 @@
                         <a href="{{ route('product.show', ['slug' => $product->slug, 'product_id' => $product->id ]) }}">{{ $product->name }}</a>
                     </td>
                     <td>{{ $product->description }}</td>
-                    <td>{{ number_format($product->price , 2, '.', ' ') }}Ar</td>
+                    <td class="price">{{ number_format($product->price , 2, '.', ' ') }}Ar</td>
                     <td>{{ $product->stock }}</td>
                     <td>{{ isset($product->promo) && $product->promo != 0 ? $product->promo . "%": 'pas de promo' }}</td>
                     <td>

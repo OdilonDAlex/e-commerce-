@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,7 +52,7 @@ class User extends Authenticatable
         return $this->hasMany(Message::class, 'author_id');
     }
 
-    public function carts(): HasOne {
-        return $this->hasOne(Cart::class, 'owner_id');
+    public function carts(): BelongsTo {
+        return $this->belongsTo(Cart::class);
     }
 }

@@ -31,9 +31,16 @@ section table tr td.action a {
     text-decoration: none;
     padding: 2px 5px;
     border-radius: .2em;
+    width: 100%;
+    text-align: center;
     color: white;
+    margin: 2px;
 }
 
+section table td.price {
+    font-weight: bold;
+    min-width: 17ch;
+}
 section table tr td.action a.edit-btn {
     background-color: var(--primary-btn);
 }

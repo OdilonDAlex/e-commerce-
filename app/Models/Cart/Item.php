@@ -7,6 +7,7 @@ use App\Models\Cart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Item extends Model
 {
@@ -16,11 +17,11 @@ class Item extends Model
 
     use HasFactory;
 
-    public function products(): BelongsTo {
-        return $this->belongsTo(Product::class);
+    public function products(): HasOne {
+        return $this->hasOne(Product::class);
     }
 
-    public function carts(): BelongsTo{
-        return $this->belongsTo(Cart::class);
+    public function carts(): HasOne{
+        return $this->hasOne(Cart::class);
     }
 }

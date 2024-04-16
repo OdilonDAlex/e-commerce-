@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Category\CreateCategoryFormRequest;
 use App\Http\Requests\CreateProductFormRequest;
 use App\Models\Product;
 use App\Models\Product\Category;
@@ -132,13 +133,18 @@ class ProductController extends Controller
             ->with('product_updated', 'Produit modifié avec succès');
     }
 
-    public function create_category(Request $request) {
-        $request = $request->validate([
-            'name' => ['required', 'string', 'regex:/^[a-z]+[a-z0-9 ]/'],
-        ]);
+    public function create_category(CreateCategoryFormRequest $request) {
+        $original_value = $request['names'];
+        $request->validated('names');
 
-        $categories_name = explode(' ', $request['name']);
-        dd($categories_name);
+        $categories = explode(' ', $original_value); 
+        
+        foreach($categories as $category){
+            Category::create([
+                'name' => $category,
+            ]);
+        }
+        
         return redirect()->route('admin.product.index')->with('category_created', 'Categorie créer avec succès');
     }
 }

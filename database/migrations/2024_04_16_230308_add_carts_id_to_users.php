@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
+use App\Models\Cart;
 
 return new class extends Migration
 {
@@ -12,18 +12,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('carts', function (Blueprint $table) {
-            $table->foreignIdFor(User::class, 'owner_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignIdFor(Cart::class, 'carts_id')->nullable();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::table('carts', function (Blueprint $table) {
-            $table->dropForeignIdFor(User::class, 'owner_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeignIdFor(Cart::class, 'carts_id');
         });
     }
 };

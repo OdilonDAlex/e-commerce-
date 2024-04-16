@@ -1,10 +1,25 @@
+/* palette 1
+#333533
+#242423
+#F5CB5C
+#E8EDDF
+#CFDBD5
+
+
+palette 2
+#37463D
+#5B696B
+#535953
+#F8FBF1
+#C5C5A9 */
+
 :root {
-    --primary-bg: rgb(40, 40, 40);
-    --navbar-bg: rgb(50, 50, 50);
-    --primary-btn:cornflowerblue;
-    --secondary-bg: azure;
-    --secondary-btn: crimson;
-    --dark-border: rgb(65, 65, 65);
+    --primary-bg: #333533;
+    --navbar-bg: #242423;
+    --primary-btn:#F5CB5C;
+    --secondary-bg: #E8EDDF;
+    --secondary-btn: #CFDBD5;
+    --dark-border: #333533;
 }
 
 *, ::before, ::after {

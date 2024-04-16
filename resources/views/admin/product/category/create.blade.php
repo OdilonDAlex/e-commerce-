@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', Creation de categorie)
+@section('title', 'Creation de categorie')
 
 @section('content')
     <form action="{{ route('admin.product.category.create') }}" method="POST">
