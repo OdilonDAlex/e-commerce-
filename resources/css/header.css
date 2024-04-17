@@ -74,7 +74,11 @@ div.big-menu ul.big-menu-nav li.nav-item {
 
 
 .navbar-container ul.nav li.nav-dropdown div.big-menu li.nav-item:hover {
-    background-color: rgb(80, 80, 80);
+    background-color: var(--primary-btn);
+}
+
+.navbar-container ul.nav li.nav-dropdown div.big-menu li.nav-item:hover a {
+    color: var(--dark-border);
 }
 
 
@@ -95,7 +99,7 @@ div.big-menu ul.big-menu-nav li.nav-item {
 }
 
 .navbar-container .session-info form .logout-btn {
-    background-color: var(--secondary-btn);
+    background-color: var(--primary-btn);
     padding: 0px 10px;
     border: none;
     height: 25px;

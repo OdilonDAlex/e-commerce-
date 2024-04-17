@@ -11,7 +11,8 @@ export default defineConfig({
                 'resources/css/message.css',
                 'resources/css/product/show.css',
                 'resources/css/admin/table.css',
-                'resources/css/product/create.css'
+                'resources/css/product/create.css',
+                'ressources/css/form.css',
             ],
             refresh: true,
         }),

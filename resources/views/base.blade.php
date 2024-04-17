@@ -22,7 +22,7 @@
                     <li class="nav-item {{ request()->routeIs('home') ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Accueil</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Produit</a></li>
                     @auth
-                        <li class="nav-item {{ request()->routeIs('cart.index') ? 'active' : ''}}"><a href="{{ route('cart.index') }}" class="nav-link">Panier</a></li>
+                        <li class="nav-item {{ request()->routeIs('cart.index') ? 'active' : ''}}"><a href="{{ route('cart.index') }}" class="nav-link">Panier <span class="cart-items-count">{{ count( (Auth::user()->carts()->get()[0])->items()->get()->toArray() )}}</span></a></li>
                     @endauth
                     <li class="nav-item"><a href="" class="nav-link">Historique</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Profil</a></li>
@@ -110,6 +110,9 @@
     <div class="transition-test">
         
     </div>
+
+
+    <!-- Contenu principale -->
     <section class="content">
         @yield('content')
 
@@ -119,6 +122,8 @@
             </div>
         @endauth
     </section> 
+
+    <!-- Pied de page -->
     <footer></footer>
 </body>
 </html>
