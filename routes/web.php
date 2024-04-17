@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
@@ -29,7 +30,11 @@ Route::get('product/show/{slug}', [ProductController::class, 'show'])
 Route::middleware('auth')->prefix('cart/')->name('cart.')
 ->group( function (): void {
 
-    // Route::get('', )
+    Route::get('', [CartController::class, 'index'])
+        ->name('index');
+
+    Route::post('add', [CartController::class, 'add'])
+        ->name('add');
 });
 
 require __DIR__ . '/auth.php';

@@ -40,16 +40,16 @@
                 @endif
             </div>
             <hr>
-            <form action="" method="POST">
+            <form action="{{ route('cart.add') }}" method="POST">
                 @csrf
-
+                
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="product-quantity">
                     <label for="quantity">Quantité</label><br>
                     <input placeholder="entre 0 et {{ (int)$product->stock }}" type="number" name="quantity" id="quantity" min="0" max="{{ (int)$product->stock }}">
                 </div>
                     <hr>
                 <input class="add-to-cart-button" type="submit" value="Ajouter au panier">
-                <input class="add-to-wishlist-button" type="submit" value="Ajouter au liste des souhaits">
             </form>
             <hr>
             <div class="share-product">
