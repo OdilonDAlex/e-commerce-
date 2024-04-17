@@ -42,9 +42,16 @@ section table td.price {
     min-width: 17ch;
 }
 section table tr td.action a.edit-btn {
-    background-color: var(--primary-btn);
+    background-color: var(--secondary-btn);
+    color: var(--dark-border);
 }
 
 section table tr td.action a.remove-btn {
-    background-color: var(--secondary-btn);
+    background-color: var(--primary-btn);
+    color: var(--dark-border);
+}
+
+section table tr td a {
+    color: var(--primary-bg);
+    font-weight: bold;
 }

@@ -4,6 +4,10 @@
 
 @vite('resources/css/admin/table.css')
 
+@section('header')
+    @include('header')
+@endsection
+
 @section('content')
     <p style="margin: 10px;">
         <span>admin</span> >

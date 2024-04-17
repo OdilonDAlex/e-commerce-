@@ -4,27 +4,21 @@
 
 @section('content')
 
-<form action="{{ route('register.store') }}" method="POST">
+<form class="register-form" action="{{ route('register.store') }}" method="POST">
     @csrf
+    <h1>Inscription</h1>
 
     <!-- Name -->
-    <div>
-        <label for="name">Nom</label><br>
-        <input type="text" name="name" id="name">
-    </div>
-
+    <x-input name="name" label="Nom"/>
+    
     <!-- email -->
-    <div>
-        <label for="email">Adresse email</label><br>
-        <input type="email" name="email" id="email">
-    </div>
-
+    <x-input name="email"  type="email" label="Adresse email"/>
+    
     <!-- mot de passe -->
-    <div>
-        <label for="password">Mot de passe</label><br>
-        <input type="password" name="password" id="password">
-    </div>
-
-    <input type="submit" value="S'inscrire">
+    <x-input name="password"  type="password" label="Mot de passe"/>
+    
+    <x-input name="submit-btn"  type="submit" value="S'inscrire"/>
+    <p class="alternative-text">Vous avez déjà un compte ? <a  class="login-link" href="{{ route('login') }}">Se connecter</a></p>
+    
 </form>
 @endsection

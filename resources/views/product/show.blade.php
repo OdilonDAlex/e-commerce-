@@ -2,6 +2,11 @@
 
 @section('title', $product->name )
 @vite('resources/css/product/show.css')
+
+@section('header')
+    @include('header')
+@endsection
+
 @section('content')
     <div class="product-informations">
         <div class="product-images">

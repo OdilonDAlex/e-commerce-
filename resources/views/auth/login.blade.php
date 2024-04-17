@@ -3,22 +3,22 @@
 @section('title', 'Connexion')
 
 @section('content')
+@vite('resources/css/form.css')
 
-<form action="{{ route('login.store') }}" method="POST">
+<form class="login-form" action="{{ route('login.store') }}" method="POST">
     @csrf
-
+    <h1>Connexion</h1>  
+    
     <!-- email -->
-    <div>
-        <label for="email">Adresse email</label><br>
-        <input type="email" name="email" id="email">
-    </div>
+    <x-input name="email" type="email" label="Adresse Email" />
 
     <!-- mot de passe -->
-    <div>
-        <label for="password">Mot de passe</label><br>
-        <input type="password" name="password" id="password">
-    </div>
+    <x-input name="password" type="password" label="Mot de passe" />
 
-    <input type="submit" value="Se connecter">
+
+    <x-input type="submit" value="Se Connecter" name="submit-btn" />
+
+    <p class="alternative-text">Vous n'avez pas encore de compte ? <a  class="login-link" href="{{ route('register') }}">S'inscrire</a></p>
+
 </form>
 @endsection

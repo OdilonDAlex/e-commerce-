@@ -2,6 +2,11 @@
 
 @section('title', 'Accueil')
 
+
+@section('header')
+    @include('header')
+@endsection
+
 @section('content')
 
 @if(session('new-user'))

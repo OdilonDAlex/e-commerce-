@@ -1,0 +1,55 @@
+section.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+div input{
+    border: .3px solid var(--secondary-btn);
+    width: 100%;
+    border-radius: .3em;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+    background-color: var(--secondary-bg);
+    margin-bottom: 10px;
+}
+
+div input[type='submit']{
+    margin: 20px 0px;
+    background-color: var(--primary-btn);
+    cursor: pointer;
+}
+
+div input[type='submit']:hover {
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+} 
+
+div label {
+    color: var(--dark-border);
+}
+
+form.login-form, form.register-form{
+    display: block;
+    margin: 0px auto;
+    width: max-content;
+}
+
+a.login-link {
+    padding: 10px;
+    color: var(--dark-border);
+    font-weight: bold;
+}
+
+p.alternative-text {
+    color: var(--dark-border);
+}

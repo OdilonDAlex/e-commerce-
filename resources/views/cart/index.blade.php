@@ -2,6 +2,10 @@
 
 @section('title', 'Panier')
 
+@section('header')
+    @include('header')
+@endsection
+
 @section('content')
 
 <p>Assurez-vous de tout vérifier avant de procéder au paiement :D</p>

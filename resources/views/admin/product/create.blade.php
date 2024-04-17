@@ -9,6 +9,10 @@
 
 @vite('resources/css/product/create.css')
 
+@section('header')
+    @include('header')
+@endsection
+
 @section('content')
 <h1>{{ $title }}</h1>
 
