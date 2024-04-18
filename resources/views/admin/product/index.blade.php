@@ -50,12 +50,18 @@
                     </td>
                     <td class="action">
                         <a class="edit-btn" href="{{ route('admin.product.edit', ['product_id' => $product->id ]) }}">Modifier</a>
-                        <a class="remove-btn" href="">Supprimer</a>
+                        <form  class="remove-form" action="{{ route('admin.product.delete') }}" method="POST">
+                            @method('delete')
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                            <input type="submit" value="Supprimer">
+                        </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
 
     </table>
-    {{ $products->links() }}
+    {{ $products->links('vendor.pagination.custom') }}
 @endsection

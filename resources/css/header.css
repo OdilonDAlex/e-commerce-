@@ -9,7 +9,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
+    height: 45px;
     z-index: 5;
 }
 
@@ -108,6 +108,13 @@ div.big-menu ul.big-menu-nav li.nav-item {
     cursor: pointer;
 }
 
+
+.navbar-container li.nav-dropdown a.nav-link svg {
+    width: 16px;
+    height: 16px;
+    transform: translateY(4px) rotate(90deg);
+}
+
 input#register-btn, input#login-btn {
     border: none;
     padding: 0px 10px;
@@ -123,6 +130,7 @@ input#login-btn {
     height: 25px;
     border-radius: .3em;
 }
+
 
 @keyframes show-big-menu {
     from  {

@@ -1,3 +1,6 @@
+section {
+    background-color: var(--secondary-bg);
+}
 section table {
     margin: 10px;
     width: calc(100% - 20px);
@@ -13,7 +16,6 @@ section table thead td{
     color: white;
     text-align: center;
     padding: 20px;
-    border: 1px solid white;
     font-weight: bold;
 }
 
@@ -24,13 +26,18 @@ section table tbody {
 section table tr td {
     padding: 5px;
     border: 1px solid var(--dark-border);
+    text-align: center;
 }
 
 section table tr td.action a {
-    display: inline-block;
     text-decoration: none;
-    padding: 2px 5px;
+}
+
+section table tr td.action a, form.remove-form input[type='submit'] {
+    display: inline-block;
+    padding: 5px 5px;
     border-radius: .2em;
+    border: none;
     width: 100%;
     text-align: center;
     color: white;
@@ -46,12 +53,32 @@ section table tr td.action a.edit-btn {
     color: var(--dark-border);
 }
 
-section table tr td.action a.remove-btn {
+section table tr td.action form{
+    display: inline-block;
+    width: 100%;
+}
+
+section table tr td.action form.remove-form input[type='submit'] {
     background-color: var(--primary-btn);
     color: var(--dark-border);
 }
 
-section table tr td a {
+section table tr td a, form.remove-form input[type='submit'] {
     color: var(--primary-bg);
     font-weight: bold;
+}
+
+section table tfoot td{
+    background-color: var(--dark-border);
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+section table tfoot td + td {
+    text-align: right;
+    font-weight: bold;
+    background-color: white;
+    font-size: 16px;
+    color: var(--dark-border);
 }

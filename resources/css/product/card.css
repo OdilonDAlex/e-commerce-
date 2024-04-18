@@ -1,0 +1,94 @@
+div.product-card {
+    display: inline-block;
+    max-width: 32%;
+    background-attachment:fixed;
+    background-size: contain;
+    width: 33%;
+    border: 1px solid var(--primary-bg);
+    border-radius: .3em;
+    margin: 10px 0px;
+}
+
+div.card-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    filter: opacity(.7);
+    background-color: var(--primary-bg);
+    border-color: var(--secondary-bg);
+    padding: 10px;
+    border-radius: .3em .3em 0px 0px;
+    box-shadow: 0px 0px 1px grey;
+}
+
+div.card-head h1 {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: .3em;
+    width: max-content;
+    background-color: white;
+    text-align: center;
+    color: black;
+    filter: opacity(10)  ;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+div.image {
+    position: relative;
+}
+div.image .img{
+    position: relative;
+    min-height: 200px;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+div.product-card div.action form input[type='submit'] {
+    border: none;
+    background-color: var(--secondary-btn);
+    width: 100%;
+    padding: 10px;
+    border-radius:0px 0px .3em .3em ;
+}
+
+div.image h5.price {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: .3em;
+    padding: 10px ;
+    width: max-content;
+    font-size: 20px;
+    color: var(--primary-bg);
+    background-color: rgba(255, 255, 255, 0.849);
+    border: 1px solid var(--secondary-btn);
+    z-index: 3;
+    font-weight: bolder;
+}
+
+div.image:hover .img {
+    filter: blur(1px);
+    filter:brightness(1.1);
+}
+
+div.image:hover h5.price {
+    display: block;
+}
+
+div.action {
+    position: relative;
+}
+
+div.action div.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+div.action div.options a {
+    text-decoration: none;
+}

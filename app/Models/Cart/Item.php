@@ -17,8 +17,8 @@ class Item extends Model
 
     use HasFactory;
 
-    public function products(): HasOne {
-        return $this->hasOne(Product::class);
+    public function products(): BelongsTo {
+        return $this->belongsTo(Product::class);
     }
 
     public function carts(): BelongsTo {

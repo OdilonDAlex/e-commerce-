@@ -28,6 +28,13 @@ class Product extends Model
     ];
 
     public function getImageUrl(): string|null {
+        if(! $this->haveImage()){
+            $this->image = 'product-default-image.jpg';
+            
+            $this->save();
+
+            return Storage::disk('public')->url('product-default-image.jpg');
+        }
         return Storage::disk('public')->url($this->image);
     }
 
@@ -37,5 +44,9 @@ class Product extends Model
 
     public function items(): hasMany {
         return $this->hasMany(Item::class);
+    }
+
+    public function haveImage(): bool {
+        return Storage::disk('public')->exists($this->image);
     }
 }

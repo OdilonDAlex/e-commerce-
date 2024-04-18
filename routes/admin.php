@@ -31,5 +31,8 @@ Route::middleware('auth')->prefix('admin/')->name('admin.')
         
         Route::post('category/create', [ProductController::class, 'create_category'])
             ->name('category.create');
+
+        Route::delete('delete/', [ProductController::class, 'delete'])
+            ->name('delete');
     });
 });

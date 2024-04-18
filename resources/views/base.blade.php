@@ -18,7 +18,7 @@
 
         @auth
             <div class="message-collapse">
-                <button class="collapse-btn">Contacter l'administrateurs</button>
+                <button class="collapse-btn">+</button>
             </div>
         @endauth
     </section> 

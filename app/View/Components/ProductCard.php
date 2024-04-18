@@ -5,18 +5,15 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Product;
 
-class Input extends Component
+class ProductCard extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $label="",
-        public string $value="",
-        public string $name="",
-        public string $type="text",
-        public string $class="",
+        public Product $product,
     )
     {
         //
@@ -27,6 +24,6 @@ class Input extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.input');
+        return view('components.product-card');
     }
 }

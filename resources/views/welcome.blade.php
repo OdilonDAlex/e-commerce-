@@ -12,26 +12,12 @@
 @if(session('new-user'))
     <p>{{ session('new-user') }}</p>
 @else
-    <div class="welcome-illustration">
-        <div class="welcome-text">
-            <h3>
-                @auth
-                    Bonjour <span class="username">{{ Auth::user()->name }}</span>. Que souhateriaient-vous acheter aujourd'hui ? 
-                @endauth
-            </h3>
-        </div>
+    <div class="all-product">
+        @foreach($products as $product)
+            <x-product-card :product=$product />
+        @endforeach
 
-        <form action="" method="POST" name="search-bar" class="search-bar">
-            @csrf
-
-            <input type="text" name="search_bar" id="search_bar">
-            <input type="submit" value="Rechercher">
-        </form>
-    </div>
-    <hr>
-    
-    <div class="find-by-categories">
-        <h5>Trouver vos produits a partir des categories</h5>
+        {{ $products->links('vendor.pagination.custom') }}
     </div>
 @endif
 

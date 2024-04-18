@@ -11,7 +11,17 @@ palette 2
 #5B696B
 #535953
 #F8FBF1
-#C5C5A9 */
+#C5C5A9 
+*/
+
+:root {
+    --primary-bg: #37463D;
+    --navbar-bg: #C5C5A9;
+    --primary-btn:#535953;
+    --secondary-bg: #F8FBF1;
+    --secondary-btn: #5B696B;
+    --dark-border: #5B696B;
+}
 
 :root {
     --primary-bg: #333533;
@@ -27,11 +37,15 @@ palette 2
     margin: 0px;
     box-sizing: border-box;
     font-size: 12px;
-    font-family: 'JetBrains Mono';
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-section.content {
-    height: 100vh;
+section {
+    background-color: var(--secondary-btn);
+    padding: 10px;
+    margin: 0px auto;
+    max-width: 1980px;
+    min-height: 100vh;
 }
 
 section.content div.welcome-illustration {
@@ -98,3 +112,4 @@ span.cart-items-count {
     font-weight: bold;
     border-radius: .3em;
 }
+

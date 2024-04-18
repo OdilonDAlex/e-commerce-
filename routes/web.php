@@ -3,14 +3,10 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProductController;
-use App\Models\Product;
+use App\Http\Controllers\WelcomePage;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})
-->middleware('auth')
-->name('home');
+Route::get('/', WelcomePage::class)->name('home');
 
 Route::middleware('auth')
 ->prefix('chat/')->name('chat.')->group( function () : void {

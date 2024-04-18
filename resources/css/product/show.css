@@ -1,6 +1,6 @@
 section.content {
     background-color: var(--secondary-bg);
-    color: rgb(95, 93, 93);
+    color: var(--primary-bg);
 }
 
 div.product-informations {
@@ -51,7 +51,6 @@ div.stars div.star {
 h5.product-price {
     font-size: 25px;
 }
-
 
 
 input.add-to-cart-button, input.add-to-wishlist-button {
@@ -107,4 +106,13 @@ hr {
 div.share-product a {
     text-decoration: none;
     color: var(--primary-bg);
+}
+
+h5.avaible-product {
+    color: var(--dark-border);
+}
+
+h5.avaible-product span.avaible-product-quantity {
+    font-size: 25px;
+    color: var(--dark-border);
 }

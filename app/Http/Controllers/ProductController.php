@@ -40,7 +40,7 @@ class ProductController extends Controller
         
     }
 
-    public function create(Request $request) {
+    public function create() {
         return view('admin.product.create', [
             'product' => null,
             'categories' => Category::pluck('name', 'id'),
@@ -146,5 +146,21 @@ class ProductController extends Controller
         }
         
         return redirect()->route('admin.product.index')->with('category_created', 'Categorie créer avec succès');
+    }
+
+    public function delete(Request $request){
+        $request = $request->validate(
+                            [
+                'product_id' => [
+                    'required',
+                    'integer',
+                    'exists:products,id'
+                    ],
+            ] );
+
+        if(Product::destroy((int) $request['product_id']) > 0){
+            return redirect()->route('admin.product.index')
+                ->with('product_removed', 'Produit supprimé avec succès');
+        }
     }
 }

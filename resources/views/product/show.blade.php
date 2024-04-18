@@ -38,7 +38,7 @@
                 <h5 class="product-price">{{ number_format($product->price, 2, '.', ' ') }} Ariary/<small>unité</small> </h5>
 
                 @if($product->stock > 0) 
-                    <h5 style="color: var(--primary-btn);" ><span style="font-size: 20px;">{{ $product->stock }}</span> unité(s) disponible</h5>
+                    <h5 class="avaible-product"><span class="avaible-product-quantity">{{ $product->stock }}</span> unité(s) disponible</h5>
                 @else
                     <p>Pour l'instant, le produit est en rupture de stock</p>
                     <button>Recevoir une notification</button>
@@ -49,12 +49,13 @@
                 @csrf
                 
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                <div class="product-quantity">
-                    <label for="quantity">Quantité</label><br>
-                    <input placeholder="entre 0 et {{ (int)$product->stock }}" type="number" name="quantity" id="quantity" min="0" max="{{ (int)$product->stock }}">
-                </div>
-                    <hr>
-                <input class="add-to-cart-button" type="submit" value="Ajouter au panier">
+                
+                <!-- quantité -->
+
+                <x-input class="product-quantity" label="Quantité" name="quantity" type="number" min="0" max="{{ $product->stock }}"/>
+                <hr>
+
+                <x-input type="submit" value="Ajouter au panier"/>
             </form>
             <hr>
             <div class="share-product">

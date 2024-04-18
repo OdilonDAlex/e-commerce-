@@ -9,3 +9,8 @@ section.content div.message-collapse button.collapse-btn {
     padding: 5px 10px;
     cursor: pointer;
 }
+
+section.content div.message-collapse button.collapse-btn:hover button.collapse-button::before {
+    content: 'Contacter l\'admin';
+    width: 300px;
+}
