@@ -82,3 +82,13 @@ section table tfoot td + td {
     font-size: 16px;
     color: var(--dark-border);
 }
+
+section table tr td.action .remove-btn {
+    border: none;
+    background-color: transparent;
+}
+
+section table tr td.action .remove-btn svg {
+    width: 20px;
+    height: 20px;
+}

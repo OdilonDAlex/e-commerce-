@@ -31,6 +31,7 @@ div.product-informations div.product-images img{
 }
 
 div.product-details h1 {
+    text-align: left;
     font-size: 40px;
 }
 

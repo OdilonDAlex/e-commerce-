@@ -2,12 +2,18 @@
 section.content div.message-collapse button.collapse-btn {
     position: fixed;
     bottom: 10px;
-    right: 10px;
+    right: 40px;
     border-radius: .3em;
     border: none;
-    background-color: var(--primary-btn);
+    background-color: transparent;
     padding: 5px 10px;
     cursor: pointer;
+    width: 40px;
+}
+
+button.collapse-btn svg {
+    width: 40px;
+    height: 40px;
 }
 
 section.content div.message-collapse button.collapse-btn:hover button.collapse-button::before {

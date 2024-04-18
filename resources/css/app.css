@@ -37,7 +37,7 @@ palette 2
     margin: 0px;
     box-sizing: border-box;
     font-size: 12px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 section {
@@ -113,3 +113,29 @@ span.cart-items-count {
     border-radius: .3em;
 }
 
+.alert {
+    position: relative;
+    display: block;
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding: 20px;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: var(--primary-btn);
+}
+
+.alert-error {
+    background-color: lightcoral;
+}
+
+.alert svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+}

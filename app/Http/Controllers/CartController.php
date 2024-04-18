@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Cart\Item;
 use App\Models\Product; 
 
 class CartController extends Controller
@@ -54,5 +55,25 @@ class CartController extends Controller
         $cart_item->save();
 
         return redirect()->route('home');
+    }
+
+    public function remove(Request $request){
+       $validated = $request->validate([
+            'item_id' => ['required', 'integer', 'exists:items,id'],
+            'product_name' => ['required', 'string', 'exists:products,name']
+       ]);
+       
+       $item = Item::find((int) $validated['item_id']);
+        if($item !== null){
+            $item->products()->dissociate();
+            $item->carts()->dissociate();
+            $item->delete();
+
+            return redirect()->route('cart.index')
+                ->with('item-removed-to-cart', 'Le Produit ' . $validated['product_name'] . ' a bien été retiré de votre panier');
+        }
+
+        return redirect()->route('cart.index')
+            ->with('item-not-removed-to-cart', 'Une erreur s\'est produite lors du suppression');
     }
 }

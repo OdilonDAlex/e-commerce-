@@ -31,6 +31,9 @@ Route::middleware('auth')->prefix('cart/')->name('cart.')
 
     Route::post('add', [CartController::class, 'add'])
         ->name('add');
+
+    Route::delete('remove-item', [CartController::class, 'remove'])
+        ->name('remove-item');
 });
 
 require __DIR__ . '/auth.php';

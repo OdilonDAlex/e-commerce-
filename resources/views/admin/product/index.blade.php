@@ -54,7 +54,7 @@
                             @method('delete')
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-
+        
                             <input type="submit" value="Supprimer">
                         </form>
                     </td>
