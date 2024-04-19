@@ -3,7 +3,7 @@
 @section('title', 'Connexion')
 
 @section('content')
-@vite('resources/css/form.css')
+@vite('resources/css/flex-center.css')
 
 <form class="login-form" action="{{ route('login.store') }}" method="POST">
     @csrf

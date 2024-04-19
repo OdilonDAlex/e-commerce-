@@ -92,3 +92,7 @@ section table tr td.action .remove-btn svg {
     width: 20px;
     height: 20px;
 }
+
+div input[type='submit'] {
+    margin: 0px!important;
+}

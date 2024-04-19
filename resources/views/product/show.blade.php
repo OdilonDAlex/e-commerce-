@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title', $product->name )
-@vite('resources/css/product/show.css')
+@vite(['resources/css/product/show.css', 'resources/css/flex-center.css'])
 
 @section('header')
     @include('header')
@@ -10,18 +10,14 @@
 @section('content')
     <div class="product-informations">
         <div class="product-images">
-            @if($product->getImageUrl() !== null)
-                <img src="{{ $product->getImageUrl() }}" alt="Image Url" class="current-image">    
+            <img src="{{ $product->getImageUrl() }}" alt="Image Url" class="current-image">    
 
-                <div class="pola-images"></div>
-            @else
-                <h1>$product->name</h1>
-            @endif
+            <div class="pola-images"></div>
         </div>
         <div class="product-details">
             <div class="product-name">
-            <h1>{{ $product->name }}</h1>
-            <small>{{ $product->description }}</small><br>
+                <h1>{{ $product->name }}</h1>
+                <small>{{ $product->description }}</small><br>
                 <small>
                     <div class="stars">
                         <div class="star"></div>
@@ -59,7 +55,7 @@
             </form>
             <hr>
             <div class="share-product">
-                <p>Share : <a href="">Facebook</a> | <a href="">Twitter</a> | <a href="">Gmail</a></p>
+                <p>Partager : <a href="">Facebook</a> | <a href="">Twitter</a> | <a href="">Gmail</a></p>
             </div>
         </div>
 

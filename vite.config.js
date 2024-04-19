@@ -14,6 +14,8 @@ export default defineConfig({
                 'resources/css/product/create.css',
                 'resources/css/product/card.css',
                 'resources/css/product/pagination.css',
+                'resources/css/homepage.css',
+                'resources/css/flex-center.css',
                 'ressources/css/form.css',
             ],
             refresh: true,

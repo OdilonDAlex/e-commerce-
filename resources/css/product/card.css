@@ -1,56 +1,20 @@
 div.product-card {
-    display: inline-block;
-    max-width: 32%;
-    background-attachment:fixed;
-    background-size: contain;
-    width: 33%;
-    border: 1px solid var(--primary-bg);
-    border-radius: .3em;
-    margin: 10px 0px;
-}
-
-div.card-head {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    filter: opacity(.7);
-    background-color: var(--primary-bg);
-    border-color: var(--secondary-bg);
     padding: 10px;
-    border-radius: .3em .3em 0px 0px;
-    box-shadow: 0px 0px 1px grey;
+    display: inline-block;
+    border-radius: .3em;
+    background-color: var(--secondary-bg);
+    background-color: white;
+    margin-bottom: 10px;
 }
 
-div.card-head h1 {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: .3em;
-    width: max-content;
-    background-color: white;
-    text-align: center;
-    color: black;
-    filter: opacity(10)  ;
-    font-size: 14px;
-    font-weight: bold;
+div.product-card div.card-head h1:nth-child(1) {
+    font-size: 20px;
 }
 
 div.image {
+    border-radius: .3em .3em 0px 0px ;
+    margin-bottom: 5px;
     position: relative;
-}
-div.image .img{
-    position: relative;
-    min-height: 200px;
-    max-width: 100%;
-    cursor: pointer;
-}
-
-div.product-card div.action form input[type='submit'] {
-    border: none;
-    background-color: var(--secondary-btn);
-    width: 100%;
-    padding: 10px;
-    border-radius:0px 0px .3em .3em ;
 }
 
 div.image h5.price {
@@ -70,6 +34,12 @@ div.image h5.price {
     font-weight: bolder;
 }
 
+div.image img {
+    border-radius: .3em .3em 0px 0px;
+    width: 100%;
+    height: auto;
+} 
+
 div.image:hover .img {
     filter: blur(1px);
     filter:brightness(1.1);
@@ -79,16 +49,18 @@ div.image:hover h5.price {
     display: block;
 }
 
-div.action {
-    position: relative;
+div.card-head, div.action {
+    text-align: right;
 }
 
-div.action div.options {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-div.action div.options a {
+div.action a.show {
+    border-radius: .3em;
+    display: inline-block;
+    border: none;
     text-decoration: none;
+    color: var(--primary-bg);
+    margin: 5px 0px;
+    font-weight: bold;
+    background-color: var(--primary-btn);
+    padding: 5px 10px;
 }

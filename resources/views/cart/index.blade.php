@@ -101,7 +101,11 @@
                     {{ number_format($sum, 2, '.', ' ') }} Ariary
                 </td>
                 <td class="action">
-                    <a class="remove-btn" href="">Acheter</a>
+                    <form action="" method="POST">
+                        @csrf
+
+                        <x-input type="submit" value="Acheter"/>
+                    </form>
                 </td>
             </tr>
 

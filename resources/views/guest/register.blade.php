@@ -2,6 +2,8 @@
 
 @section('title', 'inscription')
 
+@vite('resources/css/flex-center.css')
+
 @section('content')
 
 <form class="register-form" action="{{ route('register.store') }}" method="POST">
