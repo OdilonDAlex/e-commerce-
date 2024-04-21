@@ -54,7 +54,7 @@ div.big-menu div h1:nth-child(1){
 
 .navbar-container ul.nav li.nav-dropdown:hover div.big-menu{
     display: flex;
-    animation: show-big-menu .3s ease 0s 1 alternate;
+    animation: show-big-menu .3s ease 0s 1 ease-out;
 }
 
 .navbar-container ul.nav li.nav-item:hover {
