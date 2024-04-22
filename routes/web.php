@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomePage;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,12 @@ Route::middleware('auth')->prefix('cart/')->name('cart.')
     Route::delete('remove-item', [CartController::class, 'remove'])
         ->name('remove-item');
 });
+
+Route::get('profile/', [ProfileController::class, 'index'])
+    ->name('profile.index') ;
+    
+Route::patch('profile/update', [ProfileController::class, 'update'])
+    ->name('profile.update') ;
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

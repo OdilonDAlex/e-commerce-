@@ -1,0 +1,10 @@
+section form.profile {
+    margin: 10px auto;
+    width: max-content;
+}
+
+section form.profile h2 {
+    font-size: 20px;
+    margin:20px 20px 20px 0px;
+    color: var(--dark-border);
+}

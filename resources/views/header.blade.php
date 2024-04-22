@@ -24,9 +24,9 @@
             </a></li>
             @endauth
             <li class="nav-item"><a href="" class="nav-link">Historique</a></li>
-            <li class="nav-item"><a href="" class="nav-link">Profil</a></li>
             <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
             @auth
+            <li class="nav-item"><a href="{{ route('profile.index') }}" class="nav-link">Profil</a></li>
             @if(Auth::user()->isAdmin())
             <li class="nav-item nav-dropdown {{ request()->routeIs('admin.*') ? 'active' : '' }}">
                 <a href="" class="nav-link ">

@@ -17,6 +17,7 @@ export default defineConfig({
                 'resources/css/homepage.css',
                 'resources/css/flex-center.css',
                 'ressources/css/form.css',
+                'ressources/css/profile.css',
             ],
             refresh: true,
         }),
