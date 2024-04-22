@@ -4,9 +4,11 @@
 @section('title', 'Accueil')
 
 
-<!-- import du navbar -->
+
+
+<!-- import du navbar et du bar de recherche -->
 @section('header')
-    @include('header')
+@include('header')
 @endsection
 
 <!-- importation du fichier css -->
@@ -15,15 +17,16 @@
 <!-- debut du session content -->
 @section('content')
 
-    <!-- alerte -->
-    @if(session('new-user'))
-        <p>{{ session('new-user') }}</p>
-    @else
-    @if(session('product-added-to-cart'))
-    <div class="alert alert-success">
-        {{ session('product-added-to-cart') }}
-        
-        <svg width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- alerte -->
+@if(session('new-user'))
+<p>{{ session('new-user') }}</p>
+@else
+
+@if(session('product-added-to-cart'))
+<div class="alert alert-success">
+    {{ session('product-added-to-cart') }}
+    
+    <svg width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <style type="text/css">
             .st0{opacity:0.2;fill:none;stroke:#000000;stroke-width:5.000000e-02;stroke-miterlimit:10;}
         </style>
@@ -35,6 +38,7 @@
     </div>
     @endif
 
+    <x-search-bar/>
     <!-- Tous les produits -->
     <div class="all-product">
         @foreach($products as $product)

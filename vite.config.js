@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/css/flex-center.css',
                 'ressources/css/form.css',
                 'ressources/css/profile.css',
+                'ressources/css/search-bar.css',
             ],
             refresh: true,
         }),

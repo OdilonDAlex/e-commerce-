@@ -20,6 +20,7 @@
         <p>{{ session('product_updated') }}</p>
     @endif
 
+    <x-search-bar/>
     <table>
         <thead>
             <td>Id</td>

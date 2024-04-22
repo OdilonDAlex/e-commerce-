@@ -120,3 +120,7 @@ h5.avaible-product span.avaible-product-quantity {
     font-size: 25px;
     color: var(--dark-border);
 }
+
+form input {
+    width: max-content!important;
+}
