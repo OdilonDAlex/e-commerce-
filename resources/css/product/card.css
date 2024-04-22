@@ -17,22 +17,63 @@ div.image {
     position: relative;
 }
 
-div.image h5.price {
+div.image div.action {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: .3em;
-    padding: 10px ;
     width: max-content;
-    font-size: 20px;
-    color: var(--primary-bg);
-    background-color: rgba(255, 255, 255, 0.849);
-    border: 1px solid var(--secondary-btn);
     z-index: 3;
-    font-weight: bolder;
 }
+
+
+div.action form {
+    display: inline-block;
+}
+
+div.action h5.price, div.action form button[type='submit'] {
+    display: inline-block;
+}
+
+div.action form button[type='submit'] {
+    transform: translateY(10px);
+    border: 1px solid white;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+div.action form button[type='submit']:hover svg path {
+    stroke: var(--primary-btn);
+}
+
+div.action form button[type='submit']:hover {
+    border: 1px solid var(--primary-btn);
+    border-radius: 50%;
+    padding: 5px;
+    background-color: var(--primary-btn);
+}
+
+div.action form  {
+    margin: 0px;
+    padding: 0px;
+}
+div.action form button[type='submit'] svg{
+    width: 40px;
+    height: 40px;
+}
+
+
+div.action h5.price {
+    padding: 10px ;
+    font-size: 20px;
+    border-radius: .3em;
+    background-color: rgba(255, 255, 255, 0.904);
+}
+
 
 div.image img {
     border-radius: .3em .3em 0px 0px;
@@ -41,11 +82,11 @@ div.image img {
 } 
 
 div.image:hover .img {
-    filter: blur(1px);
-    filter:brightness(1.1);
+    filter: blur(2px);
+    filter:brightness(1.05);
 }
 
-div.image:hover h5.price {
+div.image:hover div.action {
     display: block;
 }
 

@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function carts(): BelongsTo {
         return $this->belongsTo(Cart::class);
     }
+
+    public function getRole(): string {
+        return $this->role;
+    }
 }

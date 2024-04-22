@@ -5,7 +5,25 @@
 
         <!-- image -->
         <div class="image">
+            <div class="action">
             <h5 class="price">{{ number_format($product->price, 2, '.', ' ') }}Ar</h5>
+            
+            @auth()
+                @if($product->stock > 0)
+                <form name="add-to-cart" action="{{ route('cart.add') }}" method="POST">
+                    @csrf
+                    
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="quantity" value="1" min="0" max="{{ $product->stock }}">
+                    
+                    <button type="submit">
+                        @include('product.cart')
+                    </button>
+                </form>
+                @endif
+            @endauth()
+        </div>
+            
 
             <img class="img" src="{{ $product->getImageUrl() }}" alt="">
         </div>
@@ -13,6 +31,7 @@
         <!-- details du produit -->
         <div class="card-head"> 
             <h1>{{ $product->name }}</h1>
+            <h1>{{ number_format($product->price, 2, '.', ' ') }}Ar</h1>
             <h1>{{ $product->stock }} disponible(s)</h1>
         </div>
     </div>

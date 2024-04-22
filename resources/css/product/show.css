@@ -36,11 +36,21 @@ div.stars {
 
 div.stars div.star {
     display: inline-block;
-    width: 12px ;
-    height: 12px;
-    border-radius: 50%;
-    background-color: yellow;
 }
+
+div.stars  div.star svg {
+    width: 22px;
+    height: 22px;
+}
+
+div.stars div.star svg path {
+    stroke-width: 1.2px;
+}
+
+.star-1 path, .star-2 path, .star-3 path, .star-4 path{
+    fill: var(--primary-btn);
+}
+
 
 h5.product-price {
     font-size: 25px;

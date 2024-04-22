@@ -20,13 +20,22 @@
                 <small>{{ $product->description }}</small><br>
                 <small>
                     <div class="stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
+                        <div class="star star-1">
+                            @include('product.star')
+                        </div>
+                        <div class="star star-2">
+                            @include('product.star')
+                        </div>
+                        <div class="star star-3">
+                            @include('product.star')
+                        </div>
+                        <div class="star star-4">
+                            @include('product.star')
+                        </div>
+                        <div class="star star-5">
+                            @include('product.star')
+                        </div>
                     </div>
-                    ( 10 revues )
                 </small>
             </div>
             <hr>
