@@ -70,7 +70,6 @@ section table tr td a, form.remove-form input[type='submit'] {
 
 section table tfoot td{
     background-color: var(--dark-border);
-    padding: 10px;
     font-weight: bold;
     color: white;
 }
@@ -95,4 +94,5 @@ section table tr td.action .remove-btn svg {
 
 div input[type='submit'] {
     margin: 0px!important;
+    border: none;
 }

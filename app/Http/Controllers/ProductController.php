@@ -11,14 +11,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-
-use function Pest\Laravel\call;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
     
     
     public function index() {
+
+        if(! Gate::allows('visit-admin-pages')) {
+            return redirect()->route('home');
+        }
         return view('admin.product.index', [
             'products' => Product::paginate(10),
         ]);
@@ -41,14 +44,23 @@ class ProductController extends Controller
     }
 
     public function create() {
-        return view('admin.product.create', [
-            'product' => null,
-            'categories' => Category::pluck('name', 'id'),
-        ]);
+
+        if( Gate::allows('visit-admin-pages') ) {
+            return view('admin.product.create', [
+                'product' => null,
+                'categories' => Category::pluck('name', 'id'),
+            ]);
+        }
+
+        return redirect()->route('home');
     }
 
     public function store(CreateProductFormRequest $request) {
-        
+
+        if(! Gate::allows('visit-admin-pages') ){
+            return redirect()->route('home');
+        }
+
         $data = $request->validated();
         $categories_id = null;
 
@@ -80,6 +92,10 @@ class ProductController extends Controller
     }
 
     public function edit(int $product_id) {
+        if(! Gate::allows('visit-admin-pages') ) {
+            return redirect()->route('home');
+        }
+
 
         try {
             return view('admin.product.create', [
@@ -94,6 +110,9 @@ class ProductController extends Controller
 
     public function update(CreateProductFormRequest $request, int $product_id) {
 
+        if(! Gate::allows('visit-admin-pages')) {
+            return redirect()->route('home');
+        }
         $data = $request->validated();
         $categories_id = null;
         if(array_key_exists('categories_id', $data)){
@@ -134,6 +153,10 @@ class ProductController extends Controller
     }
 
     public function create_category(CreateCategoryFormRequest $request) {
+        if(! Gate::allows('visit-admin-pages')) {
+            return redirect()->route('home');
+        }
+
         $original_value = $request['names'];
         $request->validated('names');
 
@@ -149,6 +172,10 @@ class ProductController extends Controller
     }
 
     public function delete(Request $request){
+
+        if(! Gate::allows('visit-admin-pages')) {
+            return redirect()->route('home');
+        }
         $request = $request->validate(
                             [
                 'product_id' => [

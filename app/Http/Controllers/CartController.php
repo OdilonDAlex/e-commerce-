@@ -54,7 +54,8 @@ class CartController extends Controller
 
         $cart_item->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')
+        ->with('product-added-to-cart', $request['quantity'] . ' produit(s) ' . $product->name . ' a été ajouté dans votre panier');
     }
 
     public function remove(Request $request){

@@ -27,6 +27,7 @@
             <li class="nav-item"><a href="" class="nav-link">Profil</a></li>
             <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
             @auth
+            @if(Auth::user()->isAdmin())
             <li class="nav-item nav-dropdown {{ request()->routeIs('admin.*') ? 'active' : '' }}">
                 <a href="" class="nav-link ">
                     <span>
@@ -84,6 +85,7 @@
 
                 </div>
             </li>
+            @endif
             @endauth
         </ul>
     </navbar>
