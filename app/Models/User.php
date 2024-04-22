@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Enums\Role;
 
 class User extends Authenticatable
 {
@@ -58,5 +59,9 @@ class User extends Authenticatable
 
     public function getRole(): string {
         return $this->role;
+    }
+
+    public function isAdmin(): bool {
+        return $this->role == Role::ADMIN->value;
     }
 }
