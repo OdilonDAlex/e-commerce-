@@ -12,9 +12,9 @@ class SearchBar extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $placeholder="Rechercher",
-        public string $route="home",
-        public string $value="",
+        public string $placeholder="Nom du produit",
+        public string $route = "home",
+        public string $value = "", // button label
     )
     {
         //

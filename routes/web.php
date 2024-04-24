@@ -5,6 +5,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomePage;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', WelcomePage::class)->name('home');
@@ -20,9 +21,13 @@ Route::middleware('auth')
 });
 
 
+// debut Produits
 Route::get('product/show/{slug}', [ProductController::class, 'show'])
     ->name('product.show');
 
+Route::get('product/search/', [ProductController::class, 'search'])
+    ->name('product.search');
+// fin produits
 
 Route::middleware('auth')->prefix('cart/')->name('cart.')
 ->group( function (): void {

@@ -190,4 +190,17 @@ class ProductController extends Controller
                 ->with('product_removed', 'Produit supprimé avec succès');
         }
     }
+
+    public function search(Request $request) {
+
+        $request = $request->validate([
+            'route' => ['required', 'string', 'regex:/(home|admin.product.index)/'],
+            'query' => ['required', 'string', 'regex:/.+/'],
+        ]); 
+
+        $findedProductByName = Product::whereRaw("name REGEXP '.*".  $request['query'] . ".*'")->get();
+        $findedCategories = Category::whereRaw("name REGEXP ' .*" . $request['query'] .".*'")->get();
+
+        dd($findedCategories);
+    }   
 }
