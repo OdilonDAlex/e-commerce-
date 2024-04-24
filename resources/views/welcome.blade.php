@@ -38,7 +38,7 @@
     </div>
     @endif
 
-    <x-search-bar/>
+    <x-search-bar value='Rechercher' />
     <!-- Tous les produits -->
     <div class="all-product">
         @foreach($products as $product)

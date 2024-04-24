@@ -1,47 +1,43 @@
 div.search-bar {
-    margin: 0px 10px;
+    margin-right: 10px;
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: end;
+}
+
+div.search-bar form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    position: relative;
+}
+ div.search-bar form div svg  {
+    width: 30px;
+    height: 30px;
+    transform: scale(.8);
+ }
+
+ div.search-bar form input, div.search-bar form button[type='submit']{
+    height: 35px;
 }
 
-div.search-bar form {
-    border-radius: .3em;
-    padding: 0px;
-    margin: 0px;
-    height: max-content;
-    background-color: white;
-}
-
-div.search-bar button[type='submit'] {
-    border: none;
-    background-color: transparent;
-    margin: 0px;
-    transform: translateY(6px);
-    background-color: transparent;
+div.search-bar form button[type='submit'] {
+    border: 1px solid white;
+    background-color: rgb(240, 238, 238);
+    border-radius: 0px .3em .3em 0px;
+    padding: 0px 10px;
     cursor: pointer;
 }
 
-div.search-bar button[type='submit'] svg  {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    stroke: var(--dark-border);
-    fill: var(--dark-border);
-}
-
 div.search-bar form input[type='text'] {
-    padding: 5px 10px;
-    margin: 2px;
-    color: var(--dark-border);
-    border: none;
+    border: 1px solid white;
     outline: none;
-    font-size: 16px;
-    border-radius: .3em;
+    padding: 0px 10px;
+    border-radius: .3em 0px 0px .3em;
 }
 
-div.search-bar form input, div.search-bar form button[type='submit']  {
-    display: inline-block;
+div.search-bar form button[type='submit']:hover {
+    background-color: white;
+    border-color: rgb(240, 238, 238);
 }

@@ -48,7 +48,7 @@ section table td.price {
     font-weight: bold;
     min-width: 17ch;
 }
-section table tr td.action a.edit-btn {
+section table tr td.action a.edit-btn{
     background-color: var(--secondary-btn);
     color: var(--dark-border);
 }
@@ -84,7 +84,9 @@ section table tfoot td + td {
 
 section table tr td.action .remove-btn {
     border: none;
-    background-color: transparent;
+    width: 100%;
+    background-color: var(--secondary-btn);
+    padding: 5px 10px;
 }
 
 section table tr td.action .remove-btn svg {
