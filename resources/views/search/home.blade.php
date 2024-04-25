@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', $query)
+@section('title', 'Resultat pour : `' . $query . '`')
 
 @vite('resources/css/search-result.css')
 
@@ -11,7 +11,7 @@
         Resultat de recherche pour le mot clé <strong>`{{ $query}}`</strong>
     </div>
 
-    <x-search-bar  placeholder="autre recherche" value="recherche"/>
+    <x-search-bar  placeholder="autre recherche" value="Rechercher"/>
     <h2>Produits <span class="count">{{ count($products) }}</span></h2>
     <div class="result">
 
@@ -28,11 +28,11 @@
 
         <!-- Produits par Categories -->
         <h2>Categories <span class="count">{{ count($categories) }}</span></h2>
-        <div class="categories">
-            @forelse($categories as $category)
-                <h1>{{ $category->name }}</h1>
+        @forelse($categories as $category)
+            <h1 class="category_name">{{$loop->index + 1}}-{{ $category->name }}</h1>
+            <div class="categories">
 
-                @forelse($category->products->get() as $product)
+                @forelse($category->products()->get() as $product)
                     <x-product-card :product=$product />
                 @empty
                     <div class="alert alert-error">Aucun produit de categorie {{ $category->name }}</div>

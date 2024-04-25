@@ -1,4 +1,3 @@
-
 h1 {
     font-size: 28px;
     margin-bottom: 40px;
@@ -35,7 +34,12 @@ div label {
 form.login-form, form.register-form{
     display: block;
     margin: 0px auto;
-    width: max-content;
+    min-width: max-content;
+    width: 70ch;
+    width: 45em;
+    background-color: white;
+    border-radius: .3em;
+    padding: 20px;
 }
 
 a.login-link {

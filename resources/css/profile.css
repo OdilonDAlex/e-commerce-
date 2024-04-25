@@ -1,6 +1,10 @@
 section form.profile {
     margin: 10px auto;
-    width: max-content;
+    width: 70ch;
+    width: 45em;
+    background-color: white;
+    padding: 20px;
+    border-radius: .3em;
 }
 
 section form.profile h2 {

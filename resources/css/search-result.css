@@ -1,7 +1,7 @@
-section div.result div.products {
+section div.result div.products, div.categories {
     display: grid;
     padding: 10px;
-    grid-template-columns: calc(30% - 20px) calc(30% - 20px) calc(30% - 20px);
+    grid-template-columns: calc(30% - 10px) calc(30% - 10px) calc(30% - 10px);
     column-gap: 20px;
     justify-content: center;
 }
@@ -20,4 +20,9 @@ span.count {
     padding: 5px 10px;
     border-radius: .3em;
     font-size: 18px;
+}
+
+h1.category_name {
+    padding: 10px;
+    margin: 10px;
 }

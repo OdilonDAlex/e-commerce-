@@ -13,7 +13,7 @@
     </div>
         <ul class="nav">
             <li class="nav-item {{ request()->routeIs('home') ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Accueil</a></li>
-            <li class="nav-item"><a href="" class="nav-link">Produit</a></li>
+            <li class="nav-item {{ request()->routeIs('home.search') ? 'active' : '' }} "><a href="" class="nav-link">Produit</a></li>
             @auth
             <li class="nav-item {{ request()->routeIs('cart.index') ? 'active' : ''}}"><a href="{{ route('cart.index') }}" 
             
