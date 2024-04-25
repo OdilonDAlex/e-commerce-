@@ -19,6 +19,7 @@ export default defineConfig({
                 'ressources/css/form.css',
                 'ressources/css/profile.css',
                 'ressources/css/search-bar.css',
+                'ressources/css/search-result.css',
             ],
             refresh: true,
         }),

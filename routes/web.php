@@ -21,13 +21,11 @@ Route::middleware('auth')
 });
 
 
-// debut Produits
 Route::get('product/show/{slug}', [ProductController::class, 'show'])
     ->name('product.show');
 
-Route::get('product/search/', [ProductController::class, 'search'])
-    ->name('product.search');
-// fin produits
+Route::get('home/search/', [ProductController::class, 'search'])
+    ->name('home.search');
 
 Route::middleware('auth')->prefix('cart/')->name('cart.')
 ->group( function (): void {

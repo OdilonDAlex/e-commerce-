@@ -25,6 +25,7 @@ div.search-bar form div {
 div.search-bar form button[type='submit'] {
     border: 1px solid white;
     background-color: rgb(240, 238, 238);
+    
     border-radius: 0px .3em .3em 0px;
     padding: 0px 10px;
     cursor: pointer;

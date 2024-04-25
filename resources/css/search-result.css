@@ -1,0 +1,23 @@
+section div.result div.products {
+    display: grid;
+    padding: 10px;
+    grid-template-columns: calc(30% - 20px) calc(30% - 20px) calc(30% - 20px);
+    column-gap: 20px;
+    justify-content: center;
+}
+
+h2 {
+    border:1px solid white;
+    background-color: rgb(245, 244, 244);
+    border-radius: .3em;
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+}
+
+span.count {
+    background-color: var(--primary-btn);
+    padding: 5px 10px;
+    border-radius: .3em;
+    font-size: 18px;
+}

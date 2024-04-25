@@ -5,6 +5,8 @@ div.product-card {
     background-color: var(--secondary-bg);
     background-color: white;
     margin-bottom: 10px;
+    position: relative;
+    max-width: 100%;
 }
 
 div.product-card div.card-head h1:nth-child(1) {

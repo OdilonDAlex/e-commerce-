@@ -201,6 +201,10 @@ class ProductController extends Controller
         $findedProductByName = Product::whereRaw("name REGEXP '.*".  $request['query'] . ".*'")->get();
         $findedCategories = Category::whereRaw("name REGEXP ' .*" . $request['query'] .".*'")->get();
 
-        dd($findedCategories);
+        return view('search.home', [
+            'query' => $request['query'],
+            'products' => $findedProductByName,
+            'categories' => $findedCategories,
+        ]);
     }   
 }

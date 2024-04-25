@@ -1,7 +1,7 @@
 @vite('resources/css/search-bar.css')
 
 <div class="search-bar">
-    <form action="{{ route('product.search') }}" method="GET">
+    <form action="{{ route('home.search') }}" method="GET">
 
 
         <input type="hidden" name="route" value="{{ $route }}">
