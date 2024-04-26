@@ -37,10 +37,10 @@
                 @empty
                     <div class="alert alert-error">Aucun produit de categorie {{ $category->name }}</div>
                 @endforelse
-            @empty
-                <div class="alert alert-error">Aucun Categorie n'a été trouvé</div>
+            </div>
 
-            @endforelse
-        </div>
+        @empty
+            <div class="alert alert-error">Aucun Categorie n'a été trouvé</div>
+        @endforelse
     </div>
 @endsection

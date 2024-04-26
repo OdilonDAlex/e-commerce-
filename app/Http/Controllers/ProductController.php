@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Support\Facades\Redirect;
 class ProductController extends Controller
 {
     

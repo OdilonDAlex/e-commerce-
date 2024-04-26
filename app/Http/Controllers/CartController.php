@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Cart\Item;
-use App\Models\Product; 
+use App\Models\Product;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -54,8 +55,8 @@ class CartController extends Controller
 
         $cart_item->save();
 
-        return redirect()->route('home')
-        ->with('product-added-to-cart', $request['quantity'] . ' produit(s) ' . $product->name . ' a été ajouté dans votre panier');
+        return redirect()->back()
+            ->with('product-added-to-cart', $request['quantity'] . ' produit(s) ' . $product->name . ' a été ajouté dans votre panier');
     }
 
     public function remove(Request $request){

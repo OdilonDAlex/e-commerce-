@@ -87,6 +87,7 @@ section table tr td.action .remove-btn {
     width: 100%;
     background-color: var(--secondary-btn);
     padding: 5px 10px;
+    cursor: pointer;
 }
 
 section table tr td.action .remove-btn svg {
