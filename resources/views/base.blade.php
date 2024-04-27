@@ -11,6 +11,10 @@
         ])
 </head>
 <body>
+    @auth
+        <input id="authenticated_user_id" type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+    @endauth
+
     @yield('header')
     <!-- Contenu principale -->
     

@@ -64,4 +64,8 @@ class User extends Authenticatable
     public function isAdmin(): bool {
         return $this->role == Role::ADMIN->value;
     }
+
+    public function receivesBroadcastNotificationsOn(): string {
+        return 'user-' . $this->id . '-add-product-to-cart';
+    }
 }

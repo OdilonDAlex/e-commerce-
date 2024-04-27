@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Cart\Item;
 use App\Models\Product;
+use App\Notifications\ProductAddedToCart;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
@@ -54,6 +56,10 @@ class CartController extends Controller
         $cart_item->carts()->associate($cart) ;
 
         $cart_item->save();
+
+        /** @var User $authenticatedUser */
+        $authenticatedUser = Auth::user() ;
+        $authenticatedUser->notify(new ProductAddedToCart($cart_item));
 
         return redirect()->back()
             ->with('product-added-to-cart', $request['quantity'] . ' produit(s) ' . $product->name . ' a été ajouté dans votre panier');
