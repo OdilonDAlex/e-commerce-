@@ -10,13 +10,13 @@
             
             @auth()
                 @if($product->stock > 0)
-                <form name="add-to-cart" action="{{ route('cart.add') }}" method="POST">
+                <form name="addToCart" action="{{ route('cart.add') }}" method="POST">
                     @csrf
                     
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <input type="hidden" name="quantity" value="1" min="0" max="{{ $product->stock }}">
                     
-                    <button type="submit">
+                    <button name="send_form" type="submit">
                         @include('product.cart')
                     </button>
                 </form>
