@@ -4,15 +4,16 @@ const addToCartForms = document.querySelectorAll('div.product-card div.image for
 const cartItemsCount = document.querySelector('header ul.nav li.nav-item span.cart-items-count');
 const notificationItemsCount = document.querySelector('header ul.nav li.nav-item span.notification-count');
 
-
-if(cartItemsCount.innerText == '0') {
-    cartItemsCount.style.display = 'none' ;
-    cartItemsCount = 0;
-}
-
-if(notificationItemsCount.innerText == '0') {
-    notificationItemsCount.style.display = 'none' ;
-    notificationItemsCount = 0;
+if(cartItemsCount !== null) {
+    if(cartItemsCount.innerHTML == '0') {
+        cartItemsCount.style.display = 'none' ;
+        cartItemsCount = 0;
+    }
+    
+    if(notificationItemsCount.innerText == '0') {
+        notificationItemsCount.style.display = 'none' ;
+        notificationItemsCount = 0;
+    }
 }
 
 addToCartForms.forEach(form => {
@@ -68,4 +69,22 @@ addToCartForms.forEach(form => {
 
 function makePrompt() {
     return window.prompt('Quantité ( par défaut 1): ', '1');
+}
+
+
+class Alert {
+
+    constructor(content, type="success", bgColor="default") {
+
+        this.content = content;
+        this.htmlElement = document.createElement('div');
+    }
+
+    render(){
+
+        this.htmlElement.className = 'alert alert-' + type;
+        this.htmlElement.tex
+    }
+
+    
 }

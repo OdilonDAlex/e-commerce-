@@ -15,6 +15,8 @@
         <input id="authenticated_user_id" type="hidden" name="user_id" value="{{ Auth::user()->id }}">
     @endauth
 
+    
+
     @yield('header')
     <!-- Contenu principale -->
     
@@ -23,15 +25,10 @@
             <p>{{ session('new-user') }}</p>
         @endif
 
-        @if(session('product-added-to-cart'))
-            <div class="alert alert-success">
-                {{ session('product-added-to-cart') }}   
-                
-                @include('svg.cross')
-            </div>
-        @endif
     @endauth
     <section class="content">
+
+        <x-alert type="success">Bonjour</x-alert>
         @yield('content')
 
         @auth
