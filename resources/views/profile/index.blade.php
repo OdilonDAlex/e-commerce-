@@ -6,6 +6,12 @@
 
 @include('header')
 
+@if(session('profile-updated'))
+    <x-alert>
+        {{ session('profile-updated') }}
+    </x-alert>
+@endif
+
 @section('content')
     <form  class="profile" action="{{ route('profile.update') }}" method="POST">
         @method('patch')
@@ -15,10 +21,11 @@
         <x-input label="Nom" type="text" name="name" value="{{ Str::of( $user->name )->toHtmlString() }}"/>
         
         <!-- email -->
-        <x-input  label="Adresse email" type="email" name="email" value="{{ $user->email }}"/>
+        <x-input  label="Adresse email" type="email" name="email" value="{{ $user->email }}" disabled="1"/>
         
         <!-- type d'utilisateur -->
         <x-input label="Type d'utilisateur" name="role" value="{{ $user->role }}" disabled="1"/>
+
         <!-- Changer de mot de passe -->
         <h2>Changer de mot de passe</h2>
         

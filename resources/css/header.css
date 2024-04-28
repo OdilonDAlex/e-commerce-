@@ -26,6 +26,7 @@
 
 li.active {
     background-color: var(--dark-border);
+    border-radius: .3em;
     border-bottom: 3px solid var(--primary-btn);
 }
 
@@ -108,6 +109,10 @@ div.big-menu ul.big-menu-nav li.nav-item {
 
 }
 
+.navbar-container .session-info span {
+    padding: 0px 10px;
+}
+
 .navbar-container .session-info form .logout-btn {
     background-color: var(--primary-btn);
     padding: 0px 10px;
@@ -122,8 +127,8 @@ div.big-menu ul.big-menu-nav li.nav-item {
 
 .navbar-container li.nav-dropdown a.nav-link svg {
     width: 16px;
-    height: 16px;
-    transform: translateY(4px) rotate(90deg);
+    height: 12px;
+    transform: translateY(2px) rotate(90deg);
 }
 
 input#register-btn, input#login-btn {
