@@ -61,7 +61,7 @@ class CartController extends Controller
         $authenticatedUser = Auth::user() ;
         $authenticatedUser->notify(new ProductAddedToCart($cart_item));
 
-        return json_encode(array('response' => 200, 'status' => 'OK')) ;
+        return redirect()->route('home');
     }
 
     public function remove(Request $request){

@@ -23,6 +23,11 @@ palette 2
     --dark-border: #5B696B;
 }
 
+@font-face {
+    font-family: 'raleway';
+    src: url('./font-family/Raleway-Medium.ttf');
+}
+
 :root {
     --primary-bg: #333533;
     --navbar-bg: #242423;
@@ -37,7 +42,7 @@ palette 2
     margin: 0px;
     box-sizing: border-box;
     font-size: 12px;
-    font-family:'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'raleway', 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {

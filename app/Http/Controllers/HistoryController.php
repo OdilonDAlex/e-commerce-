@@ -15,7 +15,8 @@ class HistoryController extends Controller
         /** @var User $authenticatedUser */
         $authenticatedUser = Auth::user() ;
         return view('history', [
-            'notifications' => $authenticatedUser->unReadNotifications()->paginate(25),
+            'unReadNotifications' => $authenticatedUser->unReadNotifications()->get(),
+            'readedNotifications' => $authenticatedUser->notifications()->whereRaw('read_at IS NOT NULL')->paginate(10),
         ]);
     }
 }

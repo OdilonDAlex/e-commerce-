@@ -21,6 +21,7 @@ export default defineConfig({
                 'ressources/css/search-bar.css',
                 'ressources/css/search-result.css',
                 'ressources/css/notification.css',
+                'ressources/css/history.css',
             ],
             refresh: true,
         }),

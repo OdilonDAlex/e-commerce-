@@ -1,0 +1,21 @@
+div.history-container {
+    margin: 0px auto;
+    width: 110ch;
+    width: 65em;
+    background-color: white;
+    padding: 20px;
+    border-radius: .3em;
+}
+
+h2 {
+    border:1px solid white;
+    background-color: rgb(245, 244, 244);
+    border-radius: .3em;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+h6 {
+    margin: 20px;
+}

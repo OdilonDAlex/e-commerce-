@@ -28,7 +28,6 @@
     @endauth
     <section class="content">
 
-        <x-alert type="success">Bonjour</x-alert>
         @yield('content')
 
         @auth

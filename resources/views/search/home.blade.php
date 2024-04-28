@@ -7,9 +7,6 @@
 @include('header')
 
 @section('content')
-    <div class="alert alert-success">
-        Resultat de recherche pour le mot clé <strong>`{{ $query}}`</strong>
-    </div>
 
     <x-search-bar  placeholder="autre recherche" value="Rechercher"/>
     <h2>Produits <span class="count">{{ count($products) }}</span></h2>

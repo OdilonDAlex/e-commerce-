@@ -98,9 +98,9 @@ div.big-menu ul.big-menu-nav li.nav-item {
 }
 
 .navbar-container .session-info {
-    border-radius: .5rem;
+    border-radius: .2rem;
     height: 25px;
-    background-color: var(--secondary-bg);
+    background-color: white;
     padding-left: 7px;
     display: flex;
     flex-direction: row;
@@ -114,7 +114,7 @@ div.big-menu ul.big-menu-nav li.nav-item {
     border: none;
     height: 25px;
     margin-left: 10px;
-    border-radius: .3em;
+    border-radius: .2em;
     cursor: pointer;
     font-size: 12px;
 }
