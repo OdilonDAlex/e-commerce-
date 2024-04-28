@@ -1,0 +1,18 @@
+div.notification-render-container .title {
+    font-size: 18px;
+}
+
+div.notification-render-container .content, .datetime {
+    margin: 5px;
+}
+
+div.notification-render-container .datetime {
+    font-size: .8em;
+}
+
+div.notification-render-container {
+    background-color: white ;
+    margin: 10px;
+    border-radius: .3em;
+    padding: 10px;
+}

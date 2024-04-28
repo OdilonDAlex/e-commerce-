@@ -109,7 +109,7 @@ section.content div.welcome-illustration div.welcome-text h3 span {
     line-break:loose;
 }
 
-span.cart-items-count {
+span.cart-items-count, span.notification-count {
     background-color: var(--primary-btn);
     color: var(--navbar-bg);
     padding: 2px 5px;

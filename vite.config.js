@@ -20,6 +20,7 @@ export default defineConfig({
                 'ressources/css/profile.css',
                 'ressources/css/search-bar.css',
                 'ressources/css/search-result.css',
+                'ressources/css/notification.css',
             ],
             refresh: true,
         }),

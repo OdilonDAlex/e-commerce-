@@ -2,6 +2,18 @@ import axios from "axios";
 
 const addToCartForms = document.querySelectorAll('div.product-card div.image form');
 const cartItemsCount = document.querySelector('header ul.nav li.nav-item span.cart-items-count');
+const notificationItemsCount = document.querySelector('header ul.nav li.nav-item span.notification-count');
+
+
+if(cartItemsCount.innerText == '0') {
+    cartItemsCount.style.display = 'none' ;
+    cartItemsCount = 0;
+}
+
+if(notificationItemsCount.innerText == '0') {
+    notificationItemsCount.style.display = 'none' ;
+    notificationItemsCount = 0;
+}
 
 addToCartForms.forEach(form => {
     
@@ -36,6 +48,11 @@ addToCartForms.forEach(form => {
                 });
 
                 cartItemsCount.innerText = parseInt(cartItemsCount.innerText) + 1;
+                notificationItemsCount.innerText = parseInt(notificationItemsCount.innerText) + 1;
+
+                cartItemsCount.style.display = 'inline';
+                notificationItemsCount.style.display = 'inline';
+                console.log(notificationItemsCount) ;
                 notification.onclick = function (e) {
                     window.location.href = 'cart/' ;
                 }

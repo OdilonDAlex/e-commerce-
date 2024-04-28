@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomePage;
@@ -45,6 +46,9 @@ Route::get('profile/', [ProfileController::class, 'index'])
     
 Route::patch('profile/update', [ProfileController::class, 'update'])
     ->name('profile.update') ;
+
+Route::get('history/', HistoryController::class)
+    ->name('history');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

@@ -8,7 +8,7 @@
 
 <!-- import du navbar et du bar de recherche -->
 @section('header')
-@include('header')
+    @include('header')
 @endsection
 
 <!-- importation du fichier css -->

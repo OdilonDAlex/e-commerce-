@@ -8,6 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\User;
 use App\Models\Cart\Item;
+use App\Models\Product;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class ProductAddedToCart extends Notification implements ShouldBroadcast
@@ -60,6 +61,15 @@ class ProductAddedToCart extends Notification implements ShouldBroadcast
         return [
             'user_id' => $user->id,
             'item_id' => $this->item->id,
+        ];
+    }
+
+    public function toDatabase(User $user): array {
+        $product = Product::find((int) $this->item->product_id);
+        return [
+            'user_id' => $user->id,
+            'title' => 'Ajout de produit',
+            'content' => 'Vous-avez ajouté ' . $this->item->quantity . ' ' . $product->name . ' dans votre panier',
         ];
     }
 }

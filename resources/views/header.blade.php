@@ -22,8 +22,8 @@
                 <span class="cart-items-count">{{ count( $cart->items()->get()->toArray() )}}</span>
             @endif
             </a></li>
+            <li class="nav-item {{ request()->routeIs('history') ? 'active' : '' }}"><a href="{{ route('history') }}" class="nav-link">Historique <span class="notification-count">{{ count( Auth::user()->unReadNotifications()->get() ) }}</span></a></li>
             @endauth
-            <li class="nav-item"><a href="" class="nav-link">Historique</a></li>
             <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
             @auth
             <li class="nav-item {{ request()->routeIs('profile.*') ? 'active' : '' }}"><a href="{{ route('profile.index') }}" class="nav-link">Profil</a></li>
