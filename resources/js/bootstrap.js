@@ -12,6 +12,8 @@ import './product-added-to-cart-notification';
 
 const user_id_input = document.querySelector("input[type='hidden']#authenticated_user_id"); 
 const user_id = user_id_input == null ? null : user_id_input.value;
+const cartItemsCount = document.querySelector('header ul.nav li.nav-item span.cart-items-count');
+const notificationItemsCount = document.querySelector('header ul.nav li.nav-item span.notification-count');
 // const conversation_container = document.querySelector('.conversation_container')
 // const send_message_form = document.forms.send_message_form;
 // const textarea = send_message_form.elements.message_content;
@@ -21,8 +23,31 @@ const user_id = user_id_input == null ? null : user_id_input.value;
 if(user_id !== null) {
 
     window.Echo.private(`user-${user_id}-add-product-to-cart`)
-        .notification( (notification)  => {
-            console.dir(notification) ;
+        .notification( (data)  => {
+            Notification.requestPermission()
+            .then( (e) => {
+                
+                
+                let notification = new Notification(data.title, {
+                    body: data.content,
+                });
+                
+                if(data.type == "product-added-to-cart") {
+                    cartItemsCount.innerText = parseInt(cartItemsCount.innerText) + 1;
+                }
+
+                notificationItemsCount.innerText = parseInt(notificationItemsCount.innerText) + 1;
+
+                cartItemsCount.style.display = 'inline';
+                notificationItemsCount.style.display = 'inline';
+
+                notification.onclick = function (e) {
+                    window.location.href = 'history/' ;
+                }
+            })
+            .catch( (error) => {
+                console.error(error);
+            })
         })
 }
 

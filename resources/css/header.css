@@ -11,6 +11,7 @@
     align-items: center;
     height: 45px;
     z-index: 5;
+
 }
 
 .navbar-container .brand-logo, .navbar-container .session-info{

@@ -2,25 +2,20 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 use App\Models\User;
-use App\Models\Cart\Item;
-use App\Models\Product;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Notifications\Notification;
 
-class ProductAddedToCart extends Notification implements ShouldBroadcast
+
+class ProfileUpdated extends Notification implements ShouldBroadcast
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(
-        public Item $item
-    )
+    public function __construct( public string $content )
     {
         //
     }
@@ -30,7 +25,7 @@ class ProductAddedToCart extends Notification implements ShouldBroadcast
      *
      * @return array<int, string>
      */
-    public function via(User $user): array
+    public function via(object $notifiable): array
     {
         return ['database', 'broadcast'];
     }
@@ -45,24 +40,25 @@ class ProductAddedToCart extends Notification implements ShouldBroadcast
     //                 ->action('Notification Action', url('/'))
     //                 ->line('Thank you for using our application!');
     // }
-    
+
     public function broadcastType(): string
-    {
-        return 'product-added-to-cart';
+    {   
+        return 'profile-updated';
     }
 
+    public function databaseType(): string{
+        return 'profile-updated';
+    }
     /**
      * Get the array representation of the notification.
      *
      * @return array<string, mixed>
      */
-
-    public function toArray(User $user): array {
-        $product = Product::find((int) $this->item->product_id);
+    public function toArray(User $user): array
+    {
         return [
-            'user_id' => $user->id,
-            'title' => 'Ajout de produit',
-            'content' => 'Vous-avez ajouté ' . $this->item->quantity . ' ' . $product->name . ' dans votre panier',
+            'title' => 'Modification de profil',
+            'content' => $this->content,
         ];
     }
 }

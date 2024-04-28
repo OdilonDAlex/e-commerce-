@@ -9,18 +9,7 @@
 @endsection
 
 @section('content')
-    <p style="margin: 10px;">
-        <span>admin</span> >
-        <span>produits</span> >
-        <a href="">liste des produits</a>
-    </p>
-    @if(session('product_created'))
-        <p>{{ session('product_created') }}</p>
-    @elseif(session('product_updated'))
-        <p>{{ session('product_updated') }}</p>
-    @endif
-
-    <x-search-bar/>
+    <x-search-bar value="rechercher" />
     <table>
         <thead>
             <td>Id</td>

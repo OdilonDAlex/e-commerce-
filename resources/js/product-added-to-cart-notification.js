@@ -37,38 +37,18 @@ addToCartForms.forEach(form => {
             result = 1;
         }
 
+        if(result < 0) {
+            result = 1;
+        }
+
         let data = {
             product_id: productId,
             quantity: result
         }
 
         axios.post('../cart/add', data)
-        .then( (result ) => {
-            Notification.requestPermission()
-            .then( (allow) => {
-                
-                
-                let notification = new Notification('Ajout de produit', {
-                    body: 'Le Produit a bien été ajouté dans votre panier.\nCliquer ici pour visualiser votre panier\nMerci.',
-                });
-
-                cartItemsCount.innerText = parseInt(cartItemsCount.innerText) + 1;
-                notificationItemsCount.innerText = parseInt(notificationItemsCount.innerText) + 1;
-
-                cartItemsCount.style.display = 'inline';
-                notificationItemsCount.style.display = 'inline';
-
-                if(alert_.htmlElement !== undefined && alert_.htmlElement !== null) {
-                    alert_.htmlElement.querySelector('span').innerText = "Le produit a bien été ajouter dans votre panier." ;
-                }
-
-                notification.onclick = function (e) {
-                    window.location.href = 'cart/' ;
-                }
-            })
-        })
-        .catch((error) => {
-            console.error(error) ;
+        .catch( (error) => {
+            console.error(error);
         })
 
     })

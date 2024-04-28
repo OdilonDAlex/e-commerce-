@@ -30,7 +30,7 @@
         <h2>Changer de mot de passe</h2>
         
         <!-- Mot de passe -->
-        <x-input  label="Mot de passe actuel" type="password" name="password"/>
+        <x-input  label="Mot de passe actuel" type="password" name="password" required="1"/>
         
         <!-- Nouveau mot de passe -->
         <x-input  label="nouveau mot de passe" type="password" name="new-password"/>

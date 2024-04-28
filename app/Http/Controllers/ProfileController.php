@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Profile\UpdateProfileFormRequest;
+use App\Notifications\ProfileUpdated;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -47,11 +48,17 @@ class ProfileController extends Controller
                 $newPassword == $passwordConfirmation
                 )
                 {
+                    $messages = $name != $authenticatedUser->name ? "nom et mot de passe" : "mot de passe";
                     $authenticatedUser->update([
                         'name' => $name !== null ? $name : $authenticatedUser->name,
                         'password' => Hash::make($newPassword), 
                     ]);
-    
+                    
+
+                    $authenticatedUser->notify(new ProfileUpdated(
+                        "Vous avez modifié votre " . $messages
+                    ));
+                    
                     return redirect()->back()
                         ->with('profile-updated', 'Modification enregistrer avec succès');
                     }
@@ -65,11 +72,14 @@ class ProfileController extends Controller
                     $authenticatedUser->update([
                         'name' =>  $name,
                     ]); 
+                    
+                    $authenticatedUser->notify(new ProfileUpdated(
+                        "Vous avez modifié votre nom" 
+                    ));
                     return redirect()->back()
                         ->with('profile-updated', 'Modification enregistrer avec succès');
-                }
+                    }
 
-                return redirect()->back() ;
-
+                return redirect()->back();
     }
 }
