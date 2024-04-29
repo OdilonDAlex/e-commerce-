@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('visit-admin-pages', function(User $user) {
             return $user->isAdmin();
         });
+
     }
 }

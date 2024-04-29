@@ -47,6 +47,7 @@ palette 2
 
 body {
     background-color: var(--secondary-btn);
+    overflow-x: hidden;
 }
 
 section {
@@ -235,4 +236,16 @@ span.cart-items-count, span.notification-count {
 
 .prompt-container div.action input[type='submit'] {
     background-color: var(--primary-btn);
+}
+
+
+@keyframes removeAlert {
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }
