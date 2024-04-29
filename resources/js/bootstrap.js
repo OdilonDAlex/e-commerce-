@@ -8,7 +8,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 import './echo';
-import './product-added-to-cart-notification';
+import './add-to-cart';
 
 const user_id_input = document.querySelector("input[type='hidden']#authenticated_user_id"); 
 const user_id = user_id_input == null ? null : user_id_input.value;

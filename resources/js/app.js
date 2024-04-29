@@ -10,3 +10,4 @@ alerts.forEach(alert => {
     });
 
 })
+
