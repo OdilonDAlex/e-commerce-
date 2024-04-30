@@ -23,6 +23,7 @@ class ProductController extends Controller
             return redirect()->route('home');
         }
         return view('admin.product.index', [
+            'query' => null,
             'products' => Product::paginate(10),
         ]);
     }
@@ -194,14 +195,14 @@ class ProductController extends Controller
     public function search(Request $request) {
 
         $request = $request->validate([
-            'route' => ['required', 'string', 'regex:/(home|admin.product.index)/'],
+            'route' => ['required', 'string', 'regex:/(search\.home|admin\.product\.index)/'],
             'query' => ['required', 'string', 'regex:/.+/'],
         ]); 
 
         $findedProductByName = Product::whereRaw("name REGEXP '.*".  $request['query'] . ".*'")->get();
         $findedCategories = Category::whereRaw("name REGEXP '.*" . $request['query'] . ".*'")->get();
 
-        return view('search.home', [
+        return view($request['route'], [
             'query' => $request['query'],
             'products' => $findedProductByName,
             'categories' => $findedCategories,

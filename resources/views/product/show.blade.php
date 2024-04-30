@@ -17,7 +17,7 @@
         <div class="product-details">
             <div class="product-name">
                 <h1>{{ $product->name }}</h1>
-                <small>{{ $product->description }}</small><br>
+                <small class="description">{{ $product->description }}</small><br>
                 <small>
                     <div class="stars">
                         <div class="star star-1">
@@ -40,7 +40,7 @@
             </div>
             <hr>
             <div class="product-price-stock">
-                <h5 class="product-price">{{ number_format($product->price, 2, '.', ' ') }} Ariary/<small>unité</small> </h5>
+                <h5 class="product-price">{{ number_format($product->price, 2, '.', ' ') }} Ariary/<small>unité</small></h5>
 
                 @if($product->stock > 0) 
                     <h5 class="avaible-product"><span class="avaible-product-quantity">{{ $product->stock }}</span> unité(s) disponible</h5>
@@ -57,10 +57,13 @@
                 
                 <!-- quantité -->
 
-                <x-input class="product-quantity" label="Quantité" name="quantity" type="number" min="0" max="{{ $product->stock }}"/>
+                <div class="product-quantity">
+                    <label for="quantity">Quantité</label><br>
+                    <input type="number" name="quantity" id="quantity" min="0" max="{{ $product->stock }}">
+                </div>
                 <hr>
 
-                <x-input type="submit" value="Ajouter au panier"/>
+                <input type="submit" value="Ajouter au panier">
             </form>
             <hr>
             <div class="share-product">

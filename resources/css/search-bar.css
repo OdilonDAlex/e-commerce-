@@ -19,12 +19,12 @@ div.search-bar form div {
  }
 
  div.search-bar form input, div.search-bar form button[type='submit']{
+    border: .3px solid var(--secondary-btn);
     height: 35px;
 }
 
 div.search-bar form button[type='submit'] {
-    border: 1px solid white;
-    background-color: rgb(240, 238, 238);
+    background-color: var(--secondary-btn);
     
     border-radius: 0px .3em .3em 0px;
     padding: 0px 10px;
@@ -40,5 +40,6 @@ div.search-bar form input[type='text'] {
 
 div.search-bar form button[type='submit']:hover {
     background-color: white;
-    border-color: rgb(240, 238, 238);
+    color: var(--secondary-btn);
+    border: .3px solid var(--secondary-btn);
 }

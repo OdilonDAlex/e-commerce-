@@ -5,21 +5,21 @@ h1 {
 }
 
 div input, textarea, select{
-    border: .3px solid var(--secondary-btn);
+    border: .3px solid var(--navbar-bg);
     width: 100%;
     border-radius: .3em;
     padding: 10px;
     font-size: 14px;
     outline: none;
-    background-color: var(--secondary-bg);
+    background-color: var(--nav-hover);
     margin-bottom: 10px;
 }
 
 div input[type='submit']{
     margin: 20px 0px;
-    font-weight: bold;
     background-color: var(--primary-btn);
     cursor: pointer;
+    color: var(--text-secondary);
 }
 
 div input[type='submit']:hover {
@@ -28,7 +28,7 @@ div input[type='submit']:hover {
 } 
 
 div label {
-    color: var(--dark-border);
+    color: var(--text-primary);
 }
 
 form.login-form, form.register-form{

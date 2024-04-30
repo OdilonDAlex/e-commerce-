@@ -12,8 +12,10 @@
         <img src="{{ Storage::disk('public')->url('logo.png') }}" alt="Logo">
     </div>
         <ul class="nav">
-            <li class="nav-item {{ request()->routeIs('home') ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Accueil</a></li>
-            <li class="nav-item {{ request()->routeIs('home.search') ? 'active' : '' }} "><a href="" class="nav-link">Produit</a></li>
+            <li class="nav-item {{ request()->routeIs('home') || request()->routeIs('search') ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Accueil</a></li>
+
+            <li class="nav-item {{ request()->routeIs('product.show') ? 'active' : '' }}"><a href="{{ route('home') }}" class="nav-link">Produit</a></li>
+            
             @auth
             <li class="nav-item {{ request()->routeIs('cart.index') ? 'active' : ''}}"><a href="{{ route('cart.index') }}" 
             
@@ -25,11 +27,11 @@
             <li class="nav-item {{ request()->routeIs('history') ? 'active' : '' }}"><a href="{{ route('history') }}" class="nav-link">Historique <span class="notification-count">{{ count( Auth::user()->unReadNotifications()->get() ) }}</span></a></li>
             @endauth
             <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
-            @auth
             <li class="nav-item {{ request()->routeIs('profile.*') ? 'active' : '' }}"><a href="{{ route('profile.index') }}" class="nav-link">Profil</a></li>
+            @auth
             @if(Auth::user()->isAdmin())
             <li class="nav-item nav-dropdown {{ request()->routeIs('admin.*') ? 'active' : '' }}">
-                <a href="" class="nav-link ">
+                <a href="" class="nav-link">
                     <span>
                     Admin<svg fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />

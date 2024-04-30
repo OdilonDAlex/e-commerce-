@@ -13,13 +13,13 @@ nav.paginator div.array-links{
     display: inline-block;
     width: max-content;
     text-decoration: none;
-    font-weight: bold;
 }
 
 nav.paginator div.array-links a {
     text-decoration: none;
     margin: 1px;
     padding: 2px 5px;
+    color: var(--text-secondary);
 }
 
 nav.paginator div.array-links span.active-page {

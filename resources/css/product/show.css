@@ -1,13 +1,21 @@
 div.product-informations {
     display: grid;
-    grid-template-columns: 50% 50%;
+    padding: 10px;
+    grid-template-columns: calc(50% - 10px) calc(50% - 10px);
     grid-template-rows: 100%;
-    column-gap: 10px;
+    column-gap: 20px;
 }
+
 
 div.product-details {
     margin-right: 10px;
 }
+
+div.product-details small.description {
+    color: var(--text-secondary);
+    font-weight: light;
+}
+
 div.product-images {
     display: flex;
     flex-direction: column;
@@ -27,6 +35,7 @@ div.product-details h1 {
     margin: 0px;
     text-align: left;
     font-size: 40px;
+    color: lightcoral
 }
 
 div.stars {
@@ -45,15 +54,24 @@ div.stars  div.star svg {
 
 div.stars div.star svg path {
     stroke-width: 1.2px;
+    stroke: lightyellow;
 }
 
 .star-1 path, .star-2 path, .star-3 path, .star-4 path{
-    fill: var(--primary-btn);
+    fill: lightyellow;
+    stroke: lightyellow;
 }
 
 
 h5.product-price {
+    margin-bottom: 5px;
+    font-weight: normal;
     font-size: 25px;
+    color: lightcoral;
+}
+
+h5.product-price small {
+    color: lightcoral;
 }
 
 
@@ -62,10 +80,10 @@ input.add-to-cart-button, input.add-to-wishlist-button {
     cursor: pointer;
     width: max-content;
     padding: 5px 10px;
-    border: 1px solid grey;
     margin: 10px 0px;
     background-color: var(--primary-btn);
     border-radius: .3em;
+    border: none!important;
 }
 
 input.add-to-cart-button:hover {
@@ -76,51 +94,61 @@ input.add-to-cart-button:hover {
 input.add-to-wishlist-button {
     background-color: white;
 }
+
 div.product-quantity {
     position: relative;
 }
 
 div.product-quantity label {
-    display: inline-block;
-    position: absolute;
-    top: 5px;
-    padding: 2px 5px;
-    font-weight: bold;
-    background-color: white;
-    border: 1px solid var(--dark-border);
-    border-radius: .2em;
+    color: var(--navbar-bg);
 }
-div.product-quantity input{
-    border: 1px solid grey;
-    outline: none;
-    padding: 10px 10px;
-    border-radius: .3em;
-    color: var(--primary-btn);
+
+div.product-quantity input[type='number']{
+    padding: 5px;
     font-size: 16px;
-    width: 180px;
     font-weight: bold;
-    min-width: max-content;
     text-align: center;
+    background-color: var(--nav-hover);
+    outline: none;
+    border: none;
+    border-radius: .2em;
+    min-width: 100px;
+}
+
+div.product-details input[type='submit'] {
+    padding: 10px;
+    border-radius: .2em;
+    background-color: var(--primary-btn);
+    color: var(--text-secondary);
+    border: none;
+    outline: none;
 }
 
 hr {
-    margin: 10px 0px;
+    margin: 15px 0px;
+    color: red;
+    size: 20px;
+}
+
+div.share-product p {
+    color: var(--navbar-bg);
 }
 
 div.share-product a {
     text-decoration: none;
-    color: var(--primary-bg);
+    color: var(--secondary-btn);
 }
 
 h5.avaible-product {
-    color: var(--dark-border);
+    font-weight: normal;
+    color: var(--nav-hover);
 }
 
 h5.avaible-product span.avaible-product-quantity {
-    font-size: 25px;
-    color: var(--dark-border);
+    font-size: 20px;
+    color: var(--primary-btn);
 }
 
-form input {
+section.content form input {
     width: max-content!important;
 }

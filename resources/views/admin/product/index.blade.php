@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <x-search-bar value="rechercher" />
+    <x-search-bar value="rechercher" route='admin.product.index'/>
     <table>
         <thead>
             <td>Id</td>
@@ -53,5 +53,7 @@
         </tbody>
 
     </table>
-    {{ $products->links('vendor.pagination.custom') }}
+    @if($query === null)
+        {{ $products->links('vendor.pagination.custom') }}
+    @endif
 @endsection

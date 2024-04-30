@@ -13,6 +13,7 @@
 @endif
 
 @section('content')
+
     <form  class="profile" action="{{ route('profile.update') }}" method="POST">
         @method('patch')
         @csrf

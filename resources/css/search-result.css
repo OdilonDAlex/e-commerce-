@@ -8,11 +8,11 @@ section div.result div.products, div.categories {
 
 h2 {
     border:1px solid white;
-    background-color: rgb(245, 244, 244);
-    border-radius: .3em;
+    background-color: var(--navbar-bg);
+    border-radius: .2em;
     padding: 10px;
     margin: 10px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 span.count {
@@ -20,6 +20,7 @@ span.count {
     padding: 5px 10px;
     border-radius: .3em;
     font-size: 18px;
+    color: var(--text-secondary);
 }
 
 h1.category_name {

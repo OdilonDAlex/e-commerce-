@@ -32,12 +32,16 @@
                 @forelse($category->products()->get() as $product)
                     <x-product-card :product=$product />
                 @empty
-                    <div class="alert alert-error">Aucun produit de categorie {{ $category->name }}</div>
+                    <x-alert type='error'>
+                        Aucun produit de categorie {{ $category->name }}
+                    </x-alert>
                 @endforelse
             </div>
 
         @empty
-            <div class="alert alert-error">Aucun Categorie n'a été trouvé</div>
+            <x-alert type="error">
+                Aucun Categorie n'a été trouvé
+            </x-alert>
         @endforelse
     </div>
 @endsection

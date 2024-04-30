@@ -14,14 +14,14 @@ palette 2
 #C5C5A9 
 */
 
-:root {
+/* :root {
     --primary-bg: #37463D;
     --navbar-bg: #C5C5A9;
     --primary-btn:#535953;
     --secondary-bg: #F8FBF1;
     --secondary-btn: #5B696B;
     --dark-border: #5B696B;
-}
+} */
 
 @font-face {
     font-family: 'raleway';
@@ -37,21 +37,37 @@ palette 2
     --dark-border: #333533;
 }
 
+:root {
+    --secondary-bg: #e3f6f5;
+    --navbar-bg: #ffffff;
+    --primary-btn:#2c698d;
+    --primary-bg: #272643;
+    --secondary-btn: #bae8e8;
+    --dark-border: #ffffff;
+    --nav-text: #272643;
+    --nav-hover: #e3e3e3;
+    --text-primary: #272643;
+    --text-secondary: #ffffff;
+}
+
+
+
 *, ::before, ::after {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     font-size: 12px;
     font-family:'raleway', 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary)
 }
 
 body {
-    background-color: var(--secondary-btn);
+    background-color: var(--primary-bg);
     overflow-x: hidden;
 }
 
 section {
-    background-color: var(--secondary-btn);
+    background-color: var(--primary-bg);
     padding: 10px;
     margin: 0px auto;
     max-width: 1980px;
@@ -117,10 +133,9 @@ section.content div.welcome-illustration div.welcome-text h3 span {
 
 span.cart-items-count, span.notification-count {
     background-color: var(--primary-btn);
-    color: var(--navbar-bg);
     padding: 2px 5px;
-    font-weight: bold;
     border-radius: .3em;
+    color: var(--text-secondary)!important;
 }
 
 .alert {
@@ -130,16 +145,15 @@ span.cart-items-count, span.notification-count {
     margin: 10px;
     padding: 20px;
     border-radius: .3em;
-    font-weight: bold;
 }
 
+.alert .content {
+    color: var(--text-secondary);
+}
 .alert-success {
     background-color: var(--primary-btn);
 }
 
-.alert-error {
-    background-color: lightcoral;
-}
 
 
 
@@ -167,6 +181,11 @@ span.cart-items-count, span.notification-count {
 .alert button.close:hover svg {
     border: .3px solid var(--dark-border);
     border-radius: .2em;
+}
+
+.alert-error {
+    color: var(--text-primary)!important;
+    background-color: lightcoral;
 }
 
 .prompt-container {
@@ -236,6 +255,7 @@ span.cart-items-count, span.notification-count {
 
 .prompt-container div.action input[type='submit'] {
     background-color: var(--primary-btn);
+    color: var(--text-secondary);
 }
 
 

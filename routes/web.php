@@ -25,8 +25,8 @@ Route::middleware('auth')
 Route::get('product/show/{slug}', [ProductController::class, 'show'])
     ->name('product.show');
 
-Route::get('home/search/', [ProductController::class, 'search'])
-    ->name('home.search');
+Route::get('search/', [ProductController::class, 'search'])
+    ->name('search');
 
 Route::middleware('auth')->prefix('cart/')->name('cart.')
 ->group( function (): void {
@@ -41,11 +41,15 @@ Route::middleware('auth')->prefix('cart/')->name('cart.')
         ->name('remove-item');
 });
 
-Route::get('profile/', [ProfileController::class, 'index'])
-    ->name('profile.index') ;
+Route::prefix('profile/')->name('profile.')->middleware('auth')
+->group(function (): void {
     
-Route::patch('profile/update', [ProfileController::class, 'update'])
-    ->name('profile.update') ;
+    Route::get('', [ProfileController::class, 'index'])
+        ->name('index') ;
+        
+    Route::patch('update', [ProfileController::class, 'update'])
+        ->name('update') ;
+});
 
 Route::get('history/', HistoryController::class)
     ->name('history');

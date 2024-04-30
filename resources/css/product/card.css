@@ -2,14 +2,13 @@ div.product-card {
     padding: 10px;
     display: inline-block;
     border-radius: .3em;
-    background-color: var(--secondary-bg);
-    background-color: white;
+    background-color: var(--navbar-bg);
     margin-bottom: 10px;
     position: relative;
     max-width: 100%;
 }
 
-div.product-card div.card-head h1:nth-child(1) {
+div.product-card div.card-footer h1:nth-child(1) {
     font-size: 20px;
 }
 
@@ -50,13 +49,14 @@ div.action form button[type='submit'] {
 
 div.action form button[type='submit']:hover svg path {
     stroke: var(--primary-btn);
+    fill: white;
 }
 
 div.action form button[type='submit']:hover {
-    border: 1px solid var(--primary-btn);
+    border: 1px solid var(--secondary-btn);
     border-radius: 50%;
     padding: 5px;
-    background-color: var(--primary-btn);
+    background-color: var(--secondary-btn);
 }
 
 div.action form  {
@@ -73,7 +73,7 @@ div.action h5.price {
     padding: 10px ;
     font-size: 20px;
     border-radius: .3em;
-    background-color: rgba(255, 255, 255, 0.904);
+    background-color: #e3f6f5c5;
 }
 
 
@@ -92,8 +92,26 @@ div.image:hover div.action {
     display: block;
 }
 
-div.card-head, div.action {
+div.card-footer, div.action {
     text-align: right;
+}
+
+div.card-footer h1.price{
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: var(--primary-btn);
+}
+
+div.card-footer h1:last-child {
+    color: lightcoral;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+div.card-footer h1:nth-child(1) {
+    font-weight: 300;
+    margin: 5px 0px;
 }
 
 div.action a.show {
@@ -101,9 +119,8 @@ div.action a.show {
     display: inline-block;
     border: none;
     text-decoration: none;
-    color: var(--primary-bg);
+    color: var(--text-secondary);
     margin: 5px 0px;
-    font-weight: bold;
     background-color: var(--primary-btn);
     padding: 5px 10px;
 }

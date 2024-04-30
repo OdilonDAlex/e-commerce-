@@ -29,9 +29,9 @@
         </div>
         
         <!-- details du produit -->
-        <div class="card-head"> 
+        <div class="card-footer"> 
             <h1>{{ $product->name }}</h1>
-            <h1>{{ number_format($product->price, 2, '.', ' ') }}Ar</h1>
+            <h1 class="price">{{ number_format($product->price, 2, '.', ' ') }}Ar</h1>
             <h1>{{ $product->stock }} disponible(s)</h1>
         </div>
     </div>

@@ -13,7 +13,7 @@ class SearchBar extends Component
      */
     public function __construct(
         public string $placeholder="Nom du produit",
-        public string $route = "home",
+        public string $route = "search.home",
         public string $value = "", // button label
     )
     {
