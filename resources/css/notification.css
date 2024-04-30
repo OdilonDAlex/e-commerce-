@@ -1,18 +1,53 @@
+div.notification-render-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    border-radius: .2em;
+    background-color: var(--secondary-btn); 
+}
+
+div.notification-render-container div.date {
+    width: max-content;
+    color: var(--nav-hover);
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: var(--primary-bg);
+    border-radius: .2em 0px 0px .2em;
+}
+div.notification-render-container div.details {
+    padding: 5px;
+    min-width: max-content;
+} 
+
 div.notification-render-container .title {
     font-size: 15px;
 }
 
-div.notification-render-container .content, .datetime {
-    margin: 5px;
+div.notification-render-container .content, .datetime, small.elapsed-time {
+    margin: 10px;
+
 }
 
 div.notification-render-container .datetime {
     font-size: .8em;
 }
 
-div.notification-render-container {
-    background-color: white ;
-    margin: 10px;
-    border-radius: .3em;
-    padding: 10px;
+div.notification-render-container button.delete {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+div.notification-render-container button.delete svg{
+    width: 20px;
+    height: 20px;
+}
+
+div.notification-render-container button.delete svg path{
+    fill: var(--primary-bg);
 }

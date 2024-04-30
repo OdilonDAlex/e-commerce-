@@ -10,14 +10,16 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Redirect;
+
 class ProductController extends Controller
 {
     
     
     public function index() {
+
 
         if(! Gate::allows('visit-admin-pages')) {
             return redirect()->route('home');
