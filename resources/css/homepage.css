@@ -1,8 +1,52 @@
-section.content div.all-product {
+section.content div.all-product, div.best-promos, div.by-categories {
     padding: 10px;
     display: grid;
     grid-template-columns: calc(30% - 5px) calc(30% - 5px) calc(30% - 5px);
     column-gap: 20px;
     row-gap: 20px;
     justify-content:space-around;
+}
+
+div.best-promos p.promo {
+    font-size: 15px;
+    color: var(--text-secondary)
+}
+
+div.best-promos p.promo span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.best-promos p.promo span:nth-child(1) {
+    color: lightcoral;
+}
+
+div.best-promos p.promo span:nth-child(2) {
+    color: var(--secondary-btn);
+}
+
+div.categories {
+    margin: 10px;
+    padding: 10px;
+}
+
+div.categories button.category {
+    background-color: var(--secondary-btn);
+    padding: 8px 10px;
+    margin: 0px 5px;
+    border-radius: .3em;
+    border: none;
+    cursor: pointer;
+}
+
+div.categories button.category:hover {
+    filter: brightness(1.02);
+    background-color: var(--navbar-bg);
+    color: var(--text-primary);
+}
+
+div.categories button.active {
+    background-color: var(--primary-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--text-secondary);
 }

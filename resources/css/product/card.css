@@ -125,3 +125,11 @@ div.action a.show {
     background-color: var(--primary-btn);
     padding: 5px 10px;
 }
+
+.old-price {
+    text-decoration:line-through ;
+    padding: 0px 10px;
+    color: lightcoral!important;
+    font-weight: lighter;
+    font-size: 15px!important;
+}

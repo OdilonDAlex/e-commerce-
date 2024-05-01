@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Product\Category;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
@@ -13,9 +14,12 @@ class WelcomePage extends Controller
      */
     public function __invoke(Request $request)
     {
+        $category = Category::where('name', 'legumes')->get()->first() ;
         return view('welcome', [ 
             'products' => Product::paginate(9),
-            'bestPromo' => Product::where('promo', '>', '0')->orderBy('promo')->first(),
+            'bestPromos' => Product::where('promo', '>', '0')->orderByDesc('promo')->limit(3)->get(),
+            'categories' => Category::all(),
+            'activeCategory' => $category === null ? Category::first() : $category,
         ]);
     }
 }

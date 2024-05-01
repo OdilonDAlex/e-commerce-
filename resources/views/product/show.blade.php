@@ -40,7 +40,14 @@
             </div>
             <hr>
             <div class="product-price-stock">
-                <h5 class="product-price">{{ number_format($product->price, 2, '.', ' ') }} Ariary/<small>unité</small></h5>
+                @if($product->promo > 0)
+                    <h5 class="product-price">
+                        <span class="product-price old-price">{{ number_format($product->price, 2, '.', ' ') }}Ar</span>
+                        {{ number_format($product->price - (($product->price * $product->promo) / 100), 2, '.', ' ') }}Ar
+                    <h5>
+                @else
+                    <h5 class="product-price">{{ number_format($product->price, 2, '.', ' ') }}Ar</h5>
+                @endif
 
                 @if($product->stock > 0) 
                     <h5 class="avaible-product"><span class="avaible-product-quantity">{{ $product->stock }}</span> unité(s) disponible</h5>

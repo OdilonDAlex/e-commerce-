@@ -215,7 +215,8 @@ span.cart-items-count, span.notification-count {
 section.content h1.info {
     color: var(--text-secondary);
     font-size: 30px;
-    margin: 0px 20px;
+    margin: 20px 20px 0px 20px;
+    font-weight: normal;
 }
 
 @keyframes removeAlert {

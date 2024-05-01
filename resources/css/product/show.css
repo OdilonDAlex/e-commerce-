@@ -152,3 +152,11 @@ h5.avaible-product span.avaible-product-quantity {
 section.content form input {
     width: max-content!important;
 }
+
+.old-price {
+    text-decoration:line-through ;
+    padding: 0px 10px;
+    color: lightcoral!important;
+    font-weight: lighter;
+    font-size: 15px!important;
+}
