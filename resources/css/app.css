@@ -71,65 +71,9 @@ section {
     padding: 10px;
     margin: 0px auto;
     max-width: 1980px;
-    min-height: 100vh;
+    min-height: max-content;
 }
 
-section.content div.welcome-illustration {
-    background-image: url('../../storage/app/public/illustration.jpg') ;
-    background-size: cover;
-    background-color: rgba(80, 80, 80, 0.5);
-    height: calc(100vh - 30px);
-}
-
-section.content div.welcome-illustration form.search-bar {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-section.content div.welcome-illustration form.search-bar input[type='text']{
-    width: 450px;
-    border: none;
-    outline: none;
-    border-radius: .3em;
-    height: 40px;
-    padding: 0px 10px;
-    font-size: 16px;
-    text-align: center;
-    background-color: white;
-}
-
-section.content div.welcome-illustration form.search-bar input[type='submit']{
-    height: 40px;
-    padding: 10px;
-    border: .3px solid var(--dark-border);
-    border-radius: .3em;
-    font-weight: 700;
-    background-color: rgb(247, 247, 69);
-}
-
-section.content div.welcome-illustration div.welcome-text h3{
-    color: var(--secondary-btn);
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 30px;
-    text-align: center;
-    border-radius: .5em;
-    padding: 20px;
-    width: fit-content;
-    background-color: white;
-}
-
-section.content div.welcome-illustration div.welcome-text h3 span {
-    font-size: 35px;
-    color: var(--primary-btn);
-    padding: 5px 10px;
-    border-radius: .3em;
-    line-break:loose;
-}
 
 span.cart-items-count, span.notification-count {
     background-color: var(--primary-btn);
@@ -196,6 +140,7 @@ span.cart-items-count, span.notification-count {
     transform: translate(-50%, -50%);
     background-color: white;
     border: .5px solid rgb(190, 190, 190);
+    max-width: 350px;
     width: 70%;
     z-index: 8;
 }
@@ -253,11 +198,25 @@ span.cart-items-count, span.notification-count {
     background-color: var(--secondary-btn);
 }
 
+.prompt-container form svg {
+    fill: var(--primary-bg);
+    stroke: var(--primary-bg);
+}
+
 .prompt-container div.action input[type='submit'] {
     background-color: var(--primary-btn);
     color: var(--text-secondary);
 }
 
+.prompt-container button.close-btn svg path {
+    fill: var(--primary-bg);
+}
+
+section.content h1.info {
+    color: var(--text-secondary);
+    font-size: 30px;
+    margin: 0px 20px;
+}
 
 @keyframes removeAlert {
     from {

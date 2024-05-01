@@ -198,7 +198,7 @@ class ProductController extends Controller
     public function search(Request $request) {
 
         $request = $request->validate([
-            'route' => ['required', 'string', 'regex:/(search\.home|admin\.product\.index)/'],
+            'route' => ['required', 'string', 'regex:/(search\.home|admin\.product\.index)|product\.index/'],
             'query' => ['required', 'string', 'regex:/.+/'],
         ]); 
 
@@ -214,6 +214,7 @@ class ProductController extends Controller
     
     public function productIndex() {
         return view('product.index', [
+            'query' => null,
             'products' => Product::paginate(25),
         ]) ;
     }

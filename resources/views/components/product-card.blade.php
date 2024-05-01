@@ -14,7 +14,7 @@
                     <input type="hidden" name="quantity" value="1" min="0" max="{{ $product->stock }}">
                     
                     <button name="send_form" type="submit">
-                        @include('product.cart')
+                        @include('svg.cart')
                     </button>
                 </form>
                 @endif

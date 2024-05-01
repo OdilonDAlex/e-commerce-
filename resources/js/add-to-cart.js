@@ -3,7 +3,8 @@ import { Prompt } from "./models";
 import { Alert } from "./models";
 
 
-const addToCartForms = document.querySelectorAll('div.product-card div.image form');
+const addToCartForms = document.querySelectorAll('div.product-card div.image form, a.product div.action form');
+
 const cartItemsCount = document.querySelector('header ul.nav li.nav-item span.cart-items-count');
 const notificationItemsCount = document.querySelector('header ul.nav li.nav-item span.notification-count');
 var section = document.querySelector('section.content') ;
@@ -34,6 +35,7 @@ addToCartForms.forEach(form => {
         let productCardContainer = form.parentNode.parentNode.parentNode ;
 
         productCardContainer.appendChild(prompt.htmlElement) ;
+        console.log(productCardContainer) ;
 
         prompt.htmlElement.querySelector('form input[type="number"]');
         (async function() {

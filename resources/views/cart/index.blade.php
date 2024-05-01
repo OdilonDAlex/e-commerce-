@@ -3,7 +3,7 @@
 @section('title', 'Panier')
 
 @section('header')
-@include('header')
+    @include('header')
 @endsection
 
 @vite('resources/css/admin/table.css')
@@ -87,7 +87,7 @@
                     <form action="" method="POST">
                         @csrf
 
-                        <x-input type="submit" value="Acheter"/>
+                        <input type="submit" value="Acheter">
                     </form>
                 </td>
             </tr>

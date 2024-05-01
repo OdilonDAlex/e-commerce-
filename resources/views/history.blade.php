@@ -9,7 +9,9 @@
 @endsection
 
 @section('content')
+
     <div class="history-container">
+        <h1 class="info" style="color: var(--text-primary);">Historique</h1>
         <h2>Non lu</h2>
         @forelse($unReadNotifications as $notification)
             <x-history.notification :notification=$notification bgColor="var(--secondary-btn)" color="var(--dark-border)"/>

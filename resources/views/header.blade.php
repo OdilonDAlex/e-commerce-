@@ -12,9 +12,9 @@
         <img src="{{ Storage::disk('public')->url('logo.png') }}" alt="Logo">
     </div>
         <ul class="nav">
-            <li class="nav-item {{ request()->routeIs('home') || request()->routeIs('search') ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Accueil</a></li>
+            <li class="nav-item {{ request()->routeIs('home') ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Accueil</a></li>
 
-            <li class="nav-item {{ request()->routeIs('product.show') ? 'active' : '' }}"><a href="{{ route('home') }}" class="nav-link">Produit</a></li>
+            <li class="nav-item {{ request()->routeIs('product.show') || request()->routeIs('product.index') ? 'active' : '' }}"><a href="{{ route('product.index') }}" class="nav-link">Produit</a></li>
             
             @auth
             <li class="nav-item {{ request()->routeIs('cart.index') ? 'active' : ''}}"><a href="{{ route('cart.index') }}" 

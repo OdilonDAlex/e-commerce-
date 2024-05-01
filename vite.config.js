@@ -22,6 +22,8 @@ export default defineConfig({
                 'ressources/css/search-result.css',
                 'ressources/css/notification.css',
                 'ressources/css/history.css',
+                'ressources/css/product-index.css',
+                'ressources/css/product-list-view.css',
             ],
             refresh: true,
         }),
