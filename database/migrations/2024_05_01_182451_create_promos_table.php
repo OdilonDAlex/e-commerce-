@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
             $table->float('value');
-            $table->dateTime('started_at');
             $table->dateTime('end_at');
             $table->timestamps();
         });

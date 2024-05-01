@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class PromoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'value' => fake()->randomFloat(2, 0, 99),
+            'end_at' => Carbon::now()->addMinutes(fake()->randomNumber(3)),
         ];
     }
 }
