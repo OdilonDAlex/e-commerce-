@@ -26,12 +26,12 @@ class CreateProductFormRequest extends FormRequest
         return [
             'categories_id' => ['nullable', 'array'],
             'name' => ['required', 'string', 'min:2'],
-            'price' => ['required', 'decimal:0'],
+            'price' => ['required', 'decimal:0,10'],
             'stock' => ['required', 'integer'],
             'description' => ['required', 'string'],
-            'rate' => ['nullable', 'decimal:0', 'min:0', 'max:5'],
-            'promo' => ['nullable', 'decimal:0', 'min:0', 'max:100'],
-            'image' => ['nullable', 'image', 'max:6000'],
+            'rate' => ['nullable', 'decimal:0,10', 'min:0', 'max:5'],
+            'promo' => ['nullable', 'decimal:0,10', 'min:0', 'max:100'],
+            'image' => ['nullable', 'image', 'max:10000'],
         ];
     }
 }

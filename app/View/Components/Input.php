@@ -18,6 +18,7 @@ class Input extends Component
         public string $type="text",
         public string $class="",
         public string $disabled="0",
+        public string $error="",
     )
     {
         //

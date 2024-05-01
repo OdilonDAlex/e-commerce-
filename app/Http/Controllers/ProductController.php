@@ -116,6 +116,7 @@ class ProductController extends Controller
         if(! Gate::allows('visit-admin-pages')) {
             return redirect()->route('home');
         }
+
         $data = $request->validated();
         $categories_id = null;
         if(array_key_exists('categories_id', $data)){
@@ -137,7 +138,7 @@ class ProductController extends Controller
             $product->update($data); 
         }
         else {
-            if($product->image){
+            if($product->image != 'product-default-image.jpg'){
                 Storage::disk('public')->delete($product->image);
             }
     
@@ -209,5 +210,11 @@ class ProductController extends Controller
             'products' => $findedProductByName,
             'categories' => $findedCategories,
         ]);
-    }   
+    }
+    
+    public function productIndex() {
+        return view('product.index', [
+            'products' => Product::paginate(25),
+        ]) ;
+    }
 }

@@ -51,3 +51,10 @@ a.login-link {
 p.alternative-text {
     color: var(--dark-border);
 }
+
+p.error {
+    font-size: 1.2em;
+    color: lightcoral;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}

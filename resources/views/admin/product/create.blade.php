@@ -1,8 +1,8 @@
 @extends('base')
 
 @php
-$creation = $product == null;
-$title = $creation ? 'Creation de produit' : 'Modification de produit';
+    $creation = $product == null;
+    $title = $creation ? 'Creation de produit' : 'Modification de produit';
 @endphp
 
 @section('title', $title)
@@ -41,7 +41,8 @@ $title = $creation ? 'Creation de produit' : 'Modification de produit';
         </div>
 
         <!-- name -->
-        <x-input label="Nom du produit" type="text" name="name" value="{{ $creation ? '' : $product->name }}"/>
+        <x-input label="Nom du produit" type="text" name="name" value="{{ $creation ? '' : $product->name }}" 
+        />
 
         <!-- prix -->
         <x-input label="Prix" type="number" name="price" id="price" value="{{ $creation ? '' : $product->price }}"/>

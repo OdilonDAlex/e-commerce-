@@ -41,7 +41,8 @@ Route::middleware('auth')->prefix('cart/')->name('cart.')
         ->name('remove-item');
 });
 
-Route::prefix('profile/')->name('profile.')->middleware('auth')
+Route::prefix('profile/')->name('profile.')
+->middleware('auth')
 ->group(function (): void {
     
     Route::get('', [ProfileController::class, 'index'])
@@ -53,6 +54,9 @@ Route::prefix('profile/')->name('profile.')->middleware('auth')
 
 Route::get('history/', HistoryController::class)
     ->name('history');
+
+Route::get('produt/', [ProductController::class, 'productIndex'])
+    ->name('product.index') ;
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
