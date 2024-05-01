@@ -42,7 +42,7 @@
                 continue;
             }
             
-            $total_price = $product->price * $item->quantity;
+            $total_price = $product->price*(1 - $product->promo/100) * $item->quantity;
             $sum += $total_price;
         @endphp
         <tr>
@@ -50,7 +50,7 @@
                 <a href="{{ route('product.show', ['slug' => $product->slug, 'product_id' => $product->id ]) }}">{{ $product->name }}</a>
             </td>
             <td>{{ $item->quantity }}</td>
-            <td>{{ number_format($product->price, 2, '.', ' ') }} Ar</td>
+            <td>{{ number_format($product->price*(1 - $product->promo/100), 2, '.', ' ') }} Ar</td>
             <td>{{ number_format($total_price, 2, '.', ' ') }} Ar</td>
             <td class="action">
                     
@@ -76,7 +76,7 @@
         </tr>
         @endforelse
     </tbody>
-    @if($sum > 0)
+    @if(! $items->isEmpty())
         <tfoot>
             <tr>
                 <td>Total</td>

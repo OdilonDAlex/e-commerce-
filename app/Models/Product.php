@@ -23,6 +23,7 @@ class Product extends Model
         'slug',
         'rate',
         'promo',
+        'promo_id',
         'image',
         'updated_at',
     ];
@@ -48,5 +49,9 @@ class Product extends Model
 
     public function haveImage(): bool {
         return Storage::disk('public')->exists($this->image);
+    }
+
+    public function promos(): BelongsTo {
+        return $this->belongsTo(Promo::class, 'promo_id') ;
     }
 }
