@@ -18,7 +18,7 @@
 
     <x-input type="submit" value="Se Connecter" name="submit-btn" />
 
-    <p class="alternative-text">Vous n'avez pas encore de compte ? <a  class="login-link" href="{{ route('register') }}">S'inscrire</a></p>
+    <p class="alternative-text">Vous n'avez pas encore de compte ? <a  class="alternative-link" href="{{ route('register') }}">S'inscrire</a></p>
 
 </form>
 @endsection

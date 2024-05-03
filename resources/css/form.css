@@ -42,14 +42,14 @@ form.login-form, form.register-form{
     padding: 20px;
 }
 
-a.login-link {
+a.alternative-link {
     padding: 10px;
-    color: var(--dark-border);
+    color: var(--text-primary);
     font-weight: bold;
 }
 
 p.alternative-text {
-    color: var(--dark-border);
+    color: var(--text-primary);
 }
 
 p.error {

@@ -27,6 +27,7 @@ class RegisterUserController extends Controller
             'password' => Hash::make($credentias['password'])
         ]);
 
+        $user->carts()->create();
         Auth::login($user);
 
         $request->session()->regenerate();

@@ -5,7 +5,6 @@ div.product-card {
     flex-direction: column;
     border-radius: .2em;
     padding: 10px;
-    max-height: 430px;
 }
 
 div.image button[type='submit'] svg {
@@ -132,4 +131,8 @@ div.action a.show {
     color: lightcoral!important;
     font-weight: lighter;
     font-size: 15px!important;
+}
+
+div.square {
+    border: 1px solid red;
 }

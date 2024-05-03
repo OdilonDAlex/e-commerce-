@@ -33,4 +33,4 @@ Schedule::call( function () {
 
         }
     }
-})->everyTenSeconds();
+})->everySixHours();

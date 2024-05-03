@@ -20,7 +20,7 @@
     <x-input name="password"  type="password" label="Mot de passe"/>
     
     <x-input name="submit-btn"  type="submit" value="S'inscrire"/>
-    <p class="alternative-text">Vous avez déjà un compte ? <a  class="login-link" href="{{ route('login') }}">Se connecter</a></p>
+    <p class="alternative-text">Vous avez déjà un compte ? <a  class="alternative-link" href="{{ route('login') }}">Se connecter</a></p>
     
 </form>
 @endsection
