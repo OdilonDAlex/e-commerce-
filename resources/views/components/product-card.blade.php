@@ -31,11 +31,13 @@
     <div class="product-details">        
         <!-- details du produit -->
         <h1>{{ $product->name }}</h1>
-        @if($promo->value > 10)
-            <h1 class="price">
-                <span class="price old-price">{{ number_format($product->price, 2, '.', ' ') }}Ar</span>
-                {{ number_format($product->price - (($product->price * $promo->value) / 100), 2, '.', ' ') }}Ar
-            <h1>
+        @if($promo !== null)
+            @if($promo->value > 10)
+                <h1 class="price">
+                    <span class="price old-price">{{ number_format($product->price, 2, '.', ' ') }}Ar</span>
+                    {{ number_format($product->price - (($product->price * $promo->value) / 100), 2, '.', ' ') }}Ar
+                <h1>
+            @endif
         @else
             <h1 class="price">{{ number_format($product->price, 2, '.', ' ') }}Ar</h1>
         @endif

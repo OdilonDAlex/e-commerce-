@@ -183,7 +183,7 @@ class ProductController extends Controller
                     'value' => $promo_value,
                     'end_at' => new Carbon($promo_expired_date)
                 ]);
-                $product->promos()->associate($promo) ;
+                $product->promos()->assocpiate($promo) ;
             }
 
 

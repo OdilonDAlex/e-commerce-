@@ -48,6 +48,10 @@ class Product extends Model
     }
 
     public function haveImage(): bool {
+        if($this->image === null){
+            return false;
+        }
+        
         return Storage::disk('public')->exists($this->image);
     }
 
