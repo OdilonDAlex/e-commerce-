@@ -23,7 +23,7 @@
         @forelse($readedNotifications as $notification)
             <x-history.notification :notification=$notification bgColor="var(--nav-hover)" />
         @empty
-            <h5>aucun notification</h5>
+            <h6>aucune notification</h6>
         @endforelse
 
         {{ $readedNotifications->links('vendor.pagination.custom') }}

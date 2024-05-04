@@ -17,7 +17,8 @@ class WelcomePage extends Controller
         $category = Category::where('name', 'legumes')->get()->first() ;
         return view('welcome', [ 
             'products' => Product::paginate(9),
-            'bestPromos' => Product::where('promo', '>', '0')->orderByDesc('promo')->limit(3)->get(),
+            // 'bestPromos' => Product::where('promo', '>', '0')->orderByDesc('promo')->limit(3)->get(),
+            'bestPromos' => Product::all(),
             'categories' => Category::all(),
             'activeCategory' => $category === null ? Category::first() : $category,
         ]);

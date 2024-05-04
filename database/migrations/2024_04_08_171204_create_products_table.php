@@ -19,7 +19,6 @@ return new class extends Migration
             $table->text('description');
             $table->string('slug');
             $table->float('rate')->nullable();
-            $table->float('promo')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

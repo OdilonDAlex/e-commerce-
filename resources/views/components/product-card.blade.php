@@ -1,9 +1,11 @@
 @vite('resources/css/product/card.css')
-
+@php
+    $promo = $product->promos()->first(); 
+@endphp
 <div class="product-card">
     <div class="image">
         <div class="float-element">
-            <h5 class="price">{{ number_format($product->price*(1 - $product->promo/100), 2, '.', ' ') }}Ar</h5>
+            <h5 class="price">{{ number_format($product->price*(1 - (  $promo !== null ? (float)$promo->value : 0) /100), 2, '.', ' ') }}Ar</h5>
             
             @auth()
                 @if($product->stock > 0)
@@ -29,10 +31,10 @@
     <div class="product-details">        
         <!-- details du produit -->
         <h1>{{ $product->name }}</h1>
-        @if($product->promo > 10)
+        @if($promo->value > 10)
             <h1 class="price">
                 <span class="price old-price">{{ number_format($product->price, 2, '.', ' ') }}Ar</span>
-                {{ number_format($product->price - (($product->price * $product->promo) / 100), 2, '.', ' ') }}Ar
+                {{ number_format($product->price - (($product->price * $promo->value) / 100), 2, '.', ' ') }}Ar
             <h1>
         @else
             <h1 class="price">{{ number_format($product->price, 2, '.', ' ') }}Ar</h1>

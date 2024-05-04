@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Promo;
 use App\Http\Requests\Category\CreateCategoryFormRequest;
 use App\Http\Requests\CreateProductFormRequest;
 use App\Models\Product;
@@ -24,6 +26,7 @@ class ProductController extends Controller
         if(! Gate::allows('visit-admin-pages')) {
             return redirect()->route('home');
         }
+
         return view('admin.product.index', [
             'query' => null,
             'products' => Product::paginate(10),
@@ -64,12 +67,9 @@ class ProductController extends Controller
             return redirect()->route('home');
         }
 
-        $data = $request->validated();
-        $categories_id = null;
-
-        if(array_key_exists('categories_id', $data)){
-            $categories_id = array_shift($data);
-        }
+        $data = $this->getValidatedData(['name', 'price', 'stock', 'description'], $request);
+        
+        $categories_id = $request->validated('categories_id');
 
         /** @var UploadedFile $image */
         $image = $request->validated('image');
@@ -84,6 +84,18 @@ class ProductController extends Controller
         $data['slug'] = $slug;
         
         $product = Product::create($data);
+
+        $promo_value = $request->validated('promo');
+        $promo_expired_date = $request->validated('promo_expired_date');
+
+        if(($promo_expired_date !== null) && (($promo_value !== null) && ($promo_value > 0) )){
+            $promo = Promo::create([
+                'value' => $promo_value,
+                'end_at' => new Carbon($promo_expired_date)
+            ]);
+
+            $product->promos()->associate($promo) ;
+        }
 
         if ( isset($categories_id) && !empty($categories_id)) {
             $product->categories()->sync($categories_id);
@@ -117,12 +129,9 @@ class ProductController extends Controller
             return redirect()->route('home');
         }
 
-        $data = $request->validated();
-        $categories_id = null;
-        if(array_key_exists('categories_id', $data)){
-            $categories_id = array_shift($data);
-        }
-
+        $data = $this->getValidatedData(['name', 'price', 'stock', 'description'], $request);
+        
+        $categories_id = $request->validated('categories_id');
 
         try {
             $product = Product::findOrFail($product_id);
@@ -152,8 +161,52 @@ class ProductController extends Controller
             $product->save(); 
         }
         
+        $promo_value = $request->validated('promo');
+        $promo_expired_date = $request->validated('promo_expired_date');
+
+
+        if(($promo_expired_date !== null) && (($promo_value !== null) && ($promo_value > 0) )){
+            
+            
+            if(! $product->promos()->get()->isEmpty()) {
+
+                $old_promo = $product->promos()->first(); ;
+                $old_promo->update([
+                    'value' => $promo_value,
+                    'end_at' => $promo_expired_date
+                ]) ;
+
+                $old_promo->save();
+            }
+            else {
+                $promo = Promo::create([
+                    'value' => $promo_value,
+                    'end_at' => new Carbon($promo_expired_date)
+                ]);
+                $product->promos()->associate($promo) ;
+            }
+
+
+            $product->save();
+        }
+
+        
         return redirect()->route('admin.product.index')
             ->with('product_updated', 'Produit modifié avec succès');
+    }
+
+    public function getValidatedData($keys, $request) {
+        $data = array() ;
+
+        foreach($keys as $key){
+            $value = $request->validated($key);
+
+            if($value !== null){
+                $data[$key] = $request->validated($key);
+            }
+        }
+
+        return $data;
     }
 
     public function create_category(CreateCategoryFormRequest $request) {

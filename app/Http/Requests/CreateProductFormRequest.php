@@ -31,6 +31,7 @@ class CreateProductFormRequest extends FormRequest
             'description' => ['required', 'string'],
             'rate' => ['nullable', 'decimal:0,10', 'min:0', 'max:5'],
             'promo' => ['nullable', 'decimal:0,10', 'min:0', 'max:100'],
+            'promo_expired_date' => ['nullable', 'date'],
             'image' => ['nullable', 'image', 'max:10000'],
         ];
     }

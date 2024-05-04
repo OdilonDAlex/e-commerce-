@@ -57,7 +57,12 @@
         </div>
 
         <!-- PROMO -->
-        <x-input label="promo" type="number" max="100" min="0" name="promo" id="promo" value="{{ $creation ? '' : $product->promo }}"/>
+        <x-input label="promo" type="number" max="100" min="0" name="promo" id="promo" value="{{ $creation ? '' : $product->promos()->first()->value }}"/>
+        
+        
+        <!-- promo_expired_date -->
+        
+        <x-input label="date d'expiration du promo" type="date" name="promo_expired_date" id="promo_expired_date" value="{{ $creation ? '' : $product->promos()->first()->end_at }}"/>
         
         <!-- image -->
         <label for="image">{{ $creation ? 'Image' : 'Image de remplacement' }} </label>

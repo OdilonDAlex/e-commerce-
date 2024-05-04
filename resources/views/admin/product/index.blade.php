@@ -24,6 +24,9 @@
 
         <tbody>
             @foreach($products as $product)
+                @php
+                    $promo = $product->promos()->first();
+                @endphp
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>
@@ -32,7 +35,7 @@
                     <td>{{ $product->description }}</td>
                     <td class="price">{{ number_format($product->price , 2, '.', ' ') }}Ar</td>
                     <td>{{ $product->stock }}</td>
-                    <td>{{ isset($product->promo) && $product->promo != 0 ? $product->promo . "%": 'pas de promo' }}</td>
+                    <td>{{ $promo !== null ? $promo->value . '%': 'pas de promo' }}</td>
                     <td>
                         <a target="_blank" href="{{ $product->getImageUrl() }}">
                             Voir
