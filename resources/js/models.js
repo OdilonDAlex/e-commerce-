@@ -118,12 +118,12 @@ export class Alert {
             });
         })().then((result) => {
             this.htmlElement.style.animationName = 'removeAlert';
-            this.htmlElement.style.animationDuration = '2s';
+            this.htmlElement.style.animationDuration = '1.5s';
             setTimeout(
                 () => {
                     this.htmlElement.parentNode.removeChild(this.htmlElement) ;
                 }
-            , 2000)
+            , 1500)
 
         });
     }

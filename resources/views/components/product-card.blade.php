@@ -3,6 +3,15 @@
     $promo = $product->promos()->first(); 
 @endphp
 <div class="product-card">
+    @auth
+        @if(Auth::user()->role == "admin")
+            <div class="edit-btn">
+                <a href="{{ route('admin.product.edit', ['product_id' => $product->id]) }}">
+                    @include('svg.setting')
+                </a>
+            </div>
+        @endif
+    @endauth
     <div class="image">
         <div class="float-element">
             <h5 class="price">{{ number_format($product->price*(1 - (  $promo !== null ? (float)$promo->value : 0) /100), 2, '.', ' ') }}Ar</h5>

@@ -58,3 +58,10 @@ p.error {
     margin-top: -10px;
     margin-bottom: 20px;
 }
+
+input[type='checkbox'] {
+    margin-top: -10px;
+    margin-bottom: 20px;
+    
+    width: inherit;
+}

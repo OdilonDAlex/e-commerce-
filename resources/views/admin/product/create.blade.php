@@ -24,6 +24,7 @@
         @if(! $creation)
             @php
                 $product_categories_id = $product->categories()->pluck('name', 'id');
+                $promo = $product->promos()->first();
             @endphp
         @endif
         <div>
@@ -57,12 +58,19 @@
         </div>
 
         <!-- PROMO -->
-        <x-input label="promo" type="number" max="100" min="0" name="promo" id="promo" value="{{ $creation ? '' : $product->promos()->first()->value }}"/>
+        <x-input label="promo" type="number" max="100" min="0" name="promo" id="promo" value="{{ $creation ? '' : ( $promo !== null ? $promo->value : '' ) }}"/>
         
         
         <!-- promo_expired_date -->
         
-        <x-input label="date d'expiration du promo" type="date" name="promo_expired_date" id="promo_expired_date" value="{{ $creation ? '' : $product->promos()->first()->end_at }}"/>
+        <x-input label="date d'expiration du promo" type="date" name="promo_expired_date" id="promo_expired_date" value="{{ $creation ? '' : (  $promo !== null ? $promo->end_at : '' ) }}"/>
+
+        @if((! $creation) && ($promo !== null) )
+        <div>
+            <input type="checkbox" name="remove_promo" id="remove_promo">
+            <label for="remove_promo">Supprimer le promo</label>
+        </div>
+        @endif
         
         <!-- image -->
         <label for="image">{{ $creation ? 'Image' : 'Image de remplacement' }} </label>

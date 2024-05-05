@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title', $product->name )
-@vite(['resources/css/product/show.css', 'resources/css/flex-center.css'])
+@vite('resources/css/product/show.css')
 
 @section('header')
     @include('header')

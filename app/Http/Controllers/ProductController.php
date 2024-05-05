@@ -161,36 +161,45 @@ class ProductController extends Controller
             $product->save(); 
         }
         
-        $promo_value = $request->validated('promo');
-        $promo_expired_date = $request->validated('promo_expired_date');
+        $remove_promo = $request->validated('remove_promo') ;
 
-
-        if(($promo_expired_date !== null) && (($promo_value !== null) && ($promo_value > 0) )){
+        if($remove_promo !== null){
+            $old_promo = $product->promos()->first();
             
-            
-            if(! $product->promos()->get()->isEmpty()) {
+            $product->promos()->dissociate();
+            Promo::destroy($old_promo->id);
+        }
+        else {
+            $promo_value = $request->validated('promo');
+            $promo_expired_date = $request->validated('promo_expired_date');
 
-                $old_promo = $product->promos()->first(); ;
-                $old_promo->update([
-                    'value' => $promo_value,
-                    'end_at' => $promo_expired_date
-                ]) ;
 
-                $old_promo->save();
+            if(($promo_expired_date !== null) && (($promo_value !== null) && ($promo_value > 0) )){
+                
+                
+                if(! $product->promos()->get()->isEmpty()) {
+
+                    $old_promo = $product->promos()->first(); ;
+                    $old_promo->update([
+                        'value' => $promo_value,
+                        'end_at' => $promo_expired_date
+                    ]) ;
+
+                    $old_promo->save();
+                }
+                else {
+                    $promo = Promo::create([
+                        'value' => $promo_value,
+                        'end_at' => new Carbon($promo_expired_date)
+                    ]);
+                    $product->promos()->associate($promo) ;
+                }
+
+
+                $product->save();
             }
-            else {
-                $promo = Promo::create([
-                    'value' => $promo_value,
-                    'end_at' => new Carbon($promo_expired_date)
-                ]);
-                $product->promos()->assocpiate($promo) ;
-            }
-
-
-            $product->save();
         }
 
-        
         return redirect()->route('admin.product.index')
             ->with('product_updated', 'Produit modifié avec succès');
     }

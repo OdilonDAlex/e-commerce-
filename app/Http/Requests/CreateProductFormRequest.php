@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateProductFormRequest extends FormRequest
 {
@@ -33,6 +34,7 @@ class CreateProductFormRequest extends FormRequest
             'promo' => ['nullable', 'decimal:0,10', 'min:0', 'max:100'],
             'promo_expired_date' => ['nullable', 'date'],
             'image' => ['nullable', 'image', 'max:10000'],
+            'remove_promo' => ['nullable', ]
         ];
     }
 }

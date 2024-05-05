@@ -28,9 +28,11 @@
                 @php
                     $unReadNotifNumber = count( Auth::user()->unReadNotifications()->get() );
                 @endphp 
-                @if($unReadNotifNumber > 0)
-                    <span class="notification-count">{{ $unReadNotifNumber }}</span></a></li>
-                @endif
+                <span class="notification-count"
+                    @if($unReadNotifNumber <= 0)
+                        style="display: none;" 
+                    @endif
+                >{{ $unReadNotifNumber }}</span></a></li>
             @endauth
             <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
             <li class="nav-item {{ request()->routeIs('profile.*') ? 'active' : '' }}"><a href="{{ route('profile.index') }}" class="nav-link">Profil</a></li>

@@ -16,7 +16,7 @@
 @section('content')
 
     <x-search-bar value='Rechercher' />
-    
+
     <h1 class="info">Meilleur Promo</h1>
     <!-- meilleur promo  -->
     <div class="best-promos">
