@@ -35,7 +35,6 @@ addToCartForms.forEach(form => {
         let productCardContainer = form.parentNode.parentNode.parentNode ;
 
         productCardContainer.appendChild(prompt.htmlElement) ;
-        console.log(productCardContainer) ;
 
         prompt.htmlElement.querySelector('form input[type="number"]');
         (async function() {
@@ -68,6 +67,19 @@ addToCartForms.forEach(form => {
                 });
     
                 alert_.insertBefore(section) ;
+                
+                setTimeout( () => {
+                    let stock = productCardContainer.querySelector('.stock')
+                    let newStock = parseInt(stock.innerText) - quantity;
+                    if(newStock > 0){
+                        stock.innerText = `${newStock} disponible(s)`;
+                    }
+                    else {
+                        stock.innerHTML = 'en rupture de stock';
+                    }
+                }
+                , 500);
+                
             }
         })
     })

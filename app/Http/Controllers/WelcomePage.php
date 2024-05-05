@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart\Item;
 use App\Models\Product;
 use App\Models\Product\Category;
 use Illuminate\Http\Request;
 use App\Models\Promo;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+use Exception;
 
 class WelcomePage extends Controller
 {

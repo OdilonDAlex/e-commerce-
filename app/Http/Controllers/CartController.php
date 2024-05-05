@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Cart\Item;
 use App\Models\Product;
 use App\Notifications\ProductAddedToCart;
+use Carbon\Carbon;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Redirect;
 
@@ -46,7 +47,19 @@ class CartController extends Controller
         
         $product = Product::find((int) $request['product_id']);
 
-        $cart_item = $product->items()->create(['quantity' => (int)$request['quantity']]) ;
+        if($product->stock < (int) $request['quantity']) {
+            return redirect()->route('home');
+        }
+
+        $cart_item = $product->items()->create([
+            'quantity' => (int)$request['quantity'],
+            'timeout' => Carbon::now()->addHour(),
+            'stock_taken'  => false,
+        ]) ;
+
+        $product->stock -= (int) $cart_item->quantity;
+        $cart_item->stock_taken = true;
+        $product->save();
 
         $cart  = $this->user->carts()->first() ;
 
@@ -54,6 +67,7 @@ class CartController extends Controller
             $cart = $this->createCart();
         }
         $cart_item->carts()->associate($cart) ;
+
 
         $cart_item->save();
 

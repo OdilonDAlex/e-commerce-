@@ -13,6 +13,8 @@ class Item extends Model
 {
     protected $fillable = [
         'quantity',
+        'timeout',
+        'stock_taken'
     ];
 
     use HasFactory;

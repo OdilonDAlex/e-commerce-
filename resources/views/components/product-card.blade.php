@@ -50,7 +50,7 @@
         @else
             <h1 class="price">{{ number_format($product->price, 2, '.', ' ') }}Ar</h1>
         @endif
-        <h1>{{ $product->stock }} disponible(s)</h1>
+        <h1 class="stock">{{ $product->stock > 0 ? $product->stock . ' disponible(s)' : 'en rupture de stock' }}</h1>
     </div>
 
     <!-- action -->
