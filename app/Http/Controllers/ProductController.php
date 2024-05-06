@@ -277,7 +277,7 @@ class ProductController extends Controller
     public function productIndex() {
         return view('product.index', [
             'query' => null,
-            'products' => Product::paginate(25),
+            'products' => Product::orderBy('name')->paginate(25),
         ]) ;
     }
 }
