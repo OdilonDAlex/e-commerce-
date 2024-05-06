@@ -52,8 +52,7 @@
                 @if($product->stock > 0) 
                     <h5 class="avaible-product"><span class="avaible-product-quantity">{{ $product->stock }}</span> unité(s) disponible</h5>
                 @else
-                    <p>Pour l'instant, le produit est en rupture de stock</p>
-                    <button>Recevoir une notification</button>
+                    <h5 class="avaible-product"><span style="font-size: 14px;" class="avaible-product-quantity">En rupture de stock</span></h5>
                 @endif
             </div>
             <hr>
@@ -66,11 +65,19 @@
 
                 <div class="product-quantity">
                     <label for="quantity">Quantité</label><br>
-                    <input type="number" name="quantity" id="quantity" min="0" max="{{ $product->stock }}">
+                    <input type="number" name="quantity" id="quantity" min="0" max="{{ $product->stock }}"
+                    @if($product->stock == 0)
+                        disabled="1"
+                    @endif
+                    >
                 </div>
                 <hr>
 
-                <input type="submit" value="Ajouter au panier">
+                <input type="submit" value="Ajouter au panier"
+                    @if($product->stock == 0)
+                            disabled="1"
+                    @endif
+                >
             </form>
             <hr>
             <div class="share-product">

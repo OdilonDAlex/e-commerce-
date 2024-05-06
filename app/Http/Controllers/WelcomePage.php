@@ -10,6 +10,7 @@ use App\Models\Promo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Exception;
+use Illuminate\Database\Query\JoinClause;
 
 class WelcomePage extends Controller
 {
@@ -17,12 +18,21 @@ class WelcomePage extends Controller
      * Handle the incoming request.
      */
     public function __invoke(Request $request)
-    {
+    {   
+
+        $bestPromos = Product::select('*')
+            ->join('promos', function(JoinClause $join) {
+                $join->on('promos.id', '=', 'products.promo_id');
+            })
+            ->limit(6)
+            ->orderByDesc('promos.value')
+            ->get();
+
         $category = Category::where('name', 'legumes')->get()->first() ;
-        $bestPromos = array_keys(Promo::select('id')->where('value', '>', 0)->orderByDesc('value')->limit(6)->pluck('id', 'id')->toArray());
+
         return view('welcome', [ 
             'products' => Product::paginate(9),
-            'bestPromos' => Product::whereRaw('promo_id in ('. implode(', ', $bestPromos) . ')')->get(),
+            'bestPromos' => $bestPromos,
             'categories' => Category::all(),
             'activeCategory' => $category === null ? Category::first() : $category,
         ]);

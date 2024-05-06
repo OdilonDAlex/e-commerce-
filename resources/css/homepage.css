@@ -5,7 +5,7 @@ section.content div.all-product, div.best-promos, div.by-categories {
     grid-template-columns: calc(30% - 5px) calc(30% - 5px) calc(30% - 5px);
     grid-template-rows: max-content;
     column-gap: 20px;
-    row-gap: 20px;
+    row-gap: 40px;
     justify-content:space-around;
 }
 

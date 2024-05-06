@@ -86,9 +86,12 @@ class CartController extends Controller
        
        $item = Item::find((int) $validated['item_id']);
         if($item !== null){
+            $product = Product::find( (int) ($item->product_id));
+            $product->stock += (int) $item->quantity;
             $item->products()->dissociate();
             $item->carts()->dissociate();
             $item->delete();
+            $product->save();
 
             return redirect()->route('cart.index')
                 ->with('item-removed-to-cart', 'Le Produit ' . $validated['product_name'] . ' a bien été retiré de votre panier');

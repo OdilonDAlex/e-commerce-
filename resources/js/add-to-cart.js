@@ -67,7 +67,7 @@ addToCartForms.forEach(form => {
                 });
     
                 alert_.insertBefore(section) ;
-                
+
                 setTimeout( () => {
                     let stock = productCardContainer.querySelector('.stock')
                     let newStock = parseInt(stock.innerText) - quantity;
@@ -75,6 +75,7 @@ addToCartForms.forEach(form => {
                         stock.innerText = `${newStock} disponible(s)`;
                     }
                     else {
+                        form.parentNode.removeChild(form);
                         stock.innerHTML = 'en rupture de stock';
                     }
                 }
