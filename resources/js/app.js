@@ -1,5 +1,6 @@
 import './bootstrap';
-import '../css/header.css'
+import '../css/header.css';
+import './change-category.js';
 
 const alerts = document.querySelectorAll('div.alert') ;
 

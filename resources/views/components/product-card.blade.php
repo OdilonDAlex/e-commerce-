@@ -39,7 +39,7 @@
 
     <div class="product-details">        
         <!-- details du produit -->
-        <h1>{{ $product->name }}</h1>
+        <h1 class="name">{{ $product->name }}</h1>
         @if($promo !== null)
             @if($promo->value > 10)
                 <h1 class="price">

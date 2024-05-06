@@ -28,7 +28,7 @@ class WelcomePage extends Controller
             ->orderByDesc('promos.value')
             ->get();
 
-        $category = Category::where('name', 'legumes')->get()->first() ;
+        $category = Category::all()[2] ;
 
         return view('welcome', [ 
             'products' => Product::paginate(9),

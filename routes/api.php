@@ -12,4 +12,4 @@ Route::get('/products/', [ProductController::class, 'index']);
 
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
-Route::get('/products/category/{product_id}', [ProductController::class, 'byCategory']);
+Route::get('/products/category/{category}', [ProductController::class, 'byCategory']);
