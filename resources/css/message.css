@@ -20,3 +20,41 @@ section.content div.message-collapse button.collapse-btn:hover button.collapse-b
     content: 'Contacter l\'admin';
     width: 300px;
 }
+
+div.message-container-header {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 60ch;
+    height: 50px;
+    border: 1px solid rgb(139, 138, 138);
+    border-radius: .7em .7em 0px 0px;
+    background-color: var(--navbar-bg);
+    z-index: 8;
+}
+
+div.message-container-header button.close-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+div.message-container-header button.close-btn svg {
+    width: 25px;
+    height: 25px;
+    fill: var(--primary-bg);
+    stroke: var(--primary-bg);
+}
+
+div.message-container-header h1.recipient {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    font-size: 13px;
+}

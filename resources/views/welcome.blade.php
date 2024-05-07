@@ -65,4 +65,5 @@
     {{ $products->links('vendor.pagination.custom') }}
 
 
+    <x-message-container-header/>
 @endsection
