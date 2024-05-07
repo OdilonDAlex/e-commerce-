@@ -33,6 +33,8 @@
 
         @auth
             <div class="message-collapse">
+
+                <x-message-container/>
                 <button class="collapse-btn">
                     @include('svg.message')
                 </button>

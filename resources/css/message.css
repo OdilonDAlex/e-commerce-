@@ -22,14 +22,11 @@ section.content div.message-collapse button.collapse-btn:hover button.collapse-b
 }
 
 div.message-container-header {
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    width: 60ch;
+    position: relative;
     height: 50px;
-    border: 1px solid rgb(139, 138, 138);
-    border-radius: .7em .7em 0px 0px;
+    box-shadow: 0px 1px 5px rgb(139, 138, 138);
     background-color: var(--navbar-bg);
+    border-radius: .7em .7em 0px 0px;
     z-index: 8;
 }
 
@@ -57,4 +54,33 @@ div.message-container-header h1.recipient {
     transform: translateY(-50%);
     left: 20px;
     font-size: 13px;
+}
+
+div.message-container {
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    width:  55ch;
+    height: 80vh;
+    border-radius: .7em .7em 0px 0px;
+    background-color: var(--nav-hover);
+    z-index: 8;
+}
+
+div.message {
+    margin: 15px 5px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: end;    
+}
+
+div.message div.content {
+    max-width: 70%;
+    background-color: var(--primary-btn);
+    color: var(--text-secondary);
+    padding: 7px;
+    border-radius: .5em .5em 0px .5em ;
 }
