@@ -20,7 +20,7 @@ class WelcomePage extends Controller
     public function __invoke(Request $request)
     {   
 
-        $bestPromos = Product::select('*')
+        $bestPromos = Product::select('products.*')
             ->join('promos', function(JoinClause $join) {
                 $join->on('promos.id', '=', 'products.promo_id');
             })
@@ -28,7 +28,7 @@ class WelcomePage extends Controller
             ->orderByDesc('promos.value')
             ->get();
 
-        $category = Category::all()[2] ;
+        $category = Category::first();
 
         return view('welcome', [ 
             'products' => Product::paginate(9),

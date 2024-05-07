@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', $product->name )
+@section('title', htmlspecialchars_decode($product->name) )
 @vite('resources/css/product/show.css')
 
 @section('header')
@@ -16,7 +16,7 @@
         </div>
         <div class="product-details">
             <div class="product-name">
-                <h1>{{ $product->name }}</h1>
+                <h1>{{ htmlspecialchars_decode($product->name) }}</h1>
                 <small class="description">{{ $product->description }}</small><br>
                 <small>
                     <div class="stars">

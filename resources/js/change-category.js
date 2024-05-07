@@ -1,17 +1,17 @@
 import axios from "axios";
+import { Alert } from "./models";
+import { productCard } from "./product-card-template";
+import { addProduct } from "./add-to-cart";
 
 const productsInByCategoryContainer = document.querySelector('div.by-categories');
 let products = productsInByCategoryContainer.querySelectorAll('div.product-card');
-const containerHeight = productsInByCategoryContainer.clientHeight;
 
-var productCard = products[0];
-var editLinkBaseUrl = (productCard.querySelector('div.edit-btn a').href).replace(/edit\/[0-9]+/, "edit/");
-var showProductBaseUrl = (productCard.querySelector('div.action a.show').href).replace(/show\/.+/, 'show');
+window.productCard = productCard; 
+productCard.querySelector('div.edit-btn').style.display = 'none';
 
 const buttonChangeCategoryContainer = document.querySelector('div.categories');
 const buttons = buttonChangeCategoryContainer.querySelectorAll('button.category');
 
-console.log(buttons);
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
         event.preventDefault();
@@ -34,7 +34,10 @@ buttons.forEach(button => {
 
                 products = productsInByCategoryContainer.querySelectorAll('div.product-card');
             })
-            .catch( (error) => { console.error('Une erreur s\'est produite...'); console.log(error);} );
+            .catch( (error) => { 
+                let alert_ = new Alert('Ouups, une erreur s\'est produite...', 'error');
+                alert_.insertBefore(document.querySelector('section.content'));
+            } );
     })
 });
 
@@ -45,20 +48,33 @@ function renderProduct(product){
     let imageContainer = cardTemplate.querySelector('div.image');
     let productDetails = cardTemplate.querySelector('div.product-details');
 
-    cardTemplate.querySelector('div.edit-btn a').href = editLinkBaseUrl + product.id;
-
-    imageContainer.querySelector('div.float-element h5.price').innerText = product.price ;
-
-    console.log(imageContainer);
-    console.log(imageContainer.querySelector('form'));
-    try {
-        let form = imageContainer.querySelector('form');
-        form.elements.product_id.value = product.id;
-    }
-    catch(error){;}
+    console.log(product);
     
-    imageContainer.querySelector('img.img').setAttribute('src', product.image_url);
+    
+    let form = imageContainer.querySelector('form');
+    if(document.querySelector('header li.nav-item.nav-dropdown') !== null){
+        cardTemplate.querySelector('div.edit-btn').style.display = 'block';
+        cardTemplate.querySelector('div.edit-btn a').href = `${window.origin}/admin/product/edit/${product.id}`;
+    }
 
+    if(document.querySelector('header form input.logout-btn') !== null && product.stock > 0){
+        form.elements.product_id.value = product.id;
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault() ;
+    
+            addProduct(form, product.id);
+        })
+    }
+
+    else {
+        form.style.display = 'none';
+    }
+
+
+    imageContainer.querySelector('div.float-element h5.price').innerText = product.price + ' Ar';
+
+    imageContainer.querySelector('img.img').setAttribute('src', product.image_url);
     productDetails.querySelector('h1.name').innerText = product.name;
 
     try {
@@ -68,9 +84,10 @@ function renderProduct(product){
 
     productDetails.querySelector('h1.stock').innerText = (parseInt(product.stock) > 0 ? product.stock + " disponible(s)" : "en rupture de stock");
 
+
     let actionContainer = cardTemplate.querySelector('div.action');
 
-    actionContainer.querySelector('a.show').href = `${showProductBaseUrl}/${product.slug}?product_id=${product.id}` ;
+    actionContainer.querySelector('a.show').href = `${window.origin}/product/show/${product.slug}?product_id=${product.id}` ;
 
     return cardTemplate;
 }

@@ -28,60 +28,65 @@ addToCartForms.forEach(form => {
     form.addEventListener('submit', (event) => {
         event.preventDefault() ;
 
-        let alert_ = new Alert('Votre demande est en cours de traitement...');
-        
-        let prompt = new Prompt('Ajout de produit', 'Quantité de produit', 'Confirmer', 'Annuler') ;
-
-        let productCardContainer = form.parentNode.parentNode.parentNode ;
-
-        productCardContainer.appendChild(prompt.htmlElement) ;
-
-        prompt.htmlElement.querySelector('form input[type="number"]');
-        (async function() {
-            return await new Promise((resolve, reject) => {
-                let form = prompt.htmlElement.querySelector('form') ;
-                let cancelBtn = form.querySelector('button');
-
-                form.addEventListener('submit', (ev) => {
-                    ev.preventDefault() ;
-
-                    prompt.htmlElement.parentNode.removeChild(prompt.htmlElement) ;
-                    resolve(form.quantity.value) ;
-                })
-
-                cancelBtn.addEventListener('click', (ev) => {
-                    reject(-1) ;
-                })
-            }) ;
-        })()
-        .then( ( quantity ) => {
-            if(quantity > 0) {
-                let data = {
-                    product_id: productId,
-                    quantity: quantity
-                }
-        
-                axios.post('../cart/add', data)
-                .catch( (error) => {
-                    console.error(error);
-                });
-    
-                alert_.insertBefore(section) ;
-
-                setTimeout( () => {
-                    let stock = productCardContainer.querySelector('.stock')
-                    let newStock = parseInt(stock.innerText) - quantity;
-                    if(newStock > 0){
-                        stock.innerText = `${newStock} disponible(s)`;
-                    }
-                    else {
-                        form.parentNode.removeChild(form);
-                        stock.innerHTML = 'en rupture de stock';
-                    }
-                }
-                , 500);
-                
-            }
-        })
+        addProduct(form, productId);
     })
 });
+
+
+export function addProduct(form, productId) {
+    let alert_ = new Alert('Votre demande est en cours de traitement...');
+        
+    let prompt = new Prompt('Ajout de produit', 'Quantité de produit', 'Confirmer', 'Annuler') ;
+
+    let productCardContainer = form.parentNode.parentNode.parentNode ;
+
+    productCardContainer.appendChild(prompt.htmlElement) ;
+
+    prompt.htmlElement.querySelector('form input[type="number"]');
+    (async function() {
+        return await new Promise((resolve, reject) => {
+            let form = prompt.htmlElement.querySelector('form') ;
+            let cancelBtn = form.querySelector('button');
+
+            form.addEventListener('submit', (ev) => {
+                ev.preventDefault() ;
+
+                prompt.htmlElement.parentNode.removeChild(prompt.htmlElement) ;
+                resolve(form.quantity.value) ;
+            })
+
+            cancelBtn.addEventListener('click', (ev) => {
+                reject(-1) ;
+            })
+        }) ;
+    })()
+    .then( ( quantity ) => {
+        if(quantity > 0) {
+            let data = {
+                product_id: productId,
+                quantity: quantity
+            }
+    
+            axios.post('../cart/add', data)
+            .catch( (error) => {
+                console.error(error);
+            });
+
+            alert_.insertBefore(section) ;
+
+            setTimeout( () => {
+                let stock = productCardContainer.querySelector('.stock')
+                let newStock = parseInt(stock.innerText) - quantity;
+                if(newStock > 0){
+                    stock.innerText = `${newStock} disponible(s)`;
+                }
+                else {
+                    form.parentNode.removeChild(form);
+                    stock.innerHTML = 'en rupture de stock';
+                }
+            }
+            , 500);
+            
+        }
+    })
+}

@@ -62,7 +62,7 @@ class ProductAddedToCart extends Notification implements ShouldBroadcast
         return [
             'user_id' => $user->id,
             'title' => 'Ajout de produit',
-            'content' => 'Vous-avez ajouté ' . $this->item->quantity . ' ' . $product->name . ' dans votre panier',
+            'content' => 'Vous-avez ajouté ' . $this->item->quantity . ' ' . htmlspecialchars_decode($product->name) . ' dans votre panier',
         ];
     }
 }

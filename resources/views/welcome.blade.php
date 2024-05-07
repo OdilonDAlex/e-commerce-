@@ -22,7 +22,7 @@
     <div class="best-promos">
         @forelse($bestPromos as $product)
             <div>
-                <p class="promo"><span> - {{ $product->promos()->first()->value }}%</span> sur <span>{{ $product->name }}</span></p>
+                <p class="promo"><span> - {{ $product->promos()->first()->value }}%</span> sur <span>{{ htmlspecialchars_decode($product->name) }}</span></p>
                 <x-product-card :product=$product />
             </div>
         @empty

@@ -14,7 +14,7 @@
     @endauth
     <div class="image">
         <div class="float-element">
-            <h5 class="price">{{ number_format($product->price*(1 - (  $promo !== null ? (float)$promo->value : 0) /100), 2, '.', ' ') }}Ar</h5>
+            <h5 class="price">{{ number_format($product->price*(1 - (  $promo !== null ? (float)$promo->value : 0) /100), 2, '.', ' ') }} Ar</h5>
             
             @auth()
                 @if($product->stock > 0)
@@ -39,16 +39,16 @@
 
     <div class="product-details">        
         <!-- details du produit -->
-        <h1 class="name">{{ $product->name }}</h1>
+        <h1 class="name">{{ htmlspecialchars_decode($product->name) }}</h1>
         @if($promo !== null)
             @if($promo->value > 10)
                 <h1 class="price">
-                    <span class="price old-price">{{ number_format($product->price, 2, '.', ' ') }}Ar</span>
-                    {{ number_format($product->price - (($product->price * $promo->value) / 100), 2, '.', ' ') }}Ar
+                    <span class="price old-price">{{ number_format($product->price, 2, '.', ' ') }} Ar</span>
+                    {{ number_format($product->price - (($product->price * $promo->value) / 100), 2, '.', ' ') }} Ar
                 <h1>
             @endif
         @else
-            <h1 class="price">{{ number_format($product->price, 2, '.', ' ') }}Ar</h1>
+            <h1 class="price">{{ number_format($product->price, 2, '.', ' ') }} Ar</h1>
         @endif
         <h1 class="stock">{{ $product->stock > 0 ? $product->stock . ' disponible(s)' : 'en rupture de stock' }}</h1>
     </div>
