@@ -18,13 +18,23 @@ buttons.forEach(button => {
 
         axios.get(`/api/products/category/${button.innerText}`)
             .then( (result) => {
-                products.forEach(productCard => {
-                    productCard.parentNode.removeChild(productCard);
-                });
+                productsInByCategoryContainer.style.display = 'grid';
+                productsInByCategoryContainer.innerHTML = '';
 
-                for(let product of result.data.data){
-                    productsInByCategoryContainer.appendChild(renderProduct(product)); 
+                try {
+                    for(let product of result.data.data){
+                        productsInByCategoryContainer.appendChild(renderProduct(product)); 
+                    }
                 }
+                catch(error){
+                    let alert_ = new Alert('Aucun produit n\' a été trouvé', 'success');
+                    alert_.htmlElement.style.position = 'relative';
+                    alert_.htmlElement.style.minWidth = '100%' ;
+                    alert_.htmlElement.style.display = 'block';
+                    productsInByCategoryContainer.style.display = 'block';
+                    productsInByCategoryContainer.appendChild(alert_.htmlElement);
+                }
+                
 
                 buttons.forEach(button_ => {
                     button_.className = "category";
@@ -37,6 +47,7 @@ buttons.forEach(button => {
             .catch( (error) => { 
                 let alert_ = new Alert('Ouups, une erreur s\'est produite...', 'error');
                 alert_.insertBefore(document.querySelector('section.content'));
+                console.log(error);
             } );
     })
 });
