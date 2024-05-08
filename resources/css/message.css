@@ -9,6 +9,7 @@ section.content div.message-collapse button.collapse-btn {
     padding: 5px 10px;
     cursor: pointer;
     width: 40px;
+    z-index: 7;
 }
 
 button.collapse-btn svg {
@@ -23,7 +24,7 @@ section.content div.message-collapse button.collapse-btn:hover button.collapse-b
 
 div.message-container-header {
     position: relative;
-    height: 50px;
+    padding: 20px;
     box-shadow: 0px 1px 5px rgb(139, 138, 138);
     background-color: var(--navbar-bg);
     border-radius: .7em .7em 0px 0px;
@@ -59,23 +60,39 @@ div.message-container-header h1.recipient {
 div.message-container {
     display: none;
     position: fixed;
+    flex-direction: column;
     bottom: 0px;
     right: 20px;
-    width:  55ch;
-    height: 80vh;
+    width:  50ch;
+    min-height: 50vh;
+    max-height: 80vh;
     border-radius: .7em .7em 0px 0px;
     background-color: var(--nav-hover);
+    border: 1px solid var(--primary-btn);
     z-index: 8;
 }
 
+div.conversation-body {
+    overflow-y: scroll;
+    flex-grow: 2;
+}
+
 div.message {
-    margin: 15px 5px;
+    margin: 5px 5px;
     position: relative;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: end;    
+    flex-wrap: nowrap;    
 }
+
+div.right {
+    justify-content: end;
+}
+
+div.left {
+    justify-content: start;
+}
+
 
 div.message div.content {
     max-width: 70%;
@@ -83,4 +100,46 @@ div.message div.content {
     color: var(--text-secondary);
     padding: 7px;
     border-radius: .5em .5em 0px .5em ;
+}
+
+div.left div.content {
+    background-color: var(--navbar-bg);
+    color: var(--text-primary);
+    font-weight: bold;
+    border-radius: 0px .5em .5em .5em;
+}
+
+form.send-message {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+    background-color: var(--navbar-bg);
+    box-shadow: 0px 1px 5px rgb(139, 138, 138);
+}
+
+form.send-message input[type='text'] {
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: .7em;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 5px;
+    color: var(--primary-btn);
+    border: 1px solid var(--primary-btn);
+    background-color: var(--nav-hover);
+}
+
+form.send-message button[type='submit'] {
+    border: none;
+    background-color: var(--primary-btn);
+    padding: 0px 5px;
+    color: var(--text-secondary);
+    border-radius: .7em;
+    cursor: pointer;
 }

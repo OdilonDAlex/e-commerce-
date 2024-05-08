@@ -6,14 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Message extends Component
+class ConversationBody extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(
-        public string $bySender="1",
-    )
+    public function __construct()
     {
         //
     }
@@ -23,6 +21,6 @@ class Message extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.message');
+        return view('components.conversation-body');
     }
 }
