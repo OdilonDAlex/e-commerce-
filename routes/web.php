@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomePage;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -54,6 +55,18 @@ Route::prefix('profile/')->name('profile.')
         ->name('update') ;
 });
 
+Route::get('/users/authenticated/ids', function() {
+    return json_encode(array_unique(DB::table(config('session.table'))
+        ->select('user_id')
+        ->get()
+        ->pluck('user_id')
+        ->toArray()))
+        ;
+});
+
+Route::get('/auth/', function() {
+    return json_encode(Auth::check() ? ['id' => Auth::user()->id, 'role' => Auth::user()->role ] : ['id' => -1, 'role' => 'guest']);
+});
 
 Route::get('history/', HistoryController::class)
     ->name('history');

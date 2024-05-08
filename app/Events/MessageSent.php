@@ -41,4 +41,8 @@ class MessageSent implements ShouldBroadcast
 
         return new PrivateChannel('chat-'. $id_1 . '-' . $id_2);
     }
+
+    public function broadcastAs(): string {
+        return 'message-sent';
+    }
 }

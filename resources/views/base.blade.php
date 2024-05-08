@@ -32,13 +32,15 @@
         @yield('content')
 
         @auth
-            <div class="message-collapse">
+            @if(Auth::user()->role != "admin")
+                <div class="message-collapse">
 
-                <x-message-container/>
-                <button class="collapse-btn">
-                    @include('svg.message')
-                </button>
-            </div>
+                    <x-message-container/>
+                    <button class="collapse-btn">
+                        @include('svg.message')
+                    </button>
+                </div>
+            @endif
         @endauth
     </section> 
 

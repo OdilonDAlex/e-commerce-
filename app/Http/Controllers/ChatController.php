@@ -7,16 +7,23 @@ use App\Http\Requests\MessageFormRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Gate;
 
 class ChatController extends Controller
 {
     
     public function index() {
+
+        if(! Gate::allows('visit-admin-pages')){
+            return to_route('homepage');
+        }
+    
         return view('chat.index', [
-            'users' => User::where('id', '!=', Auth::user()->id)->get(),
+            'users' => User::where('last_message_at', '!=', null)->orderByDesc('last_message_at')->get(),
         ]);
     }
 
@@ -45,7 +52,12 @@ class ChatController extends Controller
             ]);
         }
 
+        Auth::user()->last_message_at = Carbon::now();
+
+        Auth::user()->save();
+
         event(new MessageSent($message, $receiver->id));
+
         return json_encode(['status' => 200]);
     }
 

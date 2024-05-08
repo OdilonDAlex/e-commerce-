@@ -1,22 +1,23 @@
 @extends('base')
 
-@section('title', 'Chat')
+@section('title', 'message')
+
+@section('header')
+    @include('header')
+@endsection
+
+@vite('resources/css/admin/message.css')
 
 
 @section('content')
 
-
-<div class="conversation_container" style="height: calc(100vh - 200px);">
-
-</div>
-
-<form action="{{ route('chat.create') }}" method="POST" name="send_message_form">
-    @csrf
-
-    <input type="hidden" name="receiver_id" value="2">
-    <textarea name="message_content" id="" cols="30" rows="4"></textarea><br>
-    <input type="submit" value="Envoyer" name="send_message_button">
-</form>
-
+    <div class="users">
+        <h1 class="info">Conversations</h1>
+        @forelse($users as $user)
+            <x-admin.user-l-i-template :user=$user/>
+        @empty
+        @endforelse
+    </div>
+    <x-message-container/>
 
 @endsection

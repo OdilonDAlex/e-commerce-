@@ -95,6 +95,11 @@
 
                 </div>
             </li>
+            @auth
+                @if(Auth::user()->role == "admin")
+                    <li class="nav-item  {{ request()->routeIs('chat.*') ? 'active' : '' }} "><a  class="nav-link" href="{{ route('chat.index') }}">message</a></li>
+                @endif
+            @endauth
             @endif
             @endauth
         </ul>

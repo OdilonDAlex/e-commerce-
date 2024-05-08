@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+section.content div.users {
+    width: 50ch;
+    background-color: var(--navbar-bg);
+    z-index: 7;
+    box-shadow: 0px 1px 5px rgb(139, 138, 138);
+    overflow-y: scroll;
+}
+
+section.content {
+    width: 100%;
+    flex-grow: 5;
+    max-height: calc(100% - 50px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: calc(100% - 50px);
+    padding: 0px;
+}
+
+section.content div.message-container {
+    max-height: 100%;
+    display: flex;
+    position:static;
+    flex-grow: 3;
+    width: calc(100% - 50ch)!important;
+    max-width: calc(100% - 50ch)!important;
+    border: none!important;
+    z-index: 6;
+}
+
+section.content div.message-container div.message-container-header {
+    border-radius: 0px;
+}
+
+section.content div.message-container .close-btn {
+    display: none;
+}
+
+div.users div.user {
+    padding: 5px;
+    box-shadow: 0px 0px 3px rgb(139, 138, 138);
+    cursor: pointer;
+}
+
+div.users div.user .name {
+    font-size: 14px;
+}
+
+div.users div.user .elapsed-time {
+    font-size: .9em;
+}
+
+div.users .last-message {
+    margin: 2px 0px;
+    font-size: 15px;
+}
+
+h1.info {
+    margin: 5px!important;
+    margin-bottom: 10px!important;
+    color: var(--text-primary)!important;
+}

@@ -1,4 +1,7 @@
 import axios from "axios";
+import './echo';
+
+window.Echo = Echo;
 
 const messageCollapse = document.querySelector('section.content div.message-collapse');
 const toggleMessageContainer = messageCollapse.querySelector('button.collapse-btn') ;
@@ -29,8 +32,7 @@ sendMessageForm.addEventListener('submit', (event) => {
     if(input.value !== ''){
         let content = input.value;
         conversationBody.appendChild(createMessage(content, "en cours d'envoi..."));
-        
-        console.log(parseInt(sendMessageForm.querySelector('input[type="hidden"]').value));
+
         let data = {
             content: content,
             receiver_id: parseInt(sendMessageForm.querySelector('input[type="hidden"]').value),
@@ -51,9 +53,9 @@ sendMessageForm.addEventListener('submit', (event) => {
     }
 })
 
-function createMessage(content, status="") {
+function createMessage(content, status="", position="right") {
     let container = document.createElement('div');
-    container.className = "message right"
+    container.className = "message " +  position;
 
     let divContent = document.createElement('div');
     divContent.className = 'content';
@@ -78,24 +80,46 @@ function createMessage(content, status="") {
 }
 
 
+axios.get(`${window.origin}/auth/`)
+.then( (result) => {
+    let authId = result.data.id;
+    let userRole = result.data.role;
 
-// listener
-// window.Echo.private('chat-1-2')
-//     .listen('MessageSent', (event_) => {
-//         console.dir(event_);
-//     })
+    if(parseInt(authId) !== -1 && userRole != 'admin'){
 
-// send_message_button.addEventListener('click', (event_) => {
-//     event_.preventDefault();
+        window.Echo.private(`chat-1-${authId}`)
+            .listen('.message-sent', (result) => {
+                let message = result.message;
+                if(result.receiver_id == authId){
+                    conversationBody.appendChild(createMessage(message.content, '', 'left'));
+                }
+            });
+        
+    }
 
-//     let data = {
-//         message_content: textarea.value,
-//         receiver_id: receiver_id.value,
-//     }
-//     textarea.value = '';
-//     let message = new Message(content=data.message_content, position='right');
+    if(userRole == 'admin'){
 
-//     axios.post('chat/create', data)
-//         .then( (result) => console.log(result) )
-//         .catch( (error) => { console.error(error); } )
-// })
+        axios.get('/users/authenticated/ids')
+        .then( (result) => {
+            let ids = result.data;
+
+            ids.forEach(id => {
+                    // admin id
+                if(id != 1){
+
+                    window.Echo.private(`chat-1-${id}`)
+                        .listen('.message-sent', ( result ) => {
+                            let message = result.message;
+                            if(result.receiver_id == authId){
+                                conversationBody.appendChild(createMessage(message.content, 'message.created_at', 'left'));
+                            }
+                        });
+                }
+            });
+        })
+        .catch((error) => {;}) 
+    }
+})
+.catch( (error) => {
+    console.log(error);
+});
