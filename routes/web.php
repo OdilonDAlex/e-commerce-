@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomePage;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 
 Route::get('/', WelcomePage::class)->name('home');
 
@@ -51,6 +53,7 @@ Route::prefix('profile/')->name('profile.')
     Route::patch('update', [ProfileController::class, 'update'])
         ->name('update') ;
 });
+
 
 Route::get('history/', HistoryController::class)
     ->name('history');

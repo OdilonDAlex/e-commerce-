@@ -23,10 +23,9 @@ class ChatController extends Controller
     public function create(Request $request) {
         
         $message_data = $request->validate([
-            'message_content' => ['required', 'string', ],
+            'content' => ['required', 'string', ],
             'receiver_id' => ['required', 'integer'],
         ]);
-
 
         $receiver = null;
         $message = null;
@@ -34,15 +33,15 @@ class ChatController extends Controller
         try {
             $receiver = User::findOrFail($message_data['receiver_id']);
             $message = Auth::user()->messages()->create([
-                'content' => $message_data['message_content'],
+                'content' => $message_data['content'],
                 'send_at' => Carbon::now(),
                 'receiver_id' => $message_data['receiver_id'],
             ]);
         }
-
         catch(Exception $e) {
             throw ValidationException::withMessages([
                 'receiver_id' => 'Receiver_id error',
+                'error' => $e->getMessage(),
             ]);
         }
 

@@ -1,6 +1,7 @@
 @vite('resources/css/header.css')
 
 @php
+    $cart = null;
     if(Auth::check()){
         $cart = Auth::user()->carts()->first();
     }
@@ -16,7 +17,6 @@
 
             <li class="nav-item {{ request()->routeIs('product.show') || request()->routeIs('product.index') ? 'active' : '' }}"><a href="{{ route('product.index') }}" class="nav-link">Produit</a></li>
             
-            @auth
             <li class="nav-item {{ request()->routeIs('cart.index') ? 'active' : ''}}"><a href="{{ route('cart.index') }}" 
             
             class="nav-link">Panier
@@ -24,6 +24,7 @@
                 <span class="cart-items-count">{{ count( $cart->items()->get()->toArray() )}}</span>
             @endif
             </a></li>
+            @auth
             <li class="nav-item {{ request()->routeIs('history') ? 'active' : '' }}"><a href="{{ route('history') }}" class="nav-link">Historique
                 @php
                     $unReadNotifNumber = count( Auth::user()->unReadNotifications()->get() );
@@ -34,7 +35,6 @@
                     @endif
                 >{{ $unReadNotifNumber }}</span></a></li>
             @endauth
-            <li class="nav-item"><a href="" class="nav-link">Préference</a></li>
             <li class="nav-item {{ request()->routeIs('profile.*') ? 'active' : '' }}"><a href="{{ route('profile.index') }}" class="nav-link">Profil</a></li>
             @auth
             @if(Auth::user()->isAdmin())

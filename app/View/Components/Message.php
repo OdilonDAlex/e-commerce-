@@ -13,6 +13,7 @@ class Message extends Component
      */
     public function __construct(
         public string $bySender="1",
+        public string $status=""
     )
     {
         //

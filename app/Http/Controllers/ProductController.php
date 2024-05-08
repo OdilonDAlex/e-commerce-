@@ -226,7 +226,7 @@ class ProductController extends Controller
         $original_value = $request['names'];
         $request->validated('names');
 
-        $categories = explode(' ', $original_value); 
+        $categories = explode(',', $original_value); 
         
         foreach($categories as $category){
             Category::create([

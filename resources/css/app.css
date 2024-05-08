@@ -58,6 +58,7 @@ palette 2
     box-sizing: border-box;
     font-size: 12px;
     font-family:'raleway', 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: Tahoma, Geneva, Verdana, sans-serif; */
     color: var(--text-primary)
 }
 
