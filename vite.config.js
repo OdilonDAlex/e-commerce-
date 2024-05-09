@@ -24,6 +24,7 @@ export default defineConfig({
                 'ressources/css/history.css',
                 'ressources/css/product-index.css',
                 'ressources/css/product-list-view.css',
+                'ressources/css/change-category.js',
             ],
             refresh: true,
         }),

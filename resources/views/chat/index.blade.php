@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'message')
+@section('title', 'Messages')
 
 @section('header')
     @include('header')

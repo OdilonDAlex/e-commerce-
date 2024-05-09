@@ -2,10 +2,16 @@ import axios from "axios";
 import './echo';
 
 window.Echo = Echo;
+let messageCollapse;
+let toggleMessageContainer;
 
-const messageCollapse = document.querySelector('section.content div.message-collapse');
-const toggleMessageContainer = messageCollapse.querySelector('button.collapse-btn') ;
-const messageContainer = messageCollapse.querySelector('div.message-container');
+try {
+    messageCollapse = document.querySelector('section.content div.message-collapse');
+    toggleMessageContainer = messageCollapse.querySelector('button.collapse-btn');
+}
+catch(e){;}
+
+const messageContainer = document.querySelector('div.message-container');
 const closeBtn = messageContainer.querySelector('button.close-btn');
 const sendMessageForm = messageContainer.querySelector('form');
 const conversationBody = messageContainer.querySelector('div.conversation-body');
@@ -16,12 +22,16 @@ closeBtn.addEventListener('click', (event) => {
 
     messageContainer.style.display = 'none';
 })
-toggleMessageContainer.addEventListener('click', (event) => {
 
-    event.preventDefault() ;
+try {
+    toggleMessageContainer.addEventListener('click', (event) => {
     
-    messageContainer.style.display = 'flex' ;
-});
+        event.preventDefault() ;
+        
+        messageContainer.style.display = 'flex' ;
+    });
+}
+catch(e){;}
 
 sendMessageForm.addEventListener('submit', (event) => {
 
@@ -65,7 +75,7 @@ function createMessage(content, status="", position="right") {
     container.appendChild(divContent);
 
     if(status !== ""){
-        let statusContainer = messageCollapse.querySelector('p.status');
+        let statusContainer = messageContainer.querySelector('p.status');
         
         if(statusContainer === undefined || statusContainer === null){
             statusContainer = document.createElement('p');

@@ -1,7 +1,16 @@
 <div class="message-container">
     <x-message-container-header/>
 
-    <x-conversation-body/>
+    <x-conversation-body>
+        @forelse($messages as $message)
+            
+            <x-message by-sender="{{ (int)Auth::user()->id === (int)$message->author_id ? '1' : '0' }}">
+                {{ $message->content }}
+            </x-message>
+        @empty
+            rien
+        @endforelse
+    </x-conversation-body>
 
     <form name="sendMessageForm" action="" class="send-message">
         

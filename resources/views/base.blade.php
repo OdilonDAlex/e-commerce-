@@ -32,10 +32,13 @@
         @yield('content')
 
         @auth
+            @php
+                $allMessages = App\Models\Message::whereRaw('author_id = ' . Auth::user()->id  . ' OR receiver_id = ' . Auth::user()->id)->get();
+            @endphp
             @if(Auth::user()->role != "admin")
                 <div class="message-collapse">
 
-                    <x-message-container/>
+                    <x-message-container :messages=$allMessages/>
                     <button class="collapse-btn">
                         @include('svg.message')
                     </button>

@@ -10,7 +10,7 @@
 @endsection
 
 <!-- importation du fichier css -->
-@vite('resources/css/homepage.css')
+@vite(['resources/css/homepage.css', 'resources/js/change-category.js'])
 
 <!-- debut du session content -->
 @section('content')

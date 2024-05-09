@@ -43,8 +43,11 @@ section.content div.message-container .close-btn {
 
 div.users div.user {
     padding: 5px;
-    box-shadow: 0px 0px 3px rgb(139, 138, 138);
+    margin: 5px;
+    /* box-shadow: 0px 0px 3px rgb(139, 138, 138); */
     cursor: pointer;
+    border: 1px solid var(--nav-hover);
+    border-radius: .5em;
 }
 
 div.users div.user .name {
