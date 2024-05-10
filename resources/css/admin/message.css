@@ -86,3 +86,16 @@ p.unread {
 .active {
     background-color: var(--secondary-btn);
 }
+
+div.search-bar {
+    margin: 10px 5px!important;
+}
+
+div.search-bar form {
+    width: 100%;
+}
+
+div.search-bar form input {
+    width: 100%;
+    border: 1px solid var(--nav-hover)!important;
+}

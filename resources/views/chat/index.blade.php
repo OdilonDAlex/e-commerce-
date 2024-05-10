@@ -12,7 +12,10 @@
 @section('content')
 
     <div class="users">
-        <h1 class="info">Conversations</h1>
+        <!-- <h1 class="info">Conversations</h1> -->
+
+        <x-search-bar placeholder="Nom de la personne" value="Rechercher"/>
+
         @forelse($users as $user)
             <x-admin.user-l-i-template :user=$user/>
         @empty
