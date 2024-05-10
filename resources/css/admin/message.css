@@ -42,6 +42,7 @@ section.content div.message-container .close-btn {
 }
 
 div.users div.user {
+    position: relative;
     padding: 5px;
     margin: 5px;
     /* box-shadow: 0px 0px 3px rgb(139, 138, 138); */
@@ -61,10 +62,27 @@ div.users div.user .elapsed-time {
 div.users .last-message {
     margin: 2px 0px;
     font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap:nowrap;
 }
 
 h1.info {
     margin: 5px!important;
     margin-bottom: 10px!important;
     color: var(--text-primary)!important;
+}
+
+p.unread {
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-btn);
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.active {
+    background-color: var(--secondary-btn);
 }

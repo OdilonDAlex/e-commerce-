@@ -11,10 +11,10 @@ try {
 }
 catch(e){;}
 
-const messageContainer = document.querySelector('div.message-container');
+export const messageContainer = document.querySelector('div.message-container');
 const closeBtn = messageContainer.querySelector('button.close-btn');
 const sendMessageForm = messageContainer.querySelector('form');
-const conversationBody = messageContainer.querySelector('div.conversation-body');
+export const conversationBody = messageContainer.querySelector('div.conversation-body');
 
 closeBtn.addEventListener('click', (event) => {
 
@@ -41,20 +41,19 @@ sendMessageForm.addEventListener('submit', (event) => {
     
     if(input.value !== ''){
         let content = input.value;
-        conversationBody.appendChild(createMessage(content, "en cours d'envoi..."));
+        conversationBody.appendChild(createMessage(content, ""));
 
         let data = {
             content: content,
             receiver_id: parseInt(sendMessageForm.querySelector('input[type="hidden"]').value),
         }
         input.value = "";
-        conversationBody.scrollTo(0, conversationBody.clientHeight);
+        conversationBody.scrollTo(0, conversationBody.clientHeight*9999);
         
         console.log(data);
         axios.post(`${window.origin}/chat/create/`, data)
         .then( (result) => {
             console.log(result);
-            conversationBody.querySelector('p.status').innerText = "envoyé";
         })
         .catch( (error) => {
             conversationBody.querySelector('p.status').innerText = "ouups, erreur d'envoi...";
@@ -63,7 +62,7 @@ sendMessageForm.addEventListener('submit', (event) => {
     }
 })
 
-function createMessage(content, status="", position="right") {
+export function createMessage(content, status="", position="right") {
     let container = document.createElement('div');
     container.className = "message " +  position;
 
@@ -95,13 +94,14 @@ axios.get(`${window.origin}/auth/`)
     let authId = result.data.id;
     let userRole = result.data.role;
 
-    if(parseInt(authId) !== -1 && userRole != 'admin'){
+    if((parseInt(authId) !== -1) && (userRole != 'admin')){
 
         window.Echo.private(`chat-1-${authId}`)
             .listen('.message-sent', (result) => {
                 let message = result.message;
                 if(result.receiver_id == authId){
                     conversationBody.appendChild(createMessage(message.content, '', 'left'));
+                    conversationBody.scrollTo(0, conversationBody.clientHeight*999);
                 }
             });
         
@@ -120,8 +120,19 @@ axios.get(`${window.origin}/auth/`)
                     window.Echo.private(`chat-1-${id}`)
                         .listen('.message-sent', ( result ) => {
                             let message = result.message;
-                            if(result.receiver_id == authId){
-                                conversationBody.appendChild(createMessage(message.content, 'message.created_at', 'left'));
+                            
+                            if(sendMessageForm.elements.receiver_id.value == message.author_id){
+                                conversationBody.appendChild(createMessage(message.content, '', 'left'));
+                                conversationBody.scrollTo(0, conversationBody.clientHeight*999);
+                            }
+                            else {
+                                let senderLiTemplate = document.querySelector(`div.user-${message.author_id}`);
+                                
+                                console.log(senderLiTemplate);
+                                if(senderLiTemplate !== undefined && senderLiTemplate !== null){
+                                    senderLiTemplate.querySelector('p.last-message').innerText = message.content;
+                                    senderLiTemplate.querySelector('p.last-message').style.color = 'var(--primary-btn)';
+                                }
                             }
                         });
                 }

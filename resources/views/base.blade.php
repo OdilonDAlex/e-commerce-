@@ -38,7 +38,7 @@
             @if(Auth::user()->role != "admin")
                 <div class="message-collapse">
 
-                    <x-message-container :messages=$allMessages/>
+                    <x-message-container  receiver_id="{{ Auth::user()->id }}" :messages=$allMessages conversation-with="Conversation entre vous et l'administrateur"/>
                     <button class="collapse-btn">
                         @include('svg.message')
                     </button>

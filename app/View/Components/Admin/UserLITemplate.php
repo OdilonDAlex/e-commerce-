@@ -14,6 +14,7 @@ class UserLITemplate extends Component
      */
     public function __construct(
         public User $user,
+        public string $unRead="1",
     )
     {
         //

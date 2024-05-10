@@ -22,6 +22,9 @@ Route::middleware('auth')
 
     Route::post('create/', [ChatController::class, 'create'])
         ->name('create');
+
+    Route::get('messages/{userId}', [ChatController::class, 'messagesWith'])
+        ->name('messages.with');
 });
 
 

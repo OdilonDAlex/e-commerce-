@@ -13,6 +13,8 @@ class MessageContainer extends Component
      */
     public function __construct(
         public $messages=array(),
+        public string $conversationWith="Aucun utilisateur séléctionné",
+        public string|int $receiver_id=1,
     )
     {
         //

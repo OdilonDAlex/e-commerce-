@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -21,9 +22,9 @@ class ChatController extends Controller
         if(! Gate::allows('visit-admin-pages')){
             return to_route('homepage');
         }
-    
+
         return view('chat.index', [
-            'users' => User::where('last_message_at', '!=', null)->orderByDesc('last_message_at')->get(),
+            'users' => User::whereRaw('(last_message_at IS NOT NULL) AND (id != '. Auth::user()->id .')')->orderByDesc('last_message_at')->get(),
         ]);
     }
 
@@ -59,6 +60,10 @@ class ChatController extends Controller
         event(new MessageSent($message, $receiver->id));
 
         return json_encode(['status' => 200]);
+    }
+
+    public function messagesWith(int $userId){
+        return DB::table('messages')->select('*')->whereRaw('(author_id = ' . Auth::user()->id . ' AND receiver_id = ' . $userId . ') OR (author_id = ' . $userId . ' AND receiver_id = ' . Auth::user()->id . ')')->get();
     }
 
 }

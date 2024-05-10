@@ -11,7 +11,9 @@ class MessageContainerHeader extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(
+        public string $with="Aucun utilisateur séléctionné",
+    )
     {
         //
     }

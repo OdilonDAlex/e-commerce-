@@ -1,5 +1,5 @@
 <div class="message-container">
-    <x-message-container-header/>
+    <x-message-container-header :with=$conversationWith/>
 
     <x-conversation-body>
         @forelse($messages as $message)
@@ -8,7 +8,6 @@
                 {{ $message->content }}
             </x-message>
         @empty
-            rien
         @endforelse
     </x-conversation-body>
 
@@ -16,8 +15,8 @@
         
         <input type="text" name="content" id="content" placeholder="votre message..." autofocus>
                                                         <!-- a changer plus tard -->
-        <input type="hidden" name="receiver_id" id="receiver_id" value="1">
-        <button type="submit">
+        <input type="hidden" name="receiver_id" id="receiver_id" value="{{ $receiver_id }}">
+        <button type="submit"> 
             envoyer
         </button>
     </form>

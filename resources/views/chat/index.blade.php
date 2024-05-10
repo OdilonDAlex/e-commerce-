@@ -6,7 +6,7 @@
     @include('header')
 @endsection
 
-@vite('resources/css/admin/message.css')
+@vite(['resources/css/admin/message.css', 'resources/js/admin/message.js'])
 
 
 @section('content')
