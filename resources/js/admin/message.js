@@ -2,6 +2,7 @@ import axios from "axios";
 import { messageContainer } from "../message";
 import { createMessage } from "../message";
 import { conversationBody } from "../message";
+import '../echo';
 
 const usersList = document.querySelector('div.users');
 const allUsersLi = usersList.querySelectorAll('div.user');
@@ -41,3 +42,30 @@ allUsersLi.forEach(div => {
 
     })
 });
+
+
+window.Echo.private('reload-listener')
+    .listen('.new-user-connected', (result) => {
+
+        let channel = window.Echo.private(`chat-1-${result.user.id}`);
+
+        channel.stopListening('.message-sent');
+
+        channel.listen('.message-sent', ( result ) => {
+                let message = result.message;
+
+                if(sendMessageForm.elements.receiver_id.value == message.author_id){
+                    conversationBody.appendChild(createMessage(message.content, '', 'left'));
+                    conversationBody.scrollTo(0, conversationBody.clientHeight*999);
+                }
+                else {
+                    let senderLiTemplate = document.querySelector(`div.user-${message.author_id}`);
+                    
+                    console.log(senderLiTemplate);
+                    if(senderLiTemplate !== undefined && senderLiTemplate !== null){
+                        senderLiTemplate.querySelector('p.last-message').innerText = message.content;
+                        senderLiTemplate.querySelector('p.last-message').style.color = 'var(--primary-btn)';
+                    }
+                }
+            });
+    });

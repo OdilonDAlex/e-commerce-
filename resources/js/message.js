@@ -116,11 +116,14 @@ axios.get(`${window.origin}/auth/`)
             ids.forEach(id => {
                     // admin id
                 if(id != 1){
+                    
+                    let channel = window.Echo.private(`chat-1-${id}`);
 
-                    window.Echo.private(`chat-1-${id}`)
-                        .listen('.message-sent', ( result ) => {
+                    channel.stopListening('.message-sent');
+
+                    channel.listen('.message-sent', ( result ) => {
                             let message = result.message;
-                            
+
                             if(sendMessageForm.elements.receiver_id.value == message.author_id){
                                 conversationBody.appendChild(createMessage(message.content, '', 'left'));
                                 conversationBody.scrollTo(0, conversationBody.clientHeight*999);
