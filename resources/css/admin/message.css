@@ -1,28 +1,31 @@
-body {
-    display: flex;
-    flex-direction: column;
+section.content {
+    position: sticky;
+    top: 50px;
 }
 
-section.content div.users {
+div.main-content div.users {
+    display: block!important;
     width: 50ch;
     background-color: var(--navbar-bg);
     z-index: 7;
-    box-shadow: 0px 1px 5px rgb(139, 138, 138);
+    /* box-shadow: 0px 1px 5px rgb(139, 138, 138); */
     overflow-y: scroll;
 }
 
-section.content {
+div.main-content {
     width: 100%;
     flex-grow: 5;
-    max-height: calc(100% - 50px);
+    max-height: calc(100vh - 50px);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    height: calc(100% - 50px);
+    height: calc(100vh - 50px);
     padding: 0px;
+    position: sticky!important;
+    top: 50px;
 }
 
-section.content div.message-container {
+div.main-content div.message-container {
     max-height: 100%;
     display: flex;
     position:static;
@@ -33,11 +36,12 @@ section.content div.message-container {
     z-index: 6;
 }
 
-section.content div.message-container div.message-container-header {
+div.main-content div.message-container div.message-container-header, form.send-message {
     border-radius: 0px;
+    box-shadow: none!important;
 }
 
-section.content div.message-container .close-btn {
+div.main-content div.message-container .close-btn {
     display: none;
 }
 
@@ -45,7 +49,6 @@ div.users div.user {
     position: relative;
     padding: 5px;
     margin: 5px;
-    /* box-shadow: 0px 0px 3px rgb(139, 138, 138); */
     cursor: pointer;
     border: 1px solid var(--nav-hover);
     border-radius: .5em;
@@ -98,4 +101,8 @@ div.search-bar form {
 div.search-bar form input {
     width: 100%;
     border: 1px solid var(--nav-hover)!important;
+}
+
+div.users {
+    display: flex;
 }

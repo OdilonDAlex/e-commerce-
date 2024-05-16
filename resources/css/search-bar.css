@@ -25,14 +25,13 @@ div.search-bar form div {
 
 div.search-bar form button[type='submit'] {
     background-color: var(--secondary-btn);
-    
     border-radius: 0px .3em .3em 0px;
     padding: 0px 10px;
     cursor: pointer;
 }
 
 div.search-bar form input[type='text'] {
-    border: 1px solid white;
+    border: 1px solid var(--nav-hover);
     outline: none;
     padding: 0px 10px;
     border-radius: .3em 0px 0px .3em;

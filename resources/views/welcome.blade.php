@@ -31,7 +31,7 @@
 
     <!-- categories -->
     @if(! $categories->isEmpty())
-        <h1 class="info">Categories</h1>
+        <h1 class="info">par categories</h1>
     @endif
     <div class="categories">
         @forelse($categories as $category)

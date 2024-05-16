@@ -48,6 +48,13 @@
     </section> 
 
     <!-- Pied de page -->
-    <footer></footer>
+    <footer>
+        <div class="links">
+
+        </div>
+        <div class="about-us">
+
+        </div>
+    </footer>
 </body>
 </html>

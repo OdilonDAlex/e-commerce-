@@ -1,26 +1,14 @@
-@extends('base')
-
-@section('title', 'Messages')
-
-@section('header')
-    @include('header')
-@endsection
-
 @vite(['resources/css/admin/message.css', 'resources/js/admin/message.js'])
 
-
-@section('content')
-
+<x-admin-page-layout>
     <div class="users">
-        <!-- <h1 class="info">Conversations</h1> -->
 
-        <x-search-bar placeholder="Nom de la personne" value="Rechercher"/>
+    <x-search-bar placeholder="Nom de la personne" value="Rechercher"/>
 
-        @forelse($users as $user)
-            <x-admin.user-l-i-template :user=$user/>
-        @empty
-        @endforelse
+    @forelse($users as $user)
+        <x-admin.user-l-i-template :user=$user/>
+    @empty
+    @endforelse
     </div>
     <x-message-container/>
-
-@endsection
+</x-admin-page-layout>

@@ -1,15 +1,6 @@
-@extends('base')
-
-@section('title', 'Administration - Listes des produits')
-
 @vite('resources/css/admin/table.css')
-
-@section('header')
-    @include('header')
-@endsection
-
-@section('content')
-    <x-search-bar value="rechercher" route='admin.product.index'/>
+<x-admin-page-layout>
+<x-search-bar value="rechercher" route='admin.product.index'/>
     <table>
         <thead>
             <td>Id</td>
@@ -59,4 +50,4 @@
     @if($query === null)
         {{ $products->links('vendor.pagination.custom') }}
     @endif
-@endsection
+</x-admin-page-layout>

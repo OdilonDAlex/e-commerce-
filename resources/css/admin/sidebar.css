@@ -2,8 +2,8 @@ aside.navbar {
     position: sticky;
     top: 50px;
     overflow: hidden;
-    max-height: 100vh;
-    height: 100vh;
+    height: calc(100vh - 50px);
+    max-height: calc(100vh - 50px)!important;
     background-color: var(--navbar-bg);
     border-radius: .3em;
 }

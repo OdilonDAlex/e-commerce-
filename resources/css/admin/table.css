@@ -119,3 +119,7 @@ div input[type='submit'] {
     margin: 0px!important;
     border: none;
 }
+
+nav.paginator div.array-links a {
+    color: #2c698d!important;
+}

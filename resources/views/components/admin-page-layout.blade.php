@@ -3,7 +3,7 @@
 @section('title', 'Administration')
 
 
-@vite(['resources/css/admin/sidebar.css'])
+@vite(['resources/css/admin/sidebar.css', 'resources/css/admin/dashboard.css'])
 
 @section('header')
     @include('header')
