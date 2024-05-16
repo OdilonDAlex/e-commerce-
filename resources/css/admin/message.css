@@ -1,7 +1,3 @@
-section.content {
-    position: sticky;
-    top: 50px;
-}
 
 div.main-content div.users {
     display: block!important;

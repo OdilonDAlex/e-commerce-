@@ -28,7 +28,8 @@ export default defineConfig({
                 'resources/js/admin/message.js',
                 'resources/css/admin/dashboard.css',
                 'resources/css/admin/mini-card.css',
-                'resources/css/admin/sidebar.css'
+                'resources/css/admin/sidebar.css',
+                'resources/css/footer.css'
             ],
             refresh: true,
         }),

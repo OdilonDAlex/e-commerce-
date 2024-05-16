@@ -2,7 +2,6 @@ section.content {
     display: grid;
     grid-template-columns: max-content auto max-content;
     column-gap: 5px;
-    border: 1px double green;
 }
 
 

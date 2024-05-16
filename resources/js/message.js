@@ -16,6 +16,7 @@ const closeBtn = messageContainer.querySelector('button.close-btn');
 const sendMessageForm = messageContainer.querySelector('form');
 export const conversationBody = messageContainer.querySelector('div.conversation-body');
 
+
 closeBtn.addEventListener('click', (event) => {
 
     event.preventDefault() ;

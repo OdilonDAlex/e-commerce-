@@ -1,0 +1,99 @@
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: var(--navbar-bg);
+    display: grid;
+    grid-template-columns: 30% 30% 30% ;
+    justify-content: space-between;
+}
+
+div.quick-action {
+    margin-top: 50px;
+    background-color: var(--navbar-bg);
+    padding-bottom: 20px;
+}
+
+
+div.quick-action label {
+    color: var(--text-primary);
+    display: inline;
+}
+
+div.quick-action input{
+    border: .3px solid var(--navbar-bg);
+    width: 100%;
+    border-radius: .3em;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+    background-color: var(--nav-hover);
+    margin-bottom: 10px;
+}
+
+div.quick-action input[type="text"] {
+    width: 500px;
+    display: inline!important;
+    border: none;
+    
+}
+
+div.quick-action div.send-email div {
+    display: inline;
+}
+div.quick-action input[type='submit'] {
+    width: 100px;
+    display: inline!important;
+    border: none;
+    margin: 10px 0px;
+    background-color: var(--primary-btn);
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+div.quick-action div.send-email {
+    margin: 0px auto;
+    width: max-content;
+}
+
+div.quick-action svg {
+    height: 30px;
+    width: 30px;
+}
+
+div.quick-action .scrollToTop {
+    display: block;
+    margin: 0px auto;
+    position:relative;
+    padding: 10px;
+    background-color: var(--nav-hover);
+    transform: rotate(-90deg);
+    border-radius: 50%;
+    bottom: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+div.projects-info p {
+    text-indent: 75px;
+    width: 65ch;
+    text-align: justify;
+}
+
+footer div.contact li {
+    text-align: end;
+}
+
+footer div {
+    padding: 20px;
+}
+
+footer div li {
+    list-style-type: none;
+}
+
+footer div.contact h1 {
+    text-align: end;
+}
