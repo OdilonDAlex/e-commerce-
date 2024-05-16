@@ -1,0 +1,37 @@
+aside.navbar {
+    position: sticky;
+    top: 50px;
+    overflow: hidden;
+    max-height: 100vh;
+    height: 100vh;
+    background-color: var(--navbar-bg);
+    border-radius: .3em;
+}
+
+
+aside.navbar .nav li.nav-item a.nav-link {
+    text-decoration: none;
+}
+
+aside.navbar .nav li.nav-item {
+    margin: 10px 0px;
+    padding: 10px 50px;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+aside.navbar .nav li.active {
+    border-radius: 0px;
+}
+
+aside.navbar h3.nav-header {
+    text-align: center;
+    padding: 15px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-weight: normal;
+    background-color: var(--navbar-bg);
+    border-radius: .3em .3em 0px 0px;
+    box-shadow: 0px 0px 10px 1px lightgray;
+}

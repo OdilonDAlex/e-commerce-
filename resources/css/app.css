@@ -57,7 +57,7 @@ palette 2
     margin: 0px;
     box-sizing: border-box;
     font-size: 12px;
-    font-family:'raleway', 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Poppins', 'raleway', 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* font-family: Tahoma, Geneva, Verdana, sans-serif; */
     color: var(--text-primary)
 }
@@ -218,9 +218,18 @@ span.cart-items-count, span.notification-count {
 
 section.content h1.info {
     color: var(--text-secondary);
-    font-size: 30px;
-    margin: 20px 20px 0px 20px;
+    font-size: 28px;
+    margin: 20px 40px 0px -20px;
     font-weight: normal;
+    background-color: var(--navbar-bg);
+    display: inline-block;
+    color: var(--primary-btn);
+    padding: 5px 15px;
+    border-radius: .3em;
+    border-bottom: 5px solid lightcoral;
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
 }
 
 @keyframes removeAlert {

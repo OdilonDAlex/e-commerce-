@@ -16,7 +16,7 @@ div input, textarea, select{
 }
 
 div input[type='submit']{
-    margin: 20px 0px;
+    margin: 10px 0px;
     background-color: var(--primary-btn);
     cursor: pointer;
     color: var(--text-secondary);

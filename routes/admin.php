@@ -2,10 +2,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
+use App\Models\Product\Category;
+use App\Models\User;
 use Illuminate\View\View;
 
 Route::middleware('auth')->prefix('admin/')->name('admin.')
     ->group( function (): void {
+
+    Route::get('', function(){
+        return view('admin.dashboard', [
+            'users_count' => User::count(),
+            'products_count' => Product::count(),
+            'categories_count' => Category::count(),
+            'unavaible_products' => Product::where('stock', 0)->count(),
+        ]);
+    })->name('dashboard');
 
     // route pour les produits
     Route::prefix('product/')->name('product.')->group( function (): void {

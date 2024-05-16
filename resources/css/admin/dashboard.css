@@ -1,0 +1,52 @@
+section.content {
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+    column-gap: 5px;
+    border: 1px double green;
+}
+
+
+h5.section-title {
+    background-color: var(--nav-hover);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: .3rem;
+    color: var(--primary-btn);
+    font-size: 28px;
+    border-bottom: 2px solid var(--primary-btn);
+    margin: 15px 0px;
+    font-weight: normal;
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+div.main-content {
+    position: relative;
+    background-color: var(--navbar-bg);
+    padding: 10px;
+    border-radius: .3em;
+}
+
+div.products, div.users {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: calc(30% - 10px) calc(30% - 10px) calc(30% - 10px);
+    column-gap: 20px;
+    justify-content: space-between
+}
+
+aside.activity-container {
+    border: 1px solid red;
+    width: 200px;
+}
+
+div.charts {
+    position: relative;
+    max-width: 100% ;
+}
+
+canvas {
+    position: relative;
+    max-width: 100%;
+}

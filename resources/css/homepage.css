@@ -2,11 +2,12 @@ section.content div.all-product, div.best-promos, div.by-categories {
     position: relative;
     padding: 10px;
     display: grid;
-    grid-template-columns: calc(30% - 5px) calc(30% - 5px) calc(30% - 5px);
+    grid-template-columns: calc(24% - 5px) calc(24% - 5px) calc(24% - 5px) calc(24% - 5px);
     grid-template-rows: max-content;
     column-gap: 20px;
     row-gap: 40px;
     justify-content:space-around;
+    margin: 20px 0px;
 }
 
 div.best-promos p.promo {
