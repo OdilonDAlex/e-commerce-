@@ -77,6 +77,7 @@ div.quick-action .scrollToTop {
 }
 
 div.projects-info p {
+    font-weight: 500;
     text-indent: 75px;
     width: 65ch;
     text-align: justify;
@@ -91,9 +92,27 @@ footer div {
 }
 
 footer div li {
+    margin: 5px 0px;
     list-style-type: none;
 }
 
 footer div.contact h1 {
     text-align: end;
+}
+
+footer a {
+    font-weight: 500;
+    text-decoration: none;
+}
+
+footer div:nth-child(1) h1 {
+    text-align: start;
+}
+
+footer div:nth-child(2) h1 {
+    text-align: center;
+}
+
+footer div h1 {
+    font-weight: 500;
 }
