@@ -75,6 +75,9 @@ section {
     min-height: max-content;
 }
 
+section.content {
+    min-height: 100vh;
+}
 
 span.cart-items-count, span.notification-count {
     background-color: var(--primary-btn);
