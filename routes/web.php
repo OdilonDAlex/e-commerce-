@@ -45,6 +45,9 @@ Route::middleware('auth')->prefix('cart/')->name('cart.')
 
     Route::delete('remove-item', [CartController::class, 'remove'])
         ->name('remove-item');
+    
+    Route::post('buy', [CartController::class, 'buy'])
+        ->name('buy');
 });
 
 Route::prefix('profile/')->name('profile.')
@@ -76,6 +79,10 @@ Route::get('history/', HistoryController::class)
 
 Route::get('produt/', [ProductController::class, 'productIndex'])
     ->name('product.index') ;
+
+Route::get('checkout/', function(){
+    return view('cart.checkout');
+});
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

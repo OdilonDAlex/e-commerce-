@@ -84,7 +84,7 @@
                     {{ number_format($sum, 2, '.', ' ') }} Ariary
                 </td>
                 <td class="action">
-                    <form action="" method="POST">
+                    <form action="{{ route('cart.buy') }}" method="POST">
                         @csrf
 
                         <input type="submit" value="Acheter">

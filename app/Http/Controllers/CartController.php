@@ -100,4 +100,10 @@ class CartController extends Controller
         return redirect()->route('cart.index')
             ->with('item-not-removed-to-cart', 'Une erreur s\'est produite lors du suppression');
     }
+
+
+    public function buy(Request $request){
+
+        dd($request);
+    }
 }

@@ -29,7 +29,9 @@ export default defineConfig({
                 'resources/css/admin/dashboard.css',
                 'resources/css/admin/mini-card.css',
                 'resources/css/admin/sidebar.css',
-                'resources/css/footer.css'
+                'resources/css/footer.css',
+                'resources/css/checkout.css',
+                'resources/js/checkout.js'
             ],
             refresh: true,
         }),
