@@ -4,7 +4,19 @@
     $cart = null;
     if(Auth::check()){
         $cart = Auth::user()->carts()->first();
+        if($cart === null){
+            Auth::user()->carts()->create();
+            Auth::user()->save();
+        }
+
+        $items_count = 0;
+        try {
+            $items_count = count(Auth::user()->items()->get()->toArray());
+        }
+        catch(Exception $err){;}
     }
+
+
 @endphp
 
 <!-- Bar de navigation -->
@@ -22,7 +34,7 @@
             class="nav-link">Panier
             @auth
                 <span class="cart-items-count"
-                >{{ count( $cart->items()->get()->toArray() )}}</span>
+                >{{ $items_count }}</span>
             @endauth
             </a></li>
             @auth

@@ -82,7 +82,9 @@ Route::get('produt/', [ProductController::class, 'productIndex'])
 
 Route::get('checkout/', function(){
     return view('cart.checkout');
-});
+})
+->middleware('auth')
+->name('checkout');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

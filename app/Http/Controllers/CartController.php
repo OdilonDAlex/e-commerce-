@@ -6,9 +6,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Cart\Item;
+use App\Models\Income;
 use App\Models\Product;
 use App\Notifications\ProductAddedToCart;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Redirect;
 
@@ -104,6 +106,56 @@ class CartController extends Controller
 
     public function buy(Request $request){
 
-        dd($request);
+        $todayIncome = Income::whereRaw('Year("created_at")-Month("created_at")-Day("created_at") = ' . Carbon::today()->format('Y-m-d'))->first();
+
+        if($todayIncome === null){
+            $todayIncome = Income::create();
+        }
+        
+        $result = [];
+
+
+        $items = Auth::user()->carts()->first()->items()->get();
+        
+        foreach($items as $item){
+
+            $relatedProduct = $item->products()->first();
+            if(! $item->stock_taken){
+
+                if($relatedProduct->stock >= $item->quantity){
+                    $relatedProduct->stock -= $item->quantity;
+
+                    try{
+                        $todayIncome->total += $relatedProduct->price * $item->quantity;
+                    }
+                    catch(Exception $priceNull){;}
+
+                    $item->products()->dissociate();
+                    $item->carts()->dissociate();
+                    $item->delete();
+                }
+                else {
+                    $result['message'] = 'Stock incomplète';
+                }
+
+            } else {
+                try {
+                    $todayIncome->total += $relatedProduct->price * $item->quantity;
+                }
+                catch(Exception $priceNull){;}
+                
+                $item->products()->dissociate();
+                $item->carts()->dissociate();
+                $item->delete();
+            }
+
+            $relatedProduct->save();
+        }
+        
+        $todayIncome->save();
+
+        $result['success'] = 'Ok';
+
+        return json_encode($result);        
     }
 }

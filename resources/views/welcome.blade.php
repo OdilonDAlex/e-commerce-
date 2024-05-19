@@ -17,17 +17,18 @@
 
     <x-search-bar value='Rechercher' />
 
+    @if(! $bestPromos->isEmpty())
     <h1 class="info">Meilleur Promo</h1>
     <!-- meilleur promo  -->
     <div class="best-promos">
-        @forelse($bestPromos as $product)
+        @foreach($bestPromos as $product)
             <div>
                 <p class="promo"><span> - {{ $product->promos()->first()->value }}%</span> sur <span>{{ htmlspecialchars_decode($product->name) }}</span></p>
                 <x-product-card :product=$product />
             </div>
-        @empty
-        @endforelse
+        @endforeach
     </div>
+    @endif
 
     <!-- categories -->
     @if(! $categories->isEmpty())

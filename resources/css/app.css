@@ -171,6 +171,7 @@ span.cart-items-count, span.notification-count {
     padding: 10px;
     border-bottom: 1px solid grey;
     background-color: whitesmoke;
+    font-size: 18px;
 }
 
 .prompt-container form {

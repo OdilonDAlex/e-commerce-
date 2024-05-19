@@ -44,7 +44,7 @@ class Product extends Model
     }
 
     public function items(): hasMany {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class, 'product_id');
     }
 
     public function haveImage(): bool {

@@ -71,7 +71,7 @@
         @empty
         <tr>
             <td colspan="5">
-                Votre panier est vite pour le moment, visite le store pour ajouter des produits dans votre panier <a href="{{ route('home') }}">store</a>
+                Votre panier est vide pour le moment, visite le store pour ajouter des produits dans votre panier <a href="{{ route('home') }}">store</a>
             </td>
         </tr>
         @endforelse
@@ -84,8 +84,7 @@
                     {{ number_format($sum, 2, '.', ' ') }} Ariary
                 </td>
                 <td class="action">
-                    <form action="{{ route('cart.buy') }}" method="POST">
-                        @csrf
+                    <form action="{{ route('checkout') }}" method="GET">
 
                         <input type="submit" value="Acheter">
                     </form>

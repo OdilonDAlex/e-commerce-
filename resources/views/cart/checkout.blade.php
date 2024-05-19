@@ -8,12 +8,34 @@
     @include('header')
 @endsection
 
+@php
+    $cart = Auth::user()->carts()->first();
+
+    $items = $cart->items()->get();
+    
+    $product_count = array_sum($items->pluck('quantity')->toArray());
+
+    $total_price = 0;
+    
+    foreach($items as $item){
+
+        $relatedProduct = $item->products()->first();
+        
+        try {
+            $total_price += $relatedProduct->price * $item->quantity; 
+        }
+        catch(Exception $error){;}
+    }
+
+    $deliverPrice = 2000;
+@endphp
+
 
 @section('content')
     
     <div class="ticket-information">
 
-        <form class="register-form" action="{{ route('register.store') }}" method="POST">
+        <form  name="ticketInformation" action="{{ route('register.store') }}" method="POST">
             @csrf
             <h1>Details de livraison</h1>
 
@@ -51,25 +73,25 @@
             <table>
                 <tr>
                     <td>Nombre total d'element dans le panier</td>
-                    <td>15</td>
+                    <td>{{ $product_count }}</td>
                 </tr>
                 <tr>
                     <td>Prix total des produits</td>
-                    <td>1 500 000Ar</td>
+                    <td>{{ number_format($total_price, 2, '.', ' ') }}Ar</td>
                 </tr>
                 <tr>
                     <td>Livraion</td>
-                    <td>2 000Ar</td>
+                    <td>{{ number_format($deliverPrice, 2, '.', ' ')}}Ar</td>
                 </tr>
                 <tr>
-                    <td>Total a panier</td>
-                    <td>1 502 000Ar</td>
+                    <td>Total a payer</td>
+                    <td>{{ number_format($deliverPrice + $total_price, 2, '.', ' ')}}Ar</td>
                 </tr>
             </table>
         </div>
         <div class="payment-method">
             <h1>Methode de paiement</h1>
-            <form class="register-form" action="{{ route('register.store') }}" method="POST">
+            <form name="paymentMethod" action="{{ route('cart.buy') }}" method="POST">
                 @csrf
 
                 <div class="methods">
