@@ -81,6 +81,10 @@ Route::get('produt/', [ProductController::class, 'productIndex'])
     ->name('product.index') ;
 
 Route::get('checkout/', function(){
+    if(Auth::user()->carts()->first()->items()->get()->isEmpty()){
+        return redirect()->route('cart.index');
+    }
+    
     return view('cart.checkout');
 })
 ->middleware('auth')

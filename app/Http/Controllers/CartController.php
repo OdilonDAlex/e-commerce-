@@ -104,9 +104,9 @@ class CartController extends Controller
     }
 
 
-    public function buy(Request $request){
+    public function buy(){
 
-        $todayIncome = Income::whereRaw('Year("created_at")-Month("created_at")-Day("created_at") = ' . Carbon::today()->format('Y-m-d'))->first();
+        $todayIncome = Income::whereRaw('DATE_FORMAT(DATE(incomes.created_at), "%Y-%m-%d") = "' . Carbon::today()->format('Y-m-d') . '"')->first();
 
         if($todayIncome === null){
             $todayIncome = Income::create();
@@ -120,13 +120,17 @@ class CartController extends Controller
         foreach($items as $item){
 
             $relatedProduct = $item->products()->first();
+            $promo = $relatedProduct->promos()->first();
             if(! $item->stock_taken){
 
                 if($relatedProduct->stock >= $item->quantity){
                     $relatedProduct->stock -= $item->quantity;
 
                     try{
-                        $todayIncome->total += $relatedProduct->price * $item->quantity;
+                        try {
+                            $todayIncome->total += $relatedProduct->getPrice() * $item->quantity;
+                        }
+                        catch(Exception $priceNull){;}
                     }
                     catch(Exception $priceNull){;}
 
@@ -140,7 +144,7 @@ class CartController extends Controller
 
             } else {
                 try {
-                    $todayIncome->total += $relatedProduct->price * $item->quantity;
+                    $todayIncome->total += $relatedProduct->getPrice() * $item->quantity;
                 }
                 catch(Exception $priceNull){;}
                 

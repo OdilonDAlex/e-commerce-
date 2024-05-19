@@ -22,7 +22,7 @@
         $relatedProduct = $item->products()->first();
         
         try {
-            $total_price += $relatedProduct->price * $item->quantity; 
+            $total_price += $relatedProduct->getPrice * $item->quantity; 
         }
         catch(Exception $error){;}
     }

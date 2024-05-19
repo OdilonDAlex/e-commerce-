@@ -58,4 +58,13 @@ class Product extends Model
     public function promos(): BelongsTo {
         return $this->belongsTo(Promo::class, 'promo_id') ;
     }
+
+    public function getPrice(): float|int {
+        $promo = $this->promos()->first();
+
+        if($promo !== null){
+            return  $this->price * ( 1 - $promo->value/100 );
+        }
+        return $this->price;
+    }
 }
