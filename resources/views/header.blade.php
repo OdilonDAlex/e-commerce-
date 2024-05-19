@@ -10,10 +10,8 @@
         }
 
         $items_count = 0;
-        try {
-            $items_count = count(Auth::user()->items()->get()->toArray());
-        }
-        catch(Exception $err){;}
+
+        $items_count = count(Auth::user()->carts()->first()->items()->get()->toArray());
     }
 
 

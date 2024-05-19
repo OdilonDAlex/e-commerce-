@@ -28,7 +28,6 @@ class RegisterUserController extends Controller
         ]);
 
         $user->carts()->create();
-        $user->save();
         
         Auth::login($user);
 
