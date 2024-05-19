@@ -21,7 +21,7 @@
     </div>
     
     <h5 class="section-title">Diagramme Statistique</h5>
-    <div class="charts">
+    <div class="income">
         <canvas class="chart-bar"></canvas>
     </div>
 </x-admin-page-layout>
