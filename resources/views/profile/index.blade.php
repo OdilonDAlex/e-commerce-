@@ -42,7 +42,7 @@
         <x-input value="Enregistrer" type="submit" />
     </form>
 
-    <form action="" method="POST">
+    <form class="remove-account" action="{{ route('remove-account') }}" method="POST">
         @method('delete')
         @csrf
 

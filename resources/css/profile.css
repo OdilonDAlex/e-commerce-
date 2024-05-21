@@ -1,4 +1,4 @@
-section form.profile {
+section form.profile, form.remove-account {
     margin: 0px auto;
     width: 110ch;
     width: 65em;
@@ -11,4 +11,17 @@ section form.profile h2 {
     font-size: 20px;
     margin:20px 20px 20px 0px;
     color: var(--text-primary);
+}
+
+form.remove-account {
+    background-color: transparent;
+    padding: 0px;
+}
+
+form.remove-account input {
+    width: max-content;
+    border: none;
+    font-size: 12px;
+    background-color: lightcoral!important;
+    color: var(--text-primary)!important;
 }

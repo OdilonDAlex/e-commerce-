@@ -28,7 +28,6 @@ class RegisterUserController extends Controller
         ]);
 
         $cart = $user->carts()->create();
-        dd($cart);
 
         $user->carts()->associate($cart);
 

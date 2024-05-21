@@ -11,6 +11,7 @@
 @php
     $cart = Auth::user()->carts()->first();
 
+
     $items = $cart->items()->get();
     
     $product_count = array_sum($items->pluck('quantity')->toArray());
@@ -20,9 +21,10 @@
     foreach($items as $item){
 
         $relatedProduct = $item->products()->first();
+
         
         try {
-            $total_price += $relatedProduct->getPrice * $item->quantity; 
+            $total_price += $relatedProduct->getPrice() * $item->quantity; 
         }
         catch(Exception $error){;}
     }
