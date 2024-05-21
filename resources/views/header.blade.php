@@ -61,20 +61,12 @@
                     </span>
                 </a>
                 <div class="big-menu">
-                    <div class="admin-product-manager">
-                        <h1>Produits</h1>
-                        <ul class="big-menu-nav">
-                            <li class="nav-item">
-                                <a href="{{ route('admin.product.create') }}" class="nav-link">Créer un produit</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.product.index') }}" class="nav-link">Listes des produits</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">Statistiques</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <button class="admin-dashboard" onclick="window.location.href = `${window.origin}/admin/`">
+                        <div class="dashboard-illustration">
+                            @include('svg.dashboard')
+                        </div>
+                        <h1>Tableau de bord</h1>
+                    </button>
                     <div class="admin-user-manager">
                         <h1>Utilisateurs</h1>
                         <ul class="big-menu-nav">
@@ -100,9 +92,6 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('admin.product.index') }}" class="nav-link">Listes des produits</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">Statistiques</a>
                             </li>
                         </ul>
                     </div>
