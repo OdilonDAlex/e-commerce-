@@ -33,25 +33,26 @@
     <!-- categories -->
     @if(! $categories->isEmpty())
         <h1 class="info">par categories</h1>
-    @endif
-    <div class="categories">
+        <div class="categories">
         @forelse($categories as $category)
             <button class="category {{ $activeCategory == $category ? 'active' : '' }}">{{ $category->name }}</button>
         @empty
         @endforelse
-    </div>
-    <div class="by-categories">
-        @if((bool)$activeCategory)
-            @php
-                    $products_ = $activeCategory->products()->get() ;
-            @endphp
+        </div>
+        <div class="by-categories">
+            @if((bool)$activeCategory)
+                @php
+                        $products_ = $activeCategory->products()->get() ;
+                @endphp
 
-            @forelse($products_ as $product)
-                <x-product-card :product=$product/>
-            @empty
-            @endforelse
-        @endif
-    </div>
+                @forelse($products_ as $product)
+                    <x-product-card :product=$product/>
+                @empty
+                @endforelse
+            @endif
+        </div>
+    @endif
+    
     <!-- Tous les produits -->
     <h1 class="info">Tous les produits</h1>
     <div class="all-product">

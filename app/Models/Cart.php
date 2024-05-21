@@ -18,6 +18,6 @@ class Cart extends Model
     }
 
     public function users(): hasOne {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'carts_id');
     }
 }   

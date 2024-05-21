@@ -4,8 +4,11 @@
     $cart = null;
     if(Auth::check()){
         $cart = Auth::user()->carts()->first();
-        if($cart === null){
-            Auth::user()->carts()->create();
+        if($cart == null){
+            $cart = Auth::user()->carts()->create();
+
+            Auth::user()->carts()->associate($cart);
+            
             Auth::user()->save();
         }
 

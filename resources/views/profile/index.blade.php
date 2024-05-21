@@ -41,4 +41,11 @@
 
         <x-input value="Enregistrer" type="submit" />
     </form>
+
+    <form action="" method="POST">
+        @method('delete')
+        @csrf
+
+        <x-input type="submit" value="Supprimer mon compte"/>
+    </form>
 @endsection
