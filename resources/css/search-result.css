@@ -3,8 +3,10 @@ section div.result div.products, div.categories {
     padding: 10px;
     grid-template-columns: calc(30% - 10px) calc(30% - 10px) calc(30% - 10px);
     column-gap: 20px;
+    row-gap: 20px;
     justify-content: space-around;
 }
+
 
 h2 {
     border:1px solid white;

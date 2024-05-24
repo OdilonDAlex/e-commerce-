@@ -42,3 +42,19 @@ div.search-bar form button[type='submit']:hover {
     color: var(--secondary-btn);
     border: .3px solid var(--secondary-btn);
 }
+
+div.search-bar select {
+    height: 35px;
+    margin-right: 10px;
+    width: 100px;
+    border-radius: .3em;
+    outline: none;
+}
+
+div.search-bar select option {
+    text-align: center;
+}
+
+div.search-bar label {
+    color: var(--text-secondary);
+}

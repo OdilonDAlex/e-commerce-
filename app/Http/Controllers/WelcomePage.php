@@ -27,7 +27,7 @@ class WelcomePage extends Controller
         $category = Category::first();
 
         return view('welcome', [ 
-            'products' => Product::paginate(9),
+            'products' => Product::paginate(12),
             'bestPromos' => $bestPromos,
             'categories' => Category::all(),
             'activeCategory' => $category === null ? Category::first() : $category,

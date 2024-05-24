@@ -12,6 +12,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
@@ -265,11 +266,20 @@ class ProductController extends Controller
         ]); 
 
         $findedProductByName = Product::whereRaw("name REGEXP '.*".  $request['query'] . ".*'")->get();
+        if(is_numeric($request['query'])){
+            // entre somme +- 200000Ar
+            $min = (int)((int)$request['query'] - 200000);
+            $max = (int)((int)$request['query'] + 200000);
+
+            $findedProductByPrice = Product::whereRaw("price BETWEEN " . $min . " AND " . $max )
+                                        ->get();
+        }
+
         $findedCategories = Category::whereRaw("name REGEXP '.*" . $request['query'] . ".*'")->get();
 
         return view($request['route'], [
             'query' => $request['query'],
-            'products' => $findedProductByName,
+            'products' => Arr::collapse([$findedProductByName, $findedProductByPrice ?? []]),
             'categories' => $findedCategories,
         ]);
     }

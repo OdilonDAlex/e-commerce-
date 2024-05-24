@@ -3,7 +3,6 @@
 <div class="search-bar">
     <form action="{{ route('search') }}" method="GET">
 
-
         <input type="hidden" name="route" value="{{ $route }}">
         <div>
             <input type="text" name="query" placeholder="{{ $placeholder }}" >

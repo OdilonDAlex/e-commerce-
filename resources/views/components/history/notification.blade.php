@@ -2,7 +2,7 @@
 
 <div class="notification-render-container" style="background-color: {{ $bgColor }};">
     <div class="date">
-        {{ $notification->created_at->englishDayOfWeek }} <br>
+        {{ $notification->created_at->shortEnglishDayOfWeek }} <br>
         {{ $notification->created_at->day }} <br>
         {{ $notification->created_at->englishMonth }} <br>
     </div>
@@ -11,10 +11,5 @@
         <p class="content">{{ $notification->data['content'] }}</p>
         <small class="elapsed-time">il y a {{ $notification->getTimeElapsed() }}</small>
     </div>
-
-    <button class="delete">
-        @include('svg.cross') ; 
-    </button>
-
     {{ $notification->markAsRead() }}
 </div>

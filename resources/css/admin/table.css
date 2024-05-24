@@ -104,7 +104,8 @@ section table tfoot form input[type='submit'] {
 section table tr td.action .remove-btn {
     border: none;
     width: 100%;
-    background-color: var(--secondary-btn);
+    background-color: lightcoral;
+    color: var(--text-secondary);
     padding: 5px 10px;
     cursor: pointer;
     border-radius: .2em;
