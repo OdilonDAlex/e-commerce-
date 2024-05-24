@@ -27,7 +27,7 @@ div.main-content {
     border-radius: .3em;
 }
 
-div.products, div.users {
+div.products, div.users, div.incomes {
     display: grid;
     max-width: 100%;
     grid-template-columns: calc(30% - 10px) calc(30% - 10px) calc(30% - 10px);
@@ -48,4 +48,9 @@ div.income {
 canvas {
     position: relative;
     max-width: 100%;
+}
+
+
+div.mini-card section.illustration i.icon-dollar::before{
+    content: '\eaac';
 }

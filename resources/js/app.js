@@ -1,3 +1,10 @@
+const scrollToTopButton = document.querySelector("button.scrollToTop") ;
+
+console.log(scrollToTopButton) ;
+scrollToTopButton.addEventListener('click', (event) => {
+    scrollTo(0, 0) ;
+})
+
 import './bootstrap';
 import '../css/header.css';
 import './message';
@@ -11,4 +18,6 @@ alerts.forEach(alert => {
     });
 
 })
+
+
 

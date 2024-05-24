@@ -16,7 +16,8 @@ class MiniCard extends Component
         public string $value="",
         public string $action="voir",
         public string $actionLink="", 
-        public string $svg=""
+        public string $svg="",
+        public string $incomeDifference="",
     )
     {
         //

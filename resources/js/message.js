@@ -12,56 +12,61 @@ try {
 catch(e){;}
 
 export const messageContainer = document.querySelector('div.message-container');
-const closeBtn = messageContainer.querySelector('button.close-btn');
-const sendMessageForm = messageContainer.querySelector('form');
-export const conversationBody = messageContainer.querySelector('div.conversation-body');
-
-
-closeBtn.addEventListener('click', (event) => {
-
-    event.preventDefault() ;
-
-    messageContainer.style.display = 'none';
-})
 
 try {
+    const closeBtn = messageContainer.querySelector('button.close-btn');
+    const sendMessageForm = messageContainer.querySelector('form');
+}
+catch(e){;}
+
+export const conversationBody = document.querySelector('div.conversation-body');
+
+
+try {
+    closeBtn.addEventListener('click', (event) => {
+
+        event.preventDefault() ;
+    
+        messageContainer.style.display = 'none';
+    })
+
     toggleMessageContainer.addEventListener('click', (event) => {
     
         event.preventDefault() ;
         
         messageContainer.style.display = 'flex' ;
     });
+
+    sendMessageForm.addEventListener('submit', (event) => {
+
+        event.preventDefault();
+    
+        let input = sendMessageForm.querySelector('input[type="text"]');
+        
+        if(input.value !== ''){
+            let content = input.value;
+            conversationBody.appendChild(createMessage(content, ""));
+    
+            let data = {
+                content: content,
+                receiver_id: parseInt(sendMessageForm.querySelector('input[type="hidden"]').value),
+            }
+            input.value = "";
+            conversationBody.scrollTo(0, conversationBody.clientHeight*9999);
+            
+            console.log(data);
+            axios.post(`${window.origin}/chat/create/`, data)
+            .then( (result) => {
+                console.log(result);
+            })
+            .catch( (error) => {
+                conversationBody.querySelector('p.status').innerText = "ouups, erreur d'envoi...";
+                console.log(error);
+            } )
+        }
+    })
 }
 catch(e){;}
-
-sendMessageForm.addEventListener('submit', (event) => {
-
-    event.preventDefault();
-
-    let input = sendMessageForm.querySelector('input[type="text"]');
-    
-    if(input.value !== ''){
-        let content = input.value;
-        conversationBody.appendChild(createMessage(content, ""));
-
-        let data = {
-            content: content,
-            receiver_id: parseInt(sendMessageForm.querySelector('input[type="hidden"]').value),
-        }
-        input.value = "";
-        conversationBody.scrollTo(0, conversationBody.clientHeight*9999);
-        
-        console.log(data);
-        axios.post(`${window.origin}/chat/create/`, data)
-        .then( (result) => {
-            console.log(result);
-        })
-        .catch( (error) => {
-            conversationBody.querySelector('p.status').innerText = "ouups, erreur d'envoi...";
-            console.log(error);
-        } )
-    }
-})
 
 export function createMessage(content, status="", position="right") {
     let container = document.createElement('div');

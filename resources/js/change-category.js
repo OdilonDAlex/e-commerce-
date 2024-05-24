@@ -3,54 +3,58 @@ import { Alert } from "./models";
 import { productCard } from "./product-card-template";
 import { addProduct } from "./add-to-cart";
 
-const productsInByCategoryContainer = document.querySelector('div.by-categories');
-let products = productsInByCategoryContainer.querySelectorAll('div.product-card');
+try {
+    const productsInByCategoryContainer = document.querySelector('div.by-categories');
+    let products = productsInByCategoryContainer.querySelectorAll('div.product-card');
 
-window.productCard = productCard; 
-productCard.querySelector('div.edit-btn').style.display = 'none';
+    window.productCard = productCard; 
+    productCard.querySelector('div.edit-btn').style.display = 'none';
 
-const buttonChangeCategoryContainer = document.querySelector('div.categories');
-const buttons = buttonChangeCategoryContainer.querySelectorAll('button.category');
+    const buttonChangeCategoryContainer = document.querySelector('div.categories');
+    const buttons = buttonChangeCategoryContainer.querySelectorAll('button.category');
 
-buttons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault();
+    buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
 
-        axios.get(`/api/products/category/${button.innerText}`)
-            .then( (result) => {
-                productsInByCategoryContainer.style.display = 'grid';
-                productsInByCategoryContainer.innerHTML = '';
+            axios.get(`/api/products/category/${button.innerText}`)
+                .then( (result) => {
+                    productsInByCategoryContainer.style.display = 'grid';
+                    productsInByCategoryContainer.innerHTML = '';
 
-                try {
-                    for(let product of result.data.data){
-                        productsInByCategoryContainer.appendChild(renderProduct(product)); 
+                    try {
+                        for(let product of result.data.data){
+                            productsInByCategoryContainer.appendChild(renderProduct(product)); 
+                        }
                     }
-                }
-                catch(error){
-                    let alert_ = new Alert('Aucun produit n\' a été trouvé', 'success');
-                    alert_.htmlElement.style.position = 'relative';
-                    alert_.htmlElement.style.minWidth = '100%' ;
-                    alert_.htmlElement.style.display = 'block';
-                    productsInByCategoryContainer.style.display = 'block';
-                    productsInByCategoryContainer.appendChild(alert_.htmlElement);
-                }
-                
+                    catch(error){
+                        let alert_ = new Alert('Aucun produit n\' a été trouvé', 'success');
+                        alert_.htmlElement.style.position = 'relative';
+                        alert_.htmlElement.style.minWidth = '100%' ;
+                        alert_.htmlElement.style.display = 'block';
+                        productsInByCategoryContainer.style.display = 'block';
+                        productsInByCategoryContainer.appendChild(alert_.htmlElement);
+                    }
+                    
 
-                buttons.forEach(button_ => {
-                    button_.className = "category";
+                    buttons.forEach(button_ => {
+                        button_.className = "category";
+                    })
+
+                    button.className = "category active";
+
+                    products = productsInByCategoryContainer.querySelectorAll('div.product-card');
                 })
+                .catch( (error) => { 
+                    let alert_ = new Alert('Ouups, une erreur s\'est produite...', 'error');
+                    alert_.insertBefore(document.querySelector('section.content'));
+                    console.log(error);
+                } );
+        })
+    });
+}
+catch(e){;}
 
-                button.className = "category active";
-
-                products = productsInByCategoryContainer.querySelectorAll('div.product-card');
-            })
-            .catch( (error) => { 
-                let alert_ = new Alert('Ouups, une erreur s\'est produite...', 'error');
-                alert_.insertBefore(document.querySelector('section.content'));
-                console.log(error);
-            } );
-    })
-});
 
 
 function renderProduct(product){

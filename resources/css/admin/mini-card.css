@@ -1,4 +1,5 @@
 div.mini-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     border-radius: .3em;
@@ -29,7 +30,10 @@ section.illustration {
     align-items: center;
     justify-content: center;
     flex-grow: 2;
-    font-size: 28px;
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--primary-btn);
     text-align: center;
 }
 
@@ -64,3 +68,42 @@ section.info a.action {
     width: max-content;
     border-radius: .3em;
 }
+
+p.income-difference {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    padding: 5px;
+    font-weight: 600;
+    border-bottom-left-radius: .3em;
+}
+
+
+
+P.income-difference.positive::before{
+    content: "+";
+    color: var(--primary-btn);
+    font-size: 20px;
+}
+
+p.income-difference.positive {
+    color: var(--primary-btn);
+    background-color: var(--secondary-btn);
+}
+
+p.income-difference.negative {
+    background-color: lightcoral;
+    color: var(--primary-btn);
+}
+
+
+p.income-difference span.arrow {
+    color: var(--primary-btn);
+    font-size: 20px;
+}
+
+p.income-difference.negative span.arrow {
+    transform: rotate(90deg)!important;
+}
+
