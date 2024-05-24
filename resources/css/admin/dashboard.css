@@ -50,7 +50,3 @@ canvas {
     max-width: 100%;
 }
 
-
-div.mini-card section.illustration i.icon-dollar::before{
-    content: '\eaac';
-}

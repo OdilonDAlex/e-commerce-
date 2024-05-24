@@ -11,7 +11,7 @@
         <x-admin.mini-card :value="$categories_count" title="différente(s) categorie(s)" action-link="" svg="category"/>
         
         <!-- Produits en rupture de stock -->
-        <x-admin.mini-card :value="$unavaible_products" title="produit(s) en rupture de stock" action-link="" svg="stock-out"/>
+        <x-admin.mini-card :value="$unavaible_products" title="produit(s) en rupture de stock" :action-link="route('admin.product.stock.out')" svg="stock-out"/>
     </div>
     
     <h5 class="section-title">Utilisateurs</h5>

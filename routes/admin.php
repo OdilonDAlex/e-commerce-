@@ -87,5 +87,8 @@ Route::middleware('auth')->prefix('admin/')->name('admin.')
 
         Route::delete('delete/', [ProductController::class, 'delete'])
             ->name('delete');
+
+        Route::get('/stock-out', [ProductController::class, 'productStockOut'])
+            ->name('stock.out');
     });
 });

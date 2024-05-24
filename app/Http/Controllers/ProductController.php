@@ -290,4 +290,15 @@ class ProductController extends Controller
             'products' => Product::orderBy('name')->paginate(25),
         ]) ;
     }
+
+    public function productStockOut(){
+        if(! Gate::allows('visit-admin-pages')){
+            return redirect()->route('home');
+        }
+
+        return view('admin.product.index', [
+            'query' => null,
+            'products' => Product::where('stock', 0)->paginate(20),
+        ]);
+    }
 }
