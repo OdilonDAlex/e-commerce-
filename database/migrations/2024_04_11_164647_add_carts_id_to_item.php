@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->foreignIdFor(Cart::class, 'carts_id')->nullable();
+            $table->foreignIdFor(Cart::class, 'carts_id')->constrained()->cascadeOnDelete()->nullable();
         });
     }
     
@@ -23,6 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('items', function (Blueprint $table) {
+            $table->dropConstrainedForeignIdFor(Cart::class, 'carts_id');
             $table->dropForeignIdFor(Cart::class, 'carts_id');
         });
     }

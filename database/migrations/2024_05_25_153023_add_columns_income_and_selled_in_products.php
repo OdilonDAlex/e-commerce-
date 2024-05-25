@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Promo;
 
 return new class extends Migration
 {
@@ -13,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->foreignIdFor(Promo::class, 'promo_id')->constrained()->cascadeOnDelete()->nullable();
+            $table->bigInteger('income')->default(0);
+            $table->bigInteger('selled')->default(0);
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropConstrainedForeignIdFor(Promo::class, 'promo_id');
-            $table->dropForeignIdFor(Promo::class, 'promo_id');
+            $table->dropColumn('income');
+            $table->dropColumn('selled');
         });
     }
 };
