@@ -47,7 +47,16 @@
             action=""/>
     </div>
     <h5 class="section-title">Diagramme Statistique</h5>
-    <div class="income">
-        <canvas class="chart-bar"></canvas>
+    <div class="charts">
+        <div class="income">
+            <canvas class="chart-bar"></canvas>
+        </div>
+
+        <div>
+            <div class="top-selled-products">
+                <h1 class="info">Produits les plus vendus</h1>
+                <canvas class="pie-chart"></canvas>
+            </div>
+        </div>
     </div>
 </x-admin-page-layout>

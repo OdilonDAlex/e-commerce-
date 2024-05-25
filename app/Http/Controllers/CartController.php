@@ -125,6 +125,7 @@ class CartController extends Controller
 
                 if($relatedProduct->stock >= $item->quantity){
                     $relatedProduct->stock -= $item->quantity;
+                    $relatedProduct->selled += $item->quantity;
 
                     try{
                         try {
@@ -148,6 +149,7 @@ class CartController extends Controller
                 }
                 catch(Exception $priceNull){;}
                 
+                $relatedProduct->selled += $item->quantity;
                 $item->products()->dissociate();
                 $item->carts()->dissociate();
                 $item->delete();

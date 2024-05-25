@@ -26,6 +26,7 @@ class Product extends Model
         'promo_id',
         'image',
         'updated_at',
+        'selled'
     ];
 
     public function getImageUrl(): string|null {

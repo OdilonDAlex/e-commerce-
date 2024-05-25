@@ -36,17 +36,39 @@ div.products, div.users, div.incomes {
 }
 
 aside.activity-container {
-    border: 1px solid red;
     width: 200px;
 }
 
-div.income {
+div.charts {
     position: relative;
+    display: grid;
+    column-gap: 15px;
+    grid-template-columns: calc(70% - 10px) calc(30% - 10px);
     max-width: 100% ;
+    margin: 20px 0;
 }
 
+div.charts div.income {
+    flex-grow: 2;
+    height: 100%;
+}
+
+/* div.top-selled-products {
+    border: 1px solid green
+} */
+
 canvas {
+    height: 100%;
     position: relative;
+    width: 100% ;
     max-width: 100%;
+}
+
+h1.info {
+    width: 100%!important;
+    margin: 0px!important;
+    font-size: 15px!important;
+    text-align: center;
+    margin: 10px 0px!important;
 }
 

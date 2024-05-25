@@ -1,6 +1,5 @@
 const scrollToTopButton = document.querySelector("button.scrollToTop") ;
 
-console.log(scrollToTopButton) ;
 scrollToTopButton.addEventListener('click', (event) => {
     scrollTo(0, 0) ;
 })
