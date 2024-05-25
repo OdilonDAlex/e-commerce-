@@ -79,8 +79,6 @@ p.income-difference {
     border-bottom-left-radius: .3em;
 }
 
-
-
 P.income-difference.positive::before{
     content: "+";
     color: var(--primary-btn);
