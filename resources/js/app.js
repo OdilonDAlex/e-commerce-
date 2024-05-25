@@ -7,6 +7,7 @@ scrollToTopButton.addEventListener('click', (event) => {
 import './bootstrap';
 import '../css/header.css';
 import './message';
+import './responsive'
 
 const alerts = document.querySelectorAll('div.alert') ;
 
@@ -17,6 +18,3 @@ alerts.forEach(alert => {
     });
 
 })
-
-
-

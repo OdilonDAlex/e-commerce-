@@ -23,7 +23,7 @@ class CreateCategoryFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'names' => ['required', 'string', 'regex:/^[a-z]+[a-z0-9 ]*$/i'],
+            'names' => ['required', 'string', 'regex:/^[a-z]+[a-z0-9, ]*$/i'],
         ];
     }
 

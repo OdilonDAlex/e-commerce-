@@ -56,9 +56,9 @@ export function addProduct(form, productId) {
             })
 
             document.addEventListener('keydown', (event) => {
-                event.preventDefault() ;
-
+                
                 if(event.key.toLowerCase() == "enter") {
+                    event.preventDefault() ;
                     prompt.htmlElement.parentNode.removeChild(prompt.htmlElement) ;
                     resolve(form.quantity.value) ;
                 }

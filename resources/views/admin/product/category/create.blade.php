@@ -2,13 +2,24 @@
 
 @section('title', 'Creation de categorie')
 
-@section('content')
-    <form action="{{ route('admin.product.category.create') }}" method="POST">
-        @csrf
 
-        <label for="names">Nom des categories ( séparé par des espaces )</label><br>
-        <input type="text" name="names" id="names">
+@vite('resources/css/flex-center.css')
 
-        <input type="submit" value="Créer">
-    </form>
+@section('header')
+    @include('header')
 @endsection
+
+@section('content')
+<form  class="register-form"  action="{{ route('admin.product.category.create') }}" method="POST">
+    @csrf
+
+    <h1>Création de categorie</h1>
+
+    <div style="width: 70ch;">
+        <x-input label="Nom des categories.Sépare les noms d'une virgule ',' . Pour les noms qui comporte des une ou plusieurs virgules utilise deux virgules  ',,' " name="names"/>
+
+        <x-input type="submit" value="Créer"/>
+    </div>
+</form>
+@endsection
+
