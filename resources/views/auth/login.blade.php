@@ -5,7 +5,7 @@
 @section('content')
 @vite('resources/css/flex-center.css')
 
-<form class="login-form" action="{{ route('login.store') }}" method="POST">
+<form class="login-form" action="{{ route('login.store') }}" method="POST" style="transform: translateY(-45px);">
     @csrf
     <h1>Connexion</h1>  
     

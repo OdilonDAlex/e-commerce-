@@ -4,9 +4,12 @@ import { createMessage } from "../message";
 import { conversationBody } from "../message";
 import '../echo';
 
+
 const usersList = document.querySelector('div.users');
 const allUsersLi = usersList.querySelectorAll('div.user');
 const sendMessageForm = document.forms.sendMessageForm;
+
+
 
 allUsersLi.forEach(div => {
     div.addEventListener('click', (event) => {

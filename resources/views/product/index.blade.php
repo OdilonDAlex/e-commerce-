@@ -2,7 +2,7 @@
 
 @section('title', $query ===  null ? 'produits' : 'Resultat de `' . $query . '`')
 
-@vite('resources/css/product-index.css')
+@vite(['resources/css/product-index.css', 'resources/js/product-scroll-smooth.js'])
 
 @section('header')
     @include('header')

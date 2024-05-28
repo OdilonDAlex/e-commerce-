@@ -1,5 +1,6 @@
 import axios from "axios";
 import './echo';
+import gsap from "gsap";
 
 window.Echo = Echo;
 let messageCollapse;
@@ -13,60 +14,58 @@ catch(e){;}
 
 export const messageContainer = document.querySelector('div.message-container');
 
-try {
-    const closeBtn = messageContainer.querySelector('button.close-btn');
-    const sendMessageForm = messageContainer.querySelector('form');
-}
-catch(e){;}
+const closeBtn = messageContainer.querySelector('button.close-btn');
+const sendMessageForm = messageContainer.querySelector('form');
 
 export const conversationBody = document.querySelector('div.conversation-body');
-
 
 try {
     closeBtn.addEventListener('click', (event) => {
 
         event.preventDefault() ;
-    
-        messageContainer.style.display = 'none';
-    })
 
-    toggleMessageContainer.addEventListener('click', (event) => {
+        gsap.to(messageContainer, {y: 200, scaleY: 0, opacity: 0.2, display: 'none', duration: .5});
+    })
     
+    toggleMessageContainer.addEventListener('click', (event) => {
+        
         event.preventDefault() ;
         
-        messageContainer.style.display = 'flex' ;
+        gsap.fromTo(messageContainer, {display: 'flex', y: 100, scaleY: .7, opacity: .9, duration: .8}, {display: 'flex', opacity: 1, scaleY: 1, y:0, ease: 'elastic'});
+        gsap.fromTo(messageCollapse.querySelectorAll('div.message div.content'), {delay: .7, opacity: .8,  stagger: {each: 0.5 }, ease: 'elastic', duration: 1}, {opacity: 1});
     });
-
-    sendMessageForm.addEventListener('submit', (event) => {
-
-        event.preventDefault();
-    
-        let input = sendMessageForm.querySelector('input[type="text"]');
-        
-        if(input.value !== ''){
-            let content = input.value;
-            conversationBody.appendChild(createMessage(content, ""));
-    
-            let data = {
-                content: content,
-                receiver_id: parseInt(sendMessageForm.querySelector('input[type="hidden"]').value),
-            }
-            input.value = "";
-            conversationBody.scrollTo(0, conversationBody.clientHeight*9999);
-            
-            console.log(data);
-            axios.post(`${window.origin}/chat/create/`, data)
-            .then( (result) => {
-                console.log(result);
-            })
-            .catch( (error) => {
-                conversationBody.querySelector('p.status').innerText = "ouups, erreur d'envoi...";
-                console.log(error);
-            } )
-        }
-    })
 }
 catch(e){;}
+
+
+sendMessageForm.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    let input = sendMessageForm.querySelector('input[type="text"]');
+    
+    if(input.value !== ''){
+        let content = input.value;
+        conversationBody.appendChild(createMessage(content, ""));
+
+        let data = {
+            content: content,
+            receiver_id: parseInt(sendMessageForm.querySelector('input[type="hidden"]').value),
+        }
+        input.value = "";
+        conversationBody.scrollTo(0, conversationBody.clientHeight*9999);
+        
+        console.log(data);
+        axios.post(`${window.origin}/chat/create/`, data)
+        .then( (result) => {
+            console.log(result);
+        })
+        .catch( (error) => {
+            conversationBody.querySelector('p.status').innerText = "ouups, erreur d'envoi...";
+            console.log(error);
+        } )
+    }
+})
 
 export function createMessage(content, status="", position="right") {
     let container = document.createElement('div');

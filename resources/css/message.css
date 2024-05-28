@@ -107,7 +107,7 @@ div.message div.content {
 div.left div.content {
     background-color: var(--navbar-bg);
     color: var(--text-primary);
-    font-weight: bold;
+    font-weight: normal;
     border-radius: 0px .5em .5em .5em;
 }
 
@@ -131,7 +131,7 @@ form.send-message input[type='text'] {
     border-radius: .7em;
     padding: 10px;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: normal;
     margin-right: 5px;
     color: var(--primary-btn);
     border: 1px solid var(--primary-btn);
