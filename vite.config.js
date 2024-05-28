@@ -31,7 +31,8 @@ export default defineConfig({
                 'resources/css/admin/sidebar.css',
                 'resources/css/footer.css',
                 'resources/css/checkout.css',
-                'resources/js/checkout.js'
+                'resources/js/checkout.js',
+                'resources/js/homepage-scroll-smooth.js',
             ],
             refresh: true,
         }),

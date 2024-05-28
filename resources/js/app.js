@@ -7,7 +7,7 @@ scrollToTopButton.addEventListener('click', (event) => {
 import './bootstrap';
 import '../css/header.css';
 import './message';
-import './responsive'
+import './responsive';
 
 const alerts = document.querySelectorAll('div.alert') ;
 

@@ -3,6 +3,7 @@
 
 @section('title', 'Accueil')
 
+@vite('resources/js/homepage-scroll-smooth.js')
 
 <!-- import du navbar et du bar de recherche -->
 @section('header')

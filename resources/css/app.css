@@ -63,6 +63,7 @@ palette 2
 }
 
 body {
+    padding-top: 45px;
     background-color: var(--primary-bg);
     overflow-x: hidden;
 }
