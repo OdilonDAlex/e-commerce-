@@ -77,6 +77,7 @@ export function addProduct(form, productId) {
             }
     
             axios.post('../cart/add', data)
+            .then(res =>  console.log(res))
             .catch( (error) => {
                 console.error(error);
             });

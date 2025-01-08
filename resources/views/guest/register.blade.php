@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form class="register-form" action="{{ route('register.store') }}" method="POST" style="transform: translateY(-45px);>
+<form class="register-form" action="{{ route('register.store') }}" method="POST" style="transform: translateY(-45px);">
     @csrf
     <h1>Inscription</h1>
 

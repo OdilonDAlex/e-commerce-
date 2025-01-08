@@ -18,7 +18,7 @@ class RegisterUserController extends Controller
     }
 
     public function store(RegisterFormRequest $request) {
-        
+
         $credentias = $request->validated();
 
         $user = User::create([

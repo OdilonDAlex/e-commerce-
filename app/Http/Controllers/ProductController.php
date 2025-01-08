@@ -84,6 +84,7 @@ class ProductController extends Controller
         
         $data['slug'] = $slug;
         
+
         $product = Product::create($data);
 
         $promo_value = $request->validated('promo');

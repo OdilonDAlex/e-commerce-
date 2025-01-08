@@ -13,8 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->foreignIdFor(User::class, 'author_id')->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(User::class, 'receiver_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class, 'author_id');
+            $table->foreignIdFor(User::class, 'receiver_id');
         });
     }
 

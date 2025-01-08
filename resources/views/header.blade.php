@@ -31,7 +31,8 @@
         @include('svg.user')
     </button>
     <div class="brand-logo">
-        <img src="{{ Storage::disk('public')->url('logo.png') }}" alt="Logo">
+        {{-- <img src="{{ Storage::disk('public')->url('logo.png') }}" alt="Logo" width="20" height="48"> --}}
+        <h1>LOGO</h1>
     </div>
         <navbar>
             <ul class="nav">

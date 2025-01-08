@@ -13,7 +13,7 @@ export default defineConfig({
                 'resources/css/admin/table.css',
                 'resources/css/product/create.css',
                 'resources/css/product/card.css',
-                'resources/css/product/pagination.css',
+                'resources/css/pagination.css',
                 'resources/css/homepage.css',
                 'resources/css/flex-center.css',
                 'resources/css/form.css',

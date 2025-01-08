@@ -21,6 +21,10 @@
     width: max-content;
 }
 
+.brand-logo {
+    height: 40;
+}
+
 
 .navbar-container ul.nav li.nav-item {
     display: inline;
