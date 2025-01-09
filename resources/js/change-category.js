@@ -17,7 +17,11 @@ try {
         button.addEventListener('click', (event) => {
             event.preventDefault();
 
+            /**
+             * Asynchronous request
+             */
             axios.get(`/api/products/category/${button.innerText}`)
+                // onResolve
                 .then( (result) => {
                     productsInByCategoryContainer.style.display = 'grid';
                     productsInByCategoryContainer.innerHTML = '';
@@ -45,6 +49,7 @@ try {
 
                     products = productsInByCategoryContainer.querySelectorAll('div.product-card');
                 })
+                //onError
                 .catch( (error) => { 
                     let alert_ = new Alert('Ouups, une erreur s\'est produite...', 'error');
                     alert_.insertBefore(document.querySelector('section.content'));

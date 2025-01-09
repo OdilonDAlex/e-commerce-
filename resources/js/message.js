@@ -58,7 +58,7 @@ sendMessageForm.addEventListener('submit', (event) => {
         console.log(data);
         axios.post(`${window.origin}/chat/create/`, data)
         .then( (result) => {
-            console.log(result);
+            console.log(result)
         })
         .catch( (error) => {
             conversationBody.querySelector('p.status').innerText = "ouups, erreur d'envoi...";
@@ -99,11 +99,13 @@ axios.get(`${window.origin}/auth/`)
     let authId = result.data.id;
     let userRole = result.data.role;
 
+
     if((parseInt(authId) !== -1) && (userRole != 'admin')){
 
         window.Echo.private(`chat-1-${authId}`)
             .listen('.message-sent', (result) => {
                 let message = result.message;
+                console.log(message)
                 if(result.receiver_id == authId){
                     conversationBody.appendChild(createMessage(message.content, '', 'left'));
                     conversationBody.scrollTo(0, conversationBody.clientHeight*999);

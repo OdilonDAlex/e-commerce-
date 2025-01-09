@@ -57,8 +57,11 @@ class ChatController extends Controller
 
         Auth::user()->save();
 
-        event(new MessageSent($message, $receiver->id));
 
+        $result = event(new MessageSent($message, $receiver->id));
+
+        return json_encode($result);
+        
         return json_encode(['status' => 200]);
     }
 
