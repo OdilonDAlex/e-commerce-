@@ -34,7 +34,7 @@ class AdminDashboard extends Controller
         ->total ?? null;
 
         $thisYearIncome = Income::selectRaw('sum(incomes.total) total')
-        ->whereRaw('YEAR(incomes.created_at) = ' . $today->year)
+        ->whereRaw('YEAR(incomes.created_at) = ' . $today->year + 1)
         ->first()
         ->total ?? null;
 

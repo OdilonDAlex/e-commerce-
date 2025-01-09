@@ -9,20 +9,15 @@ const byCategories = document.querySelector('div.by-categories');
 const allProduct = document.querySelector('div.all-product');
 
 
+const [categoriesBtn, ] = Array(categories ? categories.querySelectorAll('.category') : []); 
+const [allProducts, ] = Array(allProduct ?  allProduct.querySelectorAll('div.product-card') : []);
+const [productsInBestPromos, ] = Array(bestPromos ? bestPromos.querySelectorAll('div.product-card') : []);
+const [productByCategories, ] = Array(byCategories ? byCategories.querySelectorAll('div.product-card') : []);
 
-try {
-    const [categoriesBtn, ] = Array(categories.querySelectorAll('.category')); 
-    const [allProducts, ] = Array(allProduct.querySelectorAll('div.product-card'));
-    const [productsInBestPromos, ] = Array(bestPromos.querySelectorAll('div.product-card'));
-    const [productByCategories, ] = Array(byCategories.querySelectorAll('div.product-card'));
-
-    let toSmooth = [...productsInBestPromos].concat([...categoriesBtn], [...productByCategories], [...allProducts]);
+let toSmooth = [...productsInBestPromos].concat([...categoriesBtn], [...productByCategories], [...allProducts]);
     
     
     smoothReveal(toSmooth);
-}
-catch(e){;}
-
 
 function smoothReveal(elements, delay=0, interval=90) {
     elements.forEach(element => {

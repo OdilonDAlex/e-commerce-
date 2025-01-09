@@ -3,7 +3,6 @@ import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 window.Pusher = Pusher;
 
-console.log('env', import.meta.env)
 
 window.Echo = new Echo({
     broadcaster: 'reverb',

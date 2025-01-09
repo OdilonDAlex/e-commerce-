@@ -14,8 +14,13 @@ catch(e){;}
 
 export const messageContainer = document.querySelector('div.message-container');
 
-const closeBtn = messageContainer.querySelector('button.close-btn');
-const sendMessageForm = messageContainer.querySelector('form');
+let closeBtn;
+let sendMessageForm;
+if(messageContainer){
+    closeBtn = messageContainer.querySelector('button.close-btn');
+    sendMessageForm = messageContainer.querySelector('form');
+}
+
 
 export const conversationBody = document.querySelector('div.conversation-body');
 
@@ -37,6 +42,7 @@ try {
 }
 catch(e){;}
 
+if(sendMessageForm){
 
 sendMessageForm.addEventListener('submit', (event) => {
 
@@ -67,6 +73,7 @@ sendMessageForm.addEventListener('submit', (event) => {
     }
 })
 
+}
 export function createMessage(content, status="", position="right") {
     let container = document.createElement('div');
     container.className = "message " +  position;

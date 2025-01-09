@@ -34,6 +34,7 @@ export default defineConfig({
                 'resources/js/checkout.js',
                 'resources/js/homepage-scroll-smooth.js',
                 'resources/js/product-scroll-smooth.js',
+                'resources/js/select-multiple.js',
             ],
             refresh: true,
         }),

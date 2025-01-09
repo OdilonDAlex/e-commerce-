@@ -7,13 +7,15 @@
 
 @section('title', $title)
 
-@vite(['resources/css/product/create.css', 'resources/css/form.css'])
+@vite(['resources/css/product/create.css', 'resources/css/form.css', 'resources/js/select-multiple.js'])
 
 @section('header')
 @include('header')
 @endsection
 
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 <div class="create-product">
     <h1>{{ $title }}</h1>
 
